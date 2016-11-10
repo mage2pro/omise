@@ -1,0 +1,16 @@
+{
+	"name": "mage2pro/omise"
+	,"version": "0.0.1"
+	,"description": "«Omise» Magento 2 payment extension."
+	,"type": "magento2-module"
+	,"homepage": "https://mage2.pro/c/extensions/omise"
+	,"license": "proprietary"
+	,"authors": [{
+		"name": "Dmitry Fedyuk",
+		"email": "admin@mage2.pro",
+		"homepage": "https://mage2.pro/users/dmitry_fedyuk",
+		"role": "Developer"
+	}]
+	,"require": {"mage2pro/core": "^1.8.17"}
+	,"autoload": {"files": ["registration.php"], "psr-4": {"Dfe\\Omise\\": ""}}
+}
