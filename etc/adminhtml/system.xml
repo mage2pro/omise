@@ -59,16 +59,99 @@
 					showInWebsite='1'
 					showInStore='1'
 				>
-					<label>Sandbox Mode?</label>
+					<label>Test Mode?</label>
 					<backend_model>Df\Config\Backend\Checkbox</backend_model>
 					<comment><![CDATA[<a href='https://mage2.pro/t/2097' target='_blank'>The test bank cards</a>.]]></comment>
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
+					id='testSecretKey'
+					translate='label'
+					type='obscure'
+					sortOrder='4'
+					showInDefault='1'
+					showInWebsite='1'
+					showInStore='1'
+				>
+					<label>Test Secret Key</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/2263' target='_blank'>How to get it?</a>]]></comment>
+					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>1</field>
+					</depends>
+				</field>
+				<field
+					id='testPublicKey'
+					translate='label'
+					type='text'
+					sortOrder='5'
+					showInDefault='1'
+					showInWebsite='1'
+					showInStore='1'
+				>
+					<label>Test Public Key</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/2263' target='_blank'>How to get it?</a>]]></comment>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>1</field>
+					</depends>
+				</field>
+				<field
+					id='prefill'
+					translate='label'
+					type='select'
+					sortOrder='6'
+					showInDefault='1'
+					showInWebsite='1'
+					showInStore='1'
+				>
+					<label>Prefill the Payment Form with Test Data?</label>
+					<source_model>Dfe\Omise\Source\Prefill</source_model>
+					<comment><![CDATA[If you do not want it, then please use the following <a href='https://mage2.pro/t/2262' target='_blank'>test card numbers</a>.]]></comment>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>1</field>
+					</depends>
+				</field>
+				<field
+					id='liveSecretKey'
+					translate='label'
+					type='obscure'
+					sortOrder='7'
+					showInDefault='1'
+					showInWebsite='1'
+					showInStore='1'
+				>
+					<label>Live Secret Key</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/2263' target='_blank'>How to get it?</a>]]></comment>
+					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>0</field>
+					</depends>
+				</field>
+				<field
+					id='livePublicKey'
+					translate='label'
+					type='text'
+					sortOrder='8'
+					showInDefault='1'
+					showInWebsite='1'
+					showInStore='1'
+				>
+					<label>Live Public Key</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/2263' target='_blank'>How to get it?</a>]]></comment>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>0</field>
+					</depends>
+				</field>
+				<field
 					id='currency'
 					translate='label'
 					type='Df\Payment\FormElement\Currency'
-					sortOrder='7'
+					sortOrder='9'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
@@ -80,7 +163,7 @@
 					id='askForBillingAddress'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
-					sortOrder='8'
+					sortOrder='10'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
