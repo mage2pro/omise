@@ -1,0 +1,22 @@
+<?xml version='1.0'?>
+<config
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xsi:noNamespaceSchemaLocation='urn:magento:module:Magento_Store:etc/config.xsd'
+>
+    <default>
+		<df_payment>
+			<omise>
+				<askForBillingAddress>1</askForBillingAddress>
+				<currency>order</currency>
+				<payment_action>authorize_capture</payment_action>
+				<title>Bank Card</title>
+				<title_backend>Omise</title_backend>
+			</omise>
+		</df_payment>
+        <payment>
+            <dfe_omise>
+				<model>Dfe\Omise\Method</model>
+            </dfe_omise>
+        </payment>
+    </default>
+</config>
