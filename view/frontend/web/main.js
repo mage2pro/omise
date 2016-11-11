@@ -4,9 +4,15 @@ define ([
 	,'Df_Checkout/js/data'
 	,'Df_Payment/card'
 	,'Dfe_Omise/API'
-	,'jquery'
-	,'Magento_Payment/js/model/credit-card-validation/credit-card-data'
-], function(df, dfc, parent, API, $, creditCardData) {'use strict'; return parent.extend({
+], function(df, dfc, parent,
+	/**
+	 * 2016-11-12
+	 * This parameter is not used and (as I have checked with a debugger) even is not initialized.
+	 * The real Omise API is coming with the «Omise» global variable:
+	 * https://www.omise.co/collecting-card-information#a-full-fledged-example
+	 */
+	stub
+) {'use strict'; return parent.extend({
 	/**
 	 * 2016-11-10
 	 * @returns {String[]}
