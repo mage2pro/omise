@@ -1,19 +1,10 @@
 // 2016-11-10
-/* global Omise */
 define([
 	'df'
 	,'Df_Checkout/js/data'
 	,'Df_Payment/card'
 	,'Dfe_Omise/API'
-], function(df, dfc, parent,
-	/**
-	 * 2016-11-12
-	 * This parameter is not used and (as I have checked with a debugger) even is not initialized.
-	 * The real Omise API is coming with the «Omise» global variable:
-	 * https://www.omise.co/collecting-card-information#a-full-fledged-example
-	 */
-	stub
-) {'use strict'; return parent.extend({
+], function(df, dfc, parent, Omise) {'use strict'; return parent.extend({
 	/**
 	 * 2016-11-10
 	 * https://www.omise.co/which-credit-cards-does-omise-accept
@@ -39,7 +30,59 @@ define([
 	*/
 	placeOrder: function(_this) {
 		if (this.validate()) {
-			this.placeOrderInternal();
+			if (!this.isNewCardChosen()) {
+				/**
+				 * 2016-08-23
+				 * Идентификаторы карт начинаются с приставки «card_»
+				 * (например: «card_18lGFRFzKb8aMux1Bmcjsa5L»),
+				 * а идентификаторы токенов — с приставки «tok_»
+				 * (например: «tok_18lWSWFzKb8aMux1viSqpL5X»),
+				 * тем самым по приставке мы можем отличить карты от токенов,
+				 * и поэтому для карт и токенов мы можем использовать одну и ту же переменную.
+				 */
+				this.token = this.currentCard();
+				this.placeOrderInternal();
+			}
+			else {
+				// 2016-03-02
+				// https://stripe.com/docs/custom-form#step-2-create-a-single-use-token
+				/**
+				 * 2016-03-07
+				 * https://support.stripe.com/questions/which-cards-and-payment-types-can-i-accept-with-stripe
+				 * Which cards and payment types can I accept with Stripe?
+				 * With Stripe, you can charge almost any kind of credit or debit card:
+				 * U.S. businesses can accept:
+				 * 		Visa, MasterCard, American Express, JCB, Discover, and Diners Club.
+				 * Australian, Canadian, European, and Japanese businesses can accept:
+				 * 		Visa, MasterCard, and American Express.
+				 */
+				Stripe.card.createToken(
+					{
+						cvc: this.dfCardVerification()
+						,exp_month: this.dfCardExpirationMonth()
+						,exp_year: this.dfCardExpirationYear()
+						,number: this.dfCardNumber()
+					},
+					/**
+					 * 2016-03-02
+					 * @param {Number} status
+					 * @param {Object} response
+					 */
+					function(status, response) {
+						if (200 === status) {
+							// 2016-03-02
+							// https://stripe.com/docs/custom-form#step-3-sending-the-form-to-your-server
+							_this.token = response.id;
+							_this.placeOrderInternal();
+						}
+						else {
+							// 2016-03-02
+							// https://stripe.com/docs/api#errors
+							_this.showErrorMessage(response.error.message);
+						}
+					}
+				);
+			}
 		}
 	}
 });});

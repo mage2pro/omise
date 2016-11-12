@@ -8,4 +8,5 @@ var config = {
 		// https://github.com/omise/omise.js
 		'Dfe_Omise/API': 'https://cdn.omise.co/omise'
 	}
+	,shim: {'Dfe_Omise/API': {exports: 'Omise'}}
 };
