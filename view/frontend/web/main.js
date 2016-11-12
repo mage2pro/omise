@@ -11,6 +11,10 @@ define([
 	// При этом он всё равно доступен в виде window.Omise
 	Omise
 ) {'use strict'; return parent.extend({
+	// 2016-11-12
+	// Omise requires the cardholder name:
+	// https://www.omise.co/omise-js-api#createtoken(type,-object,-callback)
+	defaults: {df: {card: {requireCardholder: true}}},
 	/**
 	 * 2016-11-12
 	 * https://www.omise.co/which-credit-cards-does-omise-accept
@@ -38,16 +42,16 @@ define([
 		if (this.validate()) {
 			Omise.createToken('card',
 				{
-					expiration_month: this.dfCardExpirationMonth()
-					,expiration_year: this.dfCardExpirationYear()
+					expiration_month: this.creditCardExpMonth()
+					,expiration_year: this.creditCardExpYear()
 					// 2016-11-12
 					// https://www.omise.co/tokens-api#tokens-create
 					// «The cardholder name as printed on the card.»
 					// This parameter is required:
 					// https://www.omise.co/omise-js-api#createtoken(type,-object,-callback)
-					,name: 'TEST TEST'
-					,number: this.dfCardNumber()
-					,security_code: this.dfCardVerification()
+					,name: this.cardholder()
+					,number: this.creditCardNumber()
+					,security_code: this.creditCardVerificationNumber()
 				},
 				/**
 				 * 2016-11-12
