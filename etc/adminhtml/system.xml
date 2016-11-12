@@ -148,22 +148,10 @@
 					</depends>
 				</field>
 				<field
-					id='currency'
-					translate='label'
-					type='Df\Payment\FormElement\Currency'
-					sortOrder='9'
-					showInDefault='1'
-					showInWebsite='1'
-					showInStore='1'
-				>
-					<label>Payment Currency</label>
-					<depends><field id='enable'>1</field></depends>
-				</field>
-				<field
 					id='askForBillingAddress'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
-					sortOrder='10'
+					sortOrder='9'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'

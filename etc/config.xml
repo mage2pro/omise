@@ -7,7 +7,12 @@
 		<df_payment>
 			<omise>
 				<askForBillingAddress>1</askForBillingAddress>
-				<currency>order</currency>
+<!--
+	2016-11-12
+    https://www.omise.co/which-currency-does-omise-support
+    «Currently, we only support Thai Baht (THB).»
+-->
+				<currency>TWD</currency>
 				<payment_action>authorize_capture</payment_action>
 				<title>Bank Card</title>
 				<title_backend>Omise</title_backend>
