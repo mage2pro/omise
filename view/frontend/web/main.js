@@ -1,5 +1,6 @@
 // 2016-11-10
-define ([
+/* global Omise */
+define([
 	'df'
 	,'Df_Checkout/js/data'
 	,'Df_Payment/card'
@@ -20,10 +21,12 @@ define ([
 	getCardTypes: function() {return ['VI', 'MC', 'AE', 'JCB', 'DI', 'DN', 'CUN'];},
 	/**
 	 * 2016-11-10
-	 * @return {Object}
+	 * @override
+	 * @returns {Object}
 	*/
 	initialize: function() {
 		this._super();
+		Omise.setPublicKey(this.config('publicKey'));
 		return this;
 	},
 	/**
