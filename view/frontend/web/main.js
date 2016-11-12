@@ -16,9 +16,10 @@ define([
 ) {'use strict'; return parent.extend({
 	/**
 	 * 2016-11-10
+	 * https://www.omise.co/which-credit-cards-does-omise-accept
 	 * @returns {String[]}
 	 */
-	getCardTypes: function() {return ['VI', 'MC', 'AE', 'JCB', 'DI', 'DN', 'CUN'];},
+	getCardTypes: function() {return ['VI', 'MC', 'JCB'];},
 	/**
 	 * 2016-11-10
 	 * @override
