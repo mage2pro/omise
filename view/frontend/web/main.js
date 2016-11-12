@@ -4,7 +4,13 @@ define([
 	,'Df_Checkout/js/data'
 	,'Df_Payment/card'
 	,'Dfe_Omise/API'
-], function(df, dfc, parent, Omise) {'use strict'; return parent.extend({
+], function(df, dfc, parent,
+	// 2016-11-12
+	// У Omise, как и Stripe, API-объект является глобальной переменной,
+	// но мы, благодаря shim, получаем его локально.
+	// При этом он всё равно доступен в виде window.Omise
+	Omise
+) {'use strict'; return parent.extend({
 	/**
 	 * 2016-11-10
 	 * https://www.omise.co/which-credit-cards-does-omise-accept
