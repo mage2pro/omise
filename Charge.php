@@ -13,6 +13,13 @@ class Charge extends \Df\Payment\Charge\WithToken {
 	 * @return array(string => mixed)
 	 */
 	private function _request() {/** @var Settings $s */ $s = S::s(); return [
+		/**
+		 * 2016-11-13
+		 * A valid CUSTOMER_ID that has at least one card already associated.
+		 * By default the default card of the customer will be used.
+		 * This parameter is required unless passing a TOKEN_ID in the card parameter.
+		 */
+		//'customer' => $this->customerId()
 	];}
 
 	/** @return bool */
