@@ -12,7 +12,7 @@
     https://www.omise.co/which-currency-does-omise-support
     «Currently, we only support Thai Baht (THB).»
 -->
-				<currency>TWD</currency>
+				<currency>THB</currency>
 				<payment_action>authorize_capture</payment_action>
 				<title>Bank Card</title>
 				<title_backend>Omise</title_backend>
