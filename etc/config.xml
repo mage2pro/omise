@@ -6,6 +6,8 @@
     <default>
 		<df_payment>
 			<omise>
+				<actionForNew>review</actionForNew>
+				<actionForReturned>authorize_capture</actionForReturned>
 				<askForBillingAddress>1</askForBillingAddress>
 <!--
 	2016-11-12
