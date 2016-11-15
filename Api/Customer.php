@@ -5,6 +5,13 @@ use Dfe\Omise\Response;
 use OmiseCustomer as Sb;
 class Customer extends Sb {
 	/**
+	 * 2016-11-15
+	 * @param Sb $o
+	 * @return string
+	 */
+	public static function _cardIdLast(Sb $o) {return df_last($o['cards']['data'])['id'];}
+
+	/**
 	 * 2016-11-14
 	 * Ключ $o['cards']['data'] присутствует в объекте даже при отсутствии карт.
 	 * @param Sb $o

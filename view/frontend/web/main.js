@@ -74,11 +74,8 @@ define([
 					 */
 					function(status, response) {
 						if (200 === status) {
-							// 2016-03-02
-							// https://stripe.com/docs/custom-form#step-3-sending-the-form-to-your-server
 							_this.token = response.id;
-							debugger;
-							//_this.placeOrderInternal();
+							_this.placeOrderInternal();
 						}
 						else {
 							// 2016-11-12

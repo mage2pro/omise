@@ -2,6 +2,7 @@
 // 2016-11-10
 namespace Dfe\Omise;
 use Df\Core\Exception as DFE;
+use Dfe\Omise\Api\O as AO;
 use Dfe\Omise\Settings as S;
 use Df\Payment\Source\ACR;
 use Magento\Framework\Exception\LocalizedException as LE;
@@ -133,7 +134,56 @@ class Method extends \Df\Payment\Method {
 		if ($auth) {
 		}
 		else {
-
+			/** @var array(string => mixed) $params */
+			$params = Charge::request($this, $this->iia(self::$TOKEN), $amount, $capture);
+			/** @var \OmiseCharge $charge */
+			$charge = $this->api($params, function() use($params) {
+				return \OmiseCharge::create($params);
+			});
+			/**
+			 * 2016-11-16
+				{
+					"object": "card",
+					"id": "card_test_560jgvu90914d44h1vx",
+					"livemode": false,
+					"location": "/customers/cust_test_560jgw6s43s7i4ydd8r/cards/card_test_560jgvu90914d44h1vx",
+					"country": "us",
+					"city": null,
+					"postal_code": null,
+					"financing": "",
+					"bank": "",
+					"last_digits": "4444",
+					"brand": "MasterCard",
+					"expiration_month": 7,
+					"expiration_year": 2019,
+					"fingerprint": "/uCzRPQQRUDr8JvGUjKf7Xn10VRJeQ7oBZ1Zt7gLvWs=",
+					"name": "DMITRY FEDYUK",
+					"security_code_check": true,
+					"created": "2016-11-15T22:00:49Z"
+				}
+			 * @var array(string => string|bool|int|null) $card
+			 */
+			$card = $charge['card'];
+			$this->transInfo($charge, $params);
+			$this->ii()->setCcLast4($card['last_digits']);
+			$this->ii()->setCcType($card['brand']);
+			/**
+			 * 2016-03-15
+			 * Иначе операция «void» (отмена авторизации платежа) будет недоступна:
+			 * «How is a payment authorization voiding implemented?»
+			 * https://mage2.pro/t/938
+			 * https://github.com/magento/magento2/blob/2.1.0/app/code/Magento/Sales/Model/Order/Payment.php#L540-L555
+			 * @used-by \Magento\Sales\Model\Order\Payment::canVoid()
+			 */
+			$this->ii()->setTransactionId($charge['id']);
+			/**
+			 * 2016-03-15
+			 * Аналогично, иначе операция «void» (отмена авторизации платежа) будет недоступна:
+			 * https://github.com/magento/magento2/blob/2.1.0/app/code/Magento/Sales/Model/Order/Payment.php#L540-L555
+			 * @used-by \Magento\Sales\Model\Order\Payment::canVoid()
+			 * Транзакция ситается завершённой, если явно не указать «false».
+			 */
+			$this->ii()->setIsTransactionClosed($capture);
 		}
 	});}
 
@@ -166,6 +216,18 @@ class Method extends \Df\Payment\Method {
 		catch (DFE $e) {throw $e;}
 		//catch (EStripe $e) {throw new Exception($e, $request);}
 		catch (\Exception $e) {throw df_le($e);}
+	}
+
+	/**
+	 * 2016-11-16
+	 * @used-by \Dfe\Omise\Method::_refund()
+	 * @used-by \Dfe\Omise\Method::charge()
+	 * @param \OmiseApiResource $response
+	 * @param array(string => mixed) $request [optional]
+	 * @return void
+	 */
+	private function transInfo(\OmiseApiResource $response, array $request = []) {
+		$this->iiaSetTRR(array_map('df_json_encode_pretty', [$request, AO::_values($response)]));
 	}
 
 	/**

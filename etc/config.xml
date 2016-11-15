@@ -15,6 +15,12 @@
     «Currently, we only support Thai Baht (THB).»
 -->
 				<currency>THB</currency>
+<!--
+	2016-11-16
+	«A custom description for the charge. This value can be searched for in your dashboard.»
+	https://www.omise.co/charges-api#charges-create
+-->
+				<description>{order.id}</description>
 				<payment_action>authorize_capture</payment_action>
 				<title>Bank Card</title>
 				<title_backend>Omise</title_backend>

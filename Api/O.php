@@ -9,4 +9,11 @@ class O extends Sb {
 	 * @return string
 	 */
 	public static function _id(Sb $o) {return $o['id'];}
+
+	/**
+	 * 2016-11-16
+	 * @param Sb $o
+	 * @return array(string => string|bool|int|null)
+	 */
+	public static function _values(Sb $o) {return $o->_values;}
 }

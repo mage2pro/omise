@@ -189,10 +189,24 @@
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
+					id='description'
+					translate='label'
+					type='textarea'
+					sortOrder='12'
+					showInDefault='1'
+					showInWebsite='1'
+					showInStore='1'
+				>
+					<label>Description</label>
+					<comment><![CDATA[It will be displayed in the Omise web interface alongside the payment.
+<br/>This value can be searched for in your Omise web interface.]]></comment>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
 					id='askForBillingAddress'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
-					sortOrder='12'
+					sortOrder='13'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
