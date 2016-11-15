@@ -7,6 +7,7 @@ use Df\Payment\Source\ACR;
 use Magento\Framework\Exception\LocalizedException as LE;
 use Magento\Payment\Model\Info as I;
 use Magento\Payment\Model\InfoInterface as II;
+use Magento\Quote\Api\Data\CartInterface;
 use Magento\Sales\Model\Order as O;
 use Magento\Sales\Model\Order\Payment as OP;
 use Magento\Sales\Model\Order\Payment\Transaction as T;
@@ -107,6 +108,16 @@ class Method extends \Df\Payment\Method {
 	 * @return bool
 	 */
 	public function isInitializeNeeded() {return ACR::REVIEW === $this->getConfigPaymentAction();}
+
+	/**
+	 * 2016-11-15
+	 * https://www.omise.co/currency-and-amount
+	 * @override
+	 * @see \Df\Payment\Method::amountLimits()
+	 * @used-by isAvailable()
+	 * @return array(string => array(int|float))
+	 */
+	protected function amountLimits() {return ['THB' => [20, 1000000], 'JPY' => [100, 999999]];}
 
 	/**
 	 * 2016-11-10

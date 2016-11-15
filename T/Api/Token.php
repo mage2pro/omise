@@ -8,9 +8,15 @@ use OmiseCustomer as C;
 use OmiseToken as T;
 class Token extends TestCase {
 	/**
+	 * @test
 	 * 2016-11-14
 	 */
-	public function t00() {
+	public function t00() {}
+
+	/**
+	 * 2016-11-14
+	 */
+	public function t01() {
 		/** @var T $t */
 		$t = T::create(['card' => [
 			'expiration_month' => 7
@@ -24,7 +30,6 @@ class Token extends TestCase {
 	}
 
 	/**
-	 * @test
 	 * Создаём покупателя и добавляем к нему несколько карт.
 	 * 2016-11-14
 	 */
@@ -38,14 +43,14 @@ class Token extends TestCase {
 		$i = 3;
 		while ($i--) {
 			/** @var T $t */
-			/*$t = T::create(['card' => [
+			$t = T::create(['card' => [
 				'expiration_month' => 7
 				,'expiration_year' => 2019
 				,'name' => 'DMITRY FEDYUK ' . $i
 				,'number' => '5555555555554444'
 				,'security_code' => '123'
 			]]);
-			$c->update(['card' => AO::_id($t)]);    */
+			$c->update(['card' => AO::_id($t)]);
 		}
 		/** @var C $c2 */
 		$c2 = C::retrieve(AO::_id($c));
