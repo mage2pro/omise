@@ -9,12 +9,12 @@ use OmiseCustomer as C;
 use OmiseToken as T;
 class Charge extends TestCase {
 	/**
+	 * @test
 	 * 2016-11-15
 	 */
 	public function t00() {}
 
 	/**
-	 * @test
 	 * 2016-11-15
 	 */
 	public function t01() {

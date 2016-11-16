@@ -61,6 +61,24 @@ class Customer extends TestCase {
 	}
 
 	/**
+	 * @test
+	 * 2016-11-17
+	 * Deletes test customers by email.
+	 * Недостатки:
+	 * 1) retrieve получает не всех покупателей, а только первые 20:
+	 * https://www.omise.co/customers-api#customers-list
+	 * 2) для удаления покупателя через этот официальный корявый PHP API
+	 * мы вынуждены заново делать retrieve для конкретного покупателя.
+	 */
+	public function t04() {
+		array_map(function(array $c) {
+			if ('admin@mage2.pro' === $c['email']) {
+				C::retrieve($c['id'])->destroy();
+			}
+		;}, C::retrieve()['data']);
+	}
+
+	/**
 	 * 2016-11-13
 	 */
 	public function tRetrieve() {
