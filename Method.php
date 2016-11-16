@@ -188,6 +188,18 @@ class Method extends \Df\Payment\Method {
 	});}
 
 	/**
+	 * 2016-11-17
+	 * @override
+	 * @see \Df\Payment\Method::transUrl()
+	 * @used-by \Df\Payment\Method::formatTransactionId()
+	 * @param T $t
+	 * @return string
+	 */
+	protected function transUrl(T $t) {return df_cc_path('https://dashboard.omise.co',
+		df_trans_is_test($t, 'test', 'live'), 'charges', $this->transParentId($t->getTxnId())
+	);}
+
+	/**
 	 * 2016-11-10
 	 * @override
 	 * @see \Df\Payment\Method::iiaKeys()
@@ -229,6 +241,15 @@ class Method extends \Df\Payment\Method {
 	private function transInfo(\OmiseApiResource $response, array $request = []) {
 		$this->iiaSetTRR(array_map('df_json_encode_pretty', [$request, AO::_values($response)]));
 	}
+
+	/**
+	 * 2016-11-17
+	 * @used-by \Dfe\Omise\Method::_refund()
+	 * @used-by \Dfe\Omise\Method::transUrl()
+	 * @param string $childId
+	 * @return string
+	 */
+	private function transParentId($childId) {return df_first(explode('-', $childId));}
 
 	/**
 	 * 2016-11-10

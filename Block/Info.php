@@ -19,7 +19,7 @@ class Info extends \Df\Payment\Block\Info {
 		/** @var DataObject $result */
 		$result = parent::_prepareSpecificInformation($transport);
 		if ($this->isBackend()) {
-			$result['Omise ID'] = $this->m()->formatTransactionId($this->res()->id());
+			$result['Omise ID'] = $this->m()->formatTransactionId($this->transF());
 		}
 		$result[$this->isBackend() ? 'Card Number' : 'Number'] = $this->res()->card();
 		if ($this->isBackend()) {
