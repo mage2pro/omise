@@ -132,6 +132,11 @@ class Method extends \Df\Payment\Method {
 		/** @var T|false|null $auth */
 		$auth = !$capture ? null : $this->ii()->getAuthorizationTransaction();
 		if ($auth) {
+			// 2016-11-17
+			// https://www.omise.co/charges-api#charges-capture
+			/** @var \OmiseCharge $charge */
+			$charge = \OmiseCharge::retrieve($auth->getTxnId());
+			$charge->capture();
 		}
 		else {
 			/** @var array(string => mixed) $params */

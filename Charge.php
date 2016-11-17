@@ -16,6 +16,11 @@ class Charge extends \Df\Payment\Charge\WithToken {
 		// 2016-11-16
 		// (optional) Whether or not you want the charge to be captured right away,
 		// when not specified it is set to true.
+		// 2016-11-17
+		// If you have created a charge and passed capture=false,
+		// you'll have an authorized only charge that you can capture anytime within 7 days.
+		// After that, the charge will expire.
+		// https://www.omise.co/charges-api#charges-capture
 		,'capture' => $this->needCapture()
 		// 2016-03-07
 		// (required or optional) A valid unused TOKEN_ID or CARD_ID
