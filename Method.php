@@ -8,7 +8,6 @@ use Df\Payment\Source\ACR;
 use Magento\Framework\Exception\LocalizedException as LE;
 use Magento\Payment\Model\Info as I;
 use Magento\Payment\Model\InfoInterface as II;
-use Magento\Quote\Api\Data\CartInterface;
 use Magento\Sales\Model\Order as O;
 use Magento\Sales\Model\Order\Payment as OP;
 use Magento\Sales\Model\Order\Payment\Transaction as T;
@@ -38,12 +37,14 @@ class Method extends \Df\Payment\Method {
 	public function canCapture() {return true;}
 
 	/**
-	 * 2016-11-13
+	 * 2016-11-18
 	 * @override
+	 * A partial capture is not supported by Omise: https://www.omise.co/charges-api#charges-capture
+	 * Interestinly, a partial refund is suported: https://www.omise.co/refunds-api#refunds-create
 	 * @see \Df\Payment\Method::canCapturePartial()
 	 * @return bool
 	 */
-	public function canCapturePartial() {return true;}
+	public function canCapturePartial() {return false;}
 
 	/**
 	 * 2016-11-13
@@ -55,6 +56,7 @@ class Method extends \Df\Payment\Method {
 
 	/**
 	 * 2016-11-13
+	 * https://www.omise.co/refunds-api#refunds-create
 	 * @override
 	 * @see \Df\Payment\Method::canRefundPartialPerInvoice()
 	 * @return bool
@@ -109,6 +111,58 @@ class Method extends \Df\Payment\Method {
 	 * @return bool
 	 */
 	public function isInitializeNeeded() {return ACR::REVIEW === $this->getConfigPaymentAction();}
+
+	/**
+	 * 2016-11-18
+	 * @override
+	 * @see \Df\Payment\Method::_refund()
+	 * @used-by \Df\Payment\Method::refund()
+	 * @param float|null $amount
+	 * @return void
+	 */
+	protected function _refund($amount) {$this->api(function() use($amount) {
+		/**
+		 * 2016-03-17
+		 * Метод @uses \Magento\Sales\Model\Order\Payment::getAuthorizationTransaction()
+		 * необязательно возвращает транзакцию типа «авторизация»:
+		 * в первую очередь он стремится вернуть родительскую транзакцию:
+		 * https://github.com/magento/magento2/blob/2.1.0/app/code/Magento/Sales/Model/Order/Payment/Transaction/Manager.php#L31-L47
+		 * Это как раз то, что нам нужно, ведь наш модуль может быть настроен сразу на capture,
+		 * без предварительной транзакции типа «авторизация».
+		 */
+		/** @var T|false $tFirst */
+		$tFirst = $this->ii()->getAuthorizationTransaction();
+		if ($tFirst) {
+			/** @var string $firstId */
+			$firstId = $this->transParentId($tFirst->getTxnId());
+			/** @var \OmiseCharge $charge */
+			$charge = \OmiseCharge::retrieve($firstId);
+			// 2016-03-24
+			// Credit Memo и Invoice отсутствуют в сценарии Authorize / Capture
+			// и присутствуют в сценарии Capture / Refund.
+			if ($this->ii()->getCreditmemo()) {
+				/** @var \OmiseRefund $refund */
+				$refund = $charge->refunds()->create(['amount' => $this->amountFormat($amount)]);
+				$this->transInfo($refund);
+				$this->ii()->setTransactionId($refund['id']);
+			}
+			else {
+				// 2016-11-18
+				// Reverse an uncaptured charge: https://www.omise.co/charges-api#charges-reverse
+				$charge->reverse();
+				$this->ii()->setTransactionId("{$firstId}-void");
+			}
+		}
+	});}
+
+	/**
+	 * 2016-11-18
+	 * Reverse an uncaptured charge: https://www.omise.co/charges-api#charges-reverse
+	 * @override
+	 * @see \Df\Payment\Method::_void()
+	 * @return void
+	 */
+	protected function _void() {$this->_refund(null);}
 
 	/**
 	 * 2016-11-15
