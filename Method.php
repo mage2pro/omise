@@ -255,7 +255,9 @@ class Method extends \Df\Payment\Method {
 	 * @return string
 	 */
 	protected function transUrl(T $t) {return df_cc_path('https://dashboard.omise.co',
-		df_trans_is_test($t, 'test', 'live'), 'charges', $this->transParentId($t->getTxnId())
+		df_trans_is_test($t, 'test', 'live')
+		,dfa(['refund' => 'refunds'], $t->getTxnType(), 'charges')
+		,$this->transParentId($t->getTxnId())
 	);}
 
 	/**
