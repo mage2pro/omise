@@ -34,8 +34,8 @@
 					showInStore='1'
                 >
                     <label>Enable?</label>
-					<backend_model>Df\Framework\Form\Element\Enable\Backend</backend_model>
-					<dfEnabler>Dfe\Omise\Enabler</dfEnabler>
+					<backend_model>Df\Config\Backend\Checkbox</backend_model>
+					<dfValidator>Dfe\Omise\Validator\Enable</dfValidator>
                     <comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/omise' target='_blank'>Omise</a>» payment extension?]]></comment>
                 </field>
 				<field
