@@ -35,7 +35,7 @@
                 >
                     <label>Enable?</label>
 					<backend_model>Df\Config\Backend\Checkbox</backend_model>
-					<dfValidator>Dfe\Omise\Validator\Enable</dfValidator>
+					<dfValidator>Dfe\Omise\Validator\Currency</dfValidator>
                     <comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/omise' target='_blank'>Omise</a>» payment extension?]]></comment>
                 </field>
 				<field
