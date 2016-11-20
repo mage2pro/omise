@@ -50,6 +50,7 @@
 					<label>Title</label>
 					<comment><![CDATA[It is shown on the checkout screen.]]></comment>
 					<depends><field id='enable'>1</field></depends>
+					<validate>required-entry</validate>
 				</field>
 				<field
 					id='test'
@@ -81,6 +82,7 @@
 						<field id='enable'>1</field>
 						<field id='test'>1</field>
 					</depends>
+					<validate>required-entry</validate>
 				</field>
 				<field
 					id='testPublicKey'
@@ -97,6 +99,7 @@
 						<field id='enable'>1</field>
 						<field id='test'>1</field>
 					</depends>
+					<validate>required-entry</validate>
 				</field>
 				<field
 					id='prefill'
@@ -131,6 +134,7 @@
 						<field id='enable'>1</field>
 						<field id='test'>0</field>
 					</depends>
+					<validate>required-entry</validate>
 				</field>
 				<field
 					id='livePublicKey'
@@ -147,6 +151,7 @@
 						<field id='enable'>1</field>
 						<field id='test'>0</field>
 					</depends>
+					<validate>required-entry</validate>
 				</field>
 				<field
 					id='webhook'
