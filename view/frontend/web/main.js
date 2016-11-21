@@ -3,14 +3,8 @@ define([
 	'df'
 	,'Df_Checkout/js/data'
 	,'Df_Payment/card'
-	,'Dfe_Omise/API'
-], function(df, dfc, parent,
-	// 2016-11-12
-	// У Omise, как и Stripe, API-объект является глобальной переменной,
-	// но мы, благодаря shim, получаем его локально.
-	// При этом он всё равно доступен в виде window.Omise
-	Omise
-) {'use strict'; return parent.extend({
+	,'https://cdn.omise.co/omise.js'
+], function(df, dfc, parent) {'use strict'; return parent.extend({
 	// 2016-11-12
 	// Omise requires the cardholder name:
 	// https://www.omise.co/omise-js-api#createtoken(type,-object,-callback)
