@@ -8,13 +8,9 @@ final class Settings extends \Df\Payment\Settings\StripeClone {
 	 * https://github.com/omise/omise-php#the-code
 	 * @return void
 	 */
-	public function init() {
+	public function init() {dfc($this, function() {
 		/** @used-by \OmiseObject::__construct() */
-		if (!defined('OMISE_PUBLIC_KEY')) {
-			define('OMISE_PUBLIC_KEY', $this->publicKey());
-		}
-		if (!defined('OMISE_SECRET_KEY')) {
-			define('OMISE_SECRET_KEY', $this->testableP('secretKey'));
-		}
-	}
+		define('OMISE_PUBLIC_KEY', $this->publicKey());
+		define('OMISE_SECRET_KEY', $this->testableP('secretKey'));
+	});}
 }
