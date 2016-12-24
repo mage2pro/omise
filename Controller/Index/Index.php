@@ -2,7 +2,6 @@
 // 2016-11-10
 namespace Dfe\Omise\Controller\Index;
 use Df\Framework\Controller\Result\Json;
-//use Dfe\Omise\Handler;
 use Dfe\Omise\Settings as S;
 class Index extends \Magento\Framework\App\Action\Action {
 	/**

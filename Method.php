@@ -108,9 +108,36 @@ class Method extends \Df\Payment\Method {
 	 * @override
 	 * @see \Df\Payment\Method::isInitializeNeeded()
 	 * https://github.com/magento/magento2/blob/2.1.0/app/code/Magento/Sales/Model/Order/Payment.php#L2336-L346
+	 * 2016-12-24
+	 * Сценарий «Review» не применяется при включенности проверки 3D Secure.
 	 * @return bool
 	 */
 	public function isInitializeNeeded() {return ACR::REVIEW === $this->getConfigPaymentAction();}
+
+	/**
+	 * 2016-12-24
+	 * @override
+	 * @see \Df\Payment\Method::_3dsNeed()
+	 * @used-by \Df\Payment\Method::getConfigPaymentAction()
+	 * @return bool
+	 */
+	protected function _3dsNeed() {return $this->s()->_3DS();}
+
+	/**
+	 * 2016-12-24
+	 * @override
+	 * @see \Df\Payment\Method::_3dsUrl()
+	 * @used-by \Df\Payment\Method::getConfigPaymentAction()
+	 * @param float $amount
+	 * @param bool $capture
+	 * @return string
+	 */
+	protected function _3dsUrl($amount, $capture) {return
+		// 2016-12-24
+		// «Url for charge authorization using 3-D Secure. Only if return_uri was set.»
+		// https://www.omise.co/charges-api
+		$this->_charge($amount, $capture)['authorize_uri']
+	;}
 
 	/**
 	 * 2016-11-18
@@ -193,48 +220,7 @@ class Method extends \Df\Payment\Method {
 			$charge->capture();
 		}
 		else {
-			/** @var array(string => mixed) $params */
-			$params = Charge::request($this, $this->iia(self::$TOKEN), $amount, $capture);
-			/** @var \OmiseCharge $charge */
-			$charge = $this->api($params, function() use($params) {
-				return \OmiseCharge::create($params);
-			});
-			/**
-			 * 2016-11-16
-				{
-					"object": "card",
-					"id": "card_test_560jgvu90914d44h1vx",
-					"livemode": false,
-					"location": "/customers/cust_test_560jgw6s43s7i4ydd8r/cards/card_test_560jgvu90914d44h1vx",
-					"country": "us",
-					"city": null,
-					"postal_code": null,
-					"financing": "",
-					"bank": "",
-					"last_digits": "4444",
-					"brand": "MasterCard",
-					"expiration_month": 7,
-					"expiration_year": 2019,
-					"fingerprint": "/uCzRPQQRUDr8JvGUjKf7Xn10VRJeQ7oBZ1Zt7gLvWs=",
-					"name": "DMITRY FEDYUK",
-					"security_code_check": true,
-					"created": "2016-11-15T22:00:49Z"
-				}
-			 * @var array(string => string|bool|int|null) $card
-			 */
-			$card = $charge['card'];
-			$this->transInfo($charge, $params);
-			$this->ii()->setCcLast4($card['last_digits']);
-			$this->ii()->setCcType($card['brand']);
-			/**
-			 * 2016-03-15
-			 * Иначе операция «void» (отмена авторизации платежа) будет недоступна:
-			 * «How is a payment authorization voiding implemented?»
-			 * https://mage2.pro/t/938
-			 * https://github.com/magento/magento2/blob/2.1.0/app/code/Magento/Sales/Model/Order/Payment.php#L540-L555
-			 * @used-by \Magento\Sales\Model\Order\Payment::canVoid()
-			 */
-			$this->ii()->setTransactionId($charge['id']);
+			$this->_charge($amount, $capture);
 			/**
 			 * 2016-03-15
 			 * Аналогично, иначе операция «void» (отмена авторизации платежа) будет недоступна:
@@ -270,6 +256,60 @@ class Method extends \Df\Payment\Method {
 	protected function iiaKeys() {return [self::$TOKEN];}
 
 	/**
+	 * 2016-12-24
+	 * @used-by charge()
+	 * @used-by prepare3DS()
+	 * @param float $amount
+	 * @param bool $capture
+	 * @return \OmiseCharge
+	 */
+	private function _charge($amount, $capture) {return dfc($this, function($amount, $capture) {
+		/** @var array(string => mixed) $params */
+		$params = Charge::request($this,$this->iia(self::$TOKEN), $amount, $capture);
+		/** @var \OmiseCharge $result */
+		$result = $this->api($params, function() use($params) {
+			return \OmiseCharge::create($params);
+		});
+		/**
+		 * 2016-11-16
+			{
+				"object": "card",
+				"id": "card_test_560jgvu90914d44h1vx",
+				"livemode": false,
+				"location": "/customers/cust_test_560jgw6s43s7i4ydd8r/cards/card_test_560jgvu90914d44h1vx",
+				"country": "us",
+				"city": null,
+				"postal_code": null,
+				"financing": "",
+				"bank": "",
+				"last_digits": "4444",
+				"brand": "MasterCard",
+				"expiration_month": 7,
+				"expiration_year": 2019,
+				"fingerprint": "/uCzRPQQRUDr8JvGUjKf7Xn10VRJeQ7oBZ1Zt7gLvWs=",
+				"name": "DMITRY FEDYUK",
+				"security_code_check": true,
+				"created": "2016-11-15T22:00:49Z"
+			}
+		 * @var array(string => string|bool|int|null) $card
+		 */
+		$card = $result['card'];
+		$this->transInfo($result, $params);
+		$this->ii()->setCcLast4($card['last_digits']);
+		$this->ii()->setCcType($card['brand']);
+		/**
+		 * 2016-03-15
+		 * Иначе операция «void» (отмена авторизации платежа) будет недоступна:
+		 * «How is a payment authorization voiding implemented?»
+		 * https://mage2.pro/t/938
+		 * https://github.com/magento/magento2/blob/2.1.0/app/code/Magento/Sales/Model/Order/Payment.php#L540-L555
+		 * @used-by \Magento\Sales\Model\Order\Payment::canVoid()
+		 */
+		$this->ii()->setTransactionId($result['id']);
+		return $result;
+	}, func_get_args());}
+
+	/**
 	 * 2016-11-13
 	 * Чтобы система показала наше сообщение вместо общей фразы типа
 	 * «We can't void the payment right now» надо вернуть объект именно класса
@@ -287,7 +327,6 @@ class Method extends \Df\Payment\Method {
 		list($function, $request) = is_callable($args[0]) ? $args : array_reverse($args);
 		try {S::s()->init(); return $function();}
 		catch (DFE $e) {throw $e;}
-		//catch (EStripe $e) {throw new Exception($e, $request);}
 		catch (\Exception $e) {throw df_le($e);}
 	}
 

@@ -4,8 +4,9 @@ namespace Dfe\Omise;
 /** @method static Settings s() */
 final class Settings extends \Df\Payment\Settings\StripeClone {
 	/**
-	 * 2016-12-23
+	 * 2016-12-24
 	 * «Whether the 3D Secure Validation is enabled for your Omise account»
+	 * @used-by \Dfe\Omise\Charge::_request()
 	 * @return bool
 	 */
 	public function _3DS() {return $this->testableB();}

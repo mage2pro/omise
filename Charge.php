@@ -14,26 +14,33 @@ class Charge extends \Df\Payment\Charge\WithToken {
 	private function _request() {/** @var Settings $s */ $s = S::s(); return [
 		'amount' => $this->amountF()
 		// 2016-11-16
-		// (optional) Whether or not you want the charge to be captured right away,
-		// when not specified it is set to true.
+		// «(optional) Whether or not you want the charge to be captured right away,
+		// when not specified it is set to true.»
 		// 2016-11-17
-		// If you have created a charge and passed capture=false,
+		// «If you have created a charge and passed capture=false,
 		// you'll have an authorized only charge that you can capture anytime within 7 days.
-		// After that, the charge will expire.
+		// After that, the charge will expire.»
 		// https://www.omise.co/charges-api#charges-capture
 		,'capture' => $this->needCapture()
 		// 2016-03-07
-		// (required or optional) A valid unused TOKEN_ID or CARD_ID
+		// «(required or optional) A valid unused TOKEN_ID or CARD_ID
 		// In the case of the CARD_ID the customer parameter must be present and be the owner of the card.
-		// For the TOKEN_ID, the customer must not be passed.
+		// For the TOKEN_ID, the customer must not be passed.»
 		,'card' => $this->cardId()
 		,'customer' => $this->customerId()
 		,'currency' => $this->currencyC()
 		// 2016-11-16
-		// (optional) A custom description for the charge.
-		// This value can be searched for in your dashboard.
+		// «(optional) A custom description for the charge.
+		// This value can be searched for in your dashboard.»
 		,'description' => $this->text($s->description())
-	];}
+	] + (!$s->_3DS() ? [] : [
+		// 2016-12-24
+		// «(optional) The url where we will return the customer
+		// after the charge has been authorized with 3-D Secure.»
+		// https://www.omise.co/charges-api#charges-create
+		// https://www.omise.co/how-to-implement-3-D-Secure
+		'return_uri' => df_url_frontend($this->route())
+	]);}
 
 	/**
 	 * 2016-11-15

@@ -26,6 +26,19 @@ define([
 		return this;
 	},
 	/**
+	 * 2016-12-24
+	 * 3D Secure redirection.
+	 * @override
+	 * @see mage2pro/core/Payment/view/frontend/web/mixin.js
+	 * @used-by placeOrderInternal()
+	 */
+	onSuccess: function(redirectUrl) {
+		redirectUrl && redirectUrl.length
+			? window.location.replace(redirectUrl)
+			: this._super()
+		;
+	},
+	/**
 	 * 2016-11-12
 	 * @override
 	 * @see https://github.com/magento/magento2/blob/2.1.0/app/code/Magento/Checkout/view/frontend/web/js/view/payment/default.js#L127-L159
