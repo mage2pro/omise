@@ -131,6 +131,7 @@ class Method extends \Df\Payment\Method {
 	 * @param float $amount
 	 * @param bool $capture
 	 * @return string
+	 * An example of result: http://api.omise.co/payments/paym_test_56fuvl1ih89gj1kjzid/authorize
 	 */
 	protected function _3dsUrl($amount, $capture) {return
 		// 2016-12-24
