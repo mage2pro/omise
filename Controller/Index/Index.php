@@ -17,10 +17,13 @@ class Index extends \Magento\Framework\App\Action\Action {
 	 */
 	public function execute() {return df_leh(function(){
 		S::s()->init();
-		dfp_report($this, df_ruri(), 'request-uri');
-		dfp_report($this, df_request(), 'request-params');
-		return Json::i('OK');
-		//return Json::i(Handler::p(df_json_decode(@file_get_contents($this->file()))));
+		/** @var array(string => mixed) $request */
+		$request = df_json_decode(@file_get_contents($this->file()));
+		// 2016-12-15
+		// A string like «Omise/2015-11-17».
+		df_sentry_m()->user_context(['id' => df_request_ua()]);
+		dfp_report($this, $request, 'webhook: ' . dfa($request, 'key'));
+		return '';//Json::i(Handler::p($request));
 	});}
 
 	/**

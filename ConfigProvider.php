@@ -3,7 +3,7 @@
 namespace Dfe\Omise;
 use Dfe\Omise\Api\Customer as AC;
 /** @method Settings s() */
-class ConfigProvider extends \Df\Payment\ConfigProvider\StripeClone {
+class ConfigProvider extends \Df\StripeClone\ConfigProvider {
 	/**
 	 * 2016-11-15
 	 * @override
