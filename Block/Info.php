@@ -1,7 +1,7 @@
 <?php
 // 2016-11-16
 namespace Dfe\Omise\Block;
-use Dfe\Omise\Response as R;
+use Dfe\Omise\Message;
 /** @method \Dfe\Omise\Method m() */
 class Info extends \Df\Payment\Block\Info {
 	/**
@@ -11,8 +11,8 @@ class Info extends \Df\Payment\Block\Info {
 	 * @used-by \Df\Payment\Block\Info::_prepareSpecificInformation()
 	 */
 	protected function prepare() {
-		/** @var R $r */
-		$r = R::i($this->transF());
+		/** @var Message $r */
+		$r = Message::i($this->transF());
 		$this->siB('Omise ID', $this->m()->formatTransactionId($this->transF()));
 		$this->si($this->isBackend() ? 'Card Number' : 'Number', $r->card());
 		$this->siB(['Card Expires' => $r->expires(), 'Card Country' => $r->country()]);
