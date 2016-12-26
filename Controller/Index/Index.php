@@ -3,7 +3,7 @@
 namespace Dfe\Omise\Controller\Index;
 use Df\Framework\Controller\Result\Json;
 use Dfe\Omise\Settings as S;
-class Index extends \Magento\Framework\App\Action\Action {
+class Index extends \Df\Payment\Action {
 	/**
 	 * 2016-11-10
 	 * We get here on an Omise's webhook notification.
