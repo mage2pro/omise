@@ -14,6 +14,9 @@ final class Settings extends \Df\StripeClone\Settings {
 	/**
 	 * 2016-11-13
 	 * https://github.com/omise/omise-php#the-code
+	 * @override
+	 * @see \Df\StripeClone\Settings::init()
+	 * @used-by \Df\StripeClone\Method::api()
 	 * @return void
 	 */
 	public function init() {dfc($this, function() {

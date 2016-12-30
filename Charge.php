@@ -5,13 +5,16 @@ use Df\Core\Exception as DFE;
 use Dfe\Omise\Api\Customer as AC;
 use Dfe\Omise\Settings as S;
 use Magento\Sales\Model\Order\Payment as OP;
-class Charge extends \Df\Payment\Charge\WithToken {
+class Charge extends \Df\StripeClone\Charge {
 	/**
 	 * 2016-11-13
 	 * https://www.omise.co/charges-api#charges-create
+	 * @override
+	 * @see \Df\StripeClone\Charge::_request()
+	 * @used-by \Df\StripeClone\Charge::request()
 	 * @return array(string => mixed)
 	 */
-	private function _request() {/** @var Settings $s */ $s = S::s(); return [
+	final protected function _request() {/** @var Settings $s */ $s = S::s(); return [
 		'amount' => $this->amountF()
 		// 2016-11-16
 		// «(optional) Whether or not you want the charge to be captured right away,
@@ -135,9 +138,6 @@ class Charge extends \Df\Payment\Charge\WithToken {
 		return $result;
 	}
 
-	/** @return bool */
-	private function needCapture() {return $this[self::$P__NEED_CAPTURE];}
-
 	/**
 	 * 2016-11-15
 	 * @return string
@@ -183,35 +183,4 @@ class Charge extends \Df\Payment\Charge\WithToken {
 	private function usePreviousCard() {return dfc($this, function() {return
 		df_starts_with($this->token(), 'card_')
 	;});}
-
-	/**
-	 * 2016-11-13
-	 * @override
-	 * @return void
-	 */
-	protected function _construct() {
-		parent::_construct();
-		$this->_prop(self::$P__NEED_CAPTURE, DF_V_BOOL, false);
-	}
-
-	/** @var string */
-	private static $P__NEED_CAPTURE = 'need_capture';
-
-	/**
-	 * 2016-11-13
-	 * @used-by \Dfe\Stripe\Method::charge()
-	 * @param Method $method
-	 * @param string $token
-	 * @param float|null $amount [optional]
-	 * @param bool $capture [optional]
-	 * @return array(string => mixed)
-	 */
-	public static function request(Method $method, $token, $amount = null, $capture = true) {return
-		(new self([
-			self::$P__AMOUNT => $amount
-			, self::$P__NEED_CAPTURE => $capture
-			, self::$P__METHOD => $method
-			, self::$P__TOKEN => $token
-		]))->_request()
-	;}
 }
