@@ -5,4 +5,4 @@
 // but it looks like we do not ever need it,
 // because we can find out the customer's last order in his session.
 namespace Dfe\Omise\Controller\CustomerReturn;
-class Index extends \Df\PaypalClone\CustomerReturn {}
+class Index extends \Df\Payment\Action\CustomerReturn {}
