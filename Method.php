@@ -75,7 +75,7 @@ class Method extends \Df\StripeClone\Method {
 		$tFirst = $this->ii()->getAuthorizationTransaction();
 		if ($tFirst) {
 			/** @var string $chargeId */
-			$chargeId = self::chargeId($tFirst->getTxnId());
+			$chargeId = self::i2e($tFirst->getTxnId());
 			/** @var \OmiseCharge $charge */
 			$charge = \OmiseCharge::retrieve($chargeId);
 			// 2016-03-24
@@ -92,7 +92,7 @@ class Method extends \Df\StripeClone\Method {
 				$charge->reverse();
 				$this->transInfo($charge);
 			}
-			$this->ii()->setTransactionId(self::txnId($chargeId, $isRefund ? 'refund' : 'void'));
+			$this->ii()->setTransactionId(self::e2i($chargeId, $isRefund ? 'refund' : 'void'));
 		}
 	});}
 
