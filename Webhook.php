@@ -1,3 +1,3 @@
 <?php
 namespace Dfe\Omise;
-class Webhook extends \Df\StripeClone\Webhook {}
+abstract class Webhook extends \Df\StripeClone\Webhook {}
