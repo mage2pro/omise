@@ -62,7 +62,7 @@ class Method extends \Df\StripeClone\Method {
 	 * @param float|null $amount
 	 * @return void
 	 */
-	final protected function _refund($amount) {$this->api(function() use($amount) {
+	final protected function _refund($amount) {
 		/**
 		 * 2016-03-17
 		 * Метод @uses \Magento\Sales\Model\Order\Payment::getAuthorizationTransaction()
@@ -95,7 +95,7 @@ class Method extends \Df\StripeClone\Method {
 			}
 			$this->ii()->setTransactionId(self::e2i($chargeId, $isRefund ? 'refund' : 'void'));
 		}
-	});}
+	}
 
 	/**
 	 * 2016-11-15
