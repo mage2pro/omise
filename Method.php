@@ -3,6 +3,7 @@
 namespace Dfe\Omise;
 use Df\Core\Exception as DFE;
 use Dfe\Omise\Api\O as AO;
+use Dfe\Omise\Exception\Charge as ECharge;
 use Magento\Sales\Model\Order as O;
 use Magento\Sales\Model\Order\Payment as OP;
 use Magento\Sales\Model\Order\Payment\Transaction as T;
@@ -159,9 +160,11 @@ class Method extends \Df\StripeClone\Method {
 	 * @see \Df\StripeClone\Method::apiChargeCreate()
 	 * @used-by \Df\StripeClone\Method::chargeNew()
 	 * @param array(string => mixed) $params
-	 * @return \Stripe\Charge
+	 * @return \OmiseCharge
 	 */
-	final protected function apiChargeCreate(array $params) {return \OmiseCharge::create($params);}
+	final protected function apiChargeCreate(array $params) {return
+		ECharge::assert(\OmiseCharge::create($params), $params)
+	;}
 
 	/**
 	 * 2016-12-28
