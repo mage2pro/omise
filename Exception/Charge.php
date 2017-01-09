@@ -20,6 +20,13 @@ class Charge extends \Dfe\Omise\Exception {
 	}
 
 	/**
+	 * 2016-07-31
+	 * @used-by \Df\Qa\Message\Failure\Exception::main()
+	 * @return bool
+	 */
+	final public function isMessageHtml() {return true;}
+
+	/**
 	 * 2017-01-09
 	 * @override
 	 * @see \Df\Payment\Exception::message()
