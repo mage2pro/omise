@@ -65,7 +65,7 @@ class Charge extends \Dfe\Omise\Exception {
 	 */
 	final public function sentryContext() {return [
 		'extra' => ['request' => $this->_request, 'response' => AO::_values($this->_c)]
-		,'tags' => ['Omise' => df_package_version('mage2pro/omise')]
+		,'tags' => ['Omise' => df_package_version($this)]
 	];}
 
 	/**
