@@ -85,7 +85,9 @@ class Method extends \Df\StripeClone\Method {
 			/** @var bool $isRefund */
 			$isRefund = !!$this->ii()->getCreditmemo();
 			if ($isRefund) {
-				$this->transInfo($charge->refunds()->create(['amount' => $this->amountFormat($amount)]));
+				$this->transInfo($charge->refunds()->create([
+					'amount' => $this->amountFormat($amount)
+				]));
 			}
 			else {
 				// 2016-11-18
