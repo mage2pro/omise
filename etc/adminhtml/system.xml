@@ -82,7 +82,8 @@ https://github.com/omise/omise-php/issues/52
 				>
 					<label>Whether the 3D Secure Validation is enabled for your Omise account in the Test Mode?</label>
 					<backend_model>Df\Config\Backend\Checkbox</backend_model>
-					<comment><![CDATA[If you want the 3D Secure validation, then you should ask the Omise support (<b>support@omise.co</b>) to enable it. Omise support <b>does it manually</b>, there is no such option in the Omise dashboard nor in the Omise API.]]></comment>
+					<comment><![CDATA[If you want the 3D Secure validation, then you should ask the Omise support (<b>support@omise.co</b>) to enable it. Omise support <b>does it manually</b>, there is no such option in the Omise dashboard nor in the Omise API.
+<br/><b>Be careful: with a wrong value of this option the payment flow will be broken.</b>]]></comment>
 					<depends>
 						<field id='enable'>1</field>
 						<field id='test'>1</field>
@@ -156,7 +157,8 @@ https://github.com/omise/omise-php/issues/52
 				>
 					<label>Whether the 3D Secure Validation is enabled for your Omise account in the Live Mode?</label>
 					<backend_model>Df\Config\Backend\Checkbox</backend_model>
-					<comment><![CDATA[If you want the 3D Secure validation, then you should ask the Omise support (<b>support@omise.co</b>) to enable it. Omise support <b>does it manually</b>, there is no such option in the Omise dashboard nor in the Omise API.]]></comment>
+					<comment><![CDATA[If you want the 3D Secure validation, then you should ask the Omise support (<b>support@omise.co</b>) to enable it. Omise support <b>does it manually</b>, there is no such option in the Omise dashboard nor in the Omise API.
+<br/><b>Be careful: with a wrong value of this option the payment flow will be broken.</b>]]></comment>
 					<depends>
 						<field id='enable'>1</field>
 						<field id='test'>0</field>
