@@ -63,7 +63,7 @@
 				>
 					<label>Test Mode?</label>
 					<backend_model>Df\Config\Backend\Checkbox</backend_model>
-					<comment><![CDATA[<a href='https://mage2.pro/t/2097' target='_blank'>The test bank cards</a>.]]></comment>
+					<comment><![CDATA[<a href='https://mage2.pro/t/2262' target='_blank'>The test bank cards</a>.]]></comment>
 					<depends><field id='enable'>1</field></depends>
 				</field>
 <!--
