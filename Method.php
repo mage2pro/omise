@@ -38,6 +38,19 @@ class Method extends \Df\StripeClone\Method {
 	final protected function _3dsNeed() {return $this->s()->_3DS();}
 
 	/**
+	 * 2017-01-12
+	 * @override
+	 * https://mage2.pro/t/2460
+	 * @see \Df\StripeClone\Method::_3dsNeedForCharge()
+	 * @used-by \Df\StripeClone\Method::chargeNew()
+	 * @param object $charge
+	 * @return bool
+	 */
+	final protected function _3dsNeedForCharge($charge) {return
+		$charge['authorize_uri'] && 'pending' === $charge['status']
+	;}
+
+	/**
 	 * 2016-12-24
 	 * @override
 	 * @see \Df\Payment\Method::_3dsUrl()
