@@ -101,6 +101,8 @@ class Charge extends \Dfe\Omise\Exception {
 		 * При этом всякие пояснения для состояний «pending» и «reversed» отсутствуют.
 		 * Задал об этом вопрос техподдержке:
 		 * https://mail.google.com/mail/u/0/#inbox/15984f6a93536411
+		 * 2017-01-12
+		 * Получил ответ от техподдержки: https://mage2.pro/tags/omise-charge-status
 		 */
 		if ('failed' === $status) {
 			throw new self($c, $request);
