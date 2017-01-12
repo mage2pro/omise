@@ -108,7 +108,7 @@ class Method extends \Df\StripeClone\Method {
 				$charge->reverse();
 				$this->transInfo($charge);
 			}
-			$this->ii()->setTransactionId(self::e2i($chargeId, $isRefund ? 'refund' : 'void'));
+			$this->ii()->setTransactionId(self::e2i($chargeId, $isRefund ?self::T_REFUND : 'void'));
 		}
 	}
 

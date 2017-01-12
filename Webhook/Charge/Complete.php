@@ -1,6 +1,7 @@
 <?php
 namespace Dfe\Omise\Webhook\Charge;
 use Df\StripeClone\Webhook\Charge\CapturedStrategy;
+use Dfe\Omise\Method as M;
 /**
  * 2017-01-09
  * 2017-01-12
@@ -16,7 +17,7 @@ class Complete extends \Dfe\Omise\Webhook\Charge {
 	 * @used-by \Df\StripeClone\Webhook::id()
 	 * @return string
 	 */
-	final protected function currentTransactionType() {return 'capture';}
+	final protected function currentTransactionType() {return M::T_CAPTURE;}
 
 	/**
 	 * 2017-01-09
@@ -25,7 +26,7 @@ class Complete extends \Dfe\Omise\Webhook\Charge {
 	 * @used-by \Df\StripeClone\Webhook::adaptParentId()
 	 * @return string
 	 */
-	final protected function parentTransactionType() {return 'authorize';}
+	final protected function parentTransactionType() {return M::T_3DS;}
 
 	/**
 	 * 2017-01-12
