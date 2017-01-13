@@ -1,7 +1,7 @@
 <?php
 // 2016-11-13
 namespace Dfe\Omise\Api;
-use Dfe\Omise\Message;
+use Dfe\Omise\Card;
 use OmiseCustomer as Sb;
 class Customer extends Sb {
 	/**
@@ -18,7 +18,7 @@ class Customer extends Sb {
 	 * @return array(string => string)
 	 */
 	public static function _cards(Sb $o) {return array_map(function(array $card) {return [
-		'id' => $card['id'], 'label' => Message::cardS($card)
+		'id' => $card['id'], 'label' => (string)(new Card($card))
 	];}, $o['cards']['data']);}
 
 	/**
