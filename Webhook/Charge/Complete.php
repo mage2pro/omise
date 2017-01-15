@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\Omise\Webhook\Charge;
-use Df\StripeClone\Webhook\Charge\AuthorizedStrategy;
-use Df\StripeClone\Webhook\Charge\CapturedStrategy;
+use Df\StripeClone\WebhookStrategy\Charge\Authorized;
+use Df\StripeClone\WebhookStrategy\Charge\Captured;
 use Dfe\Omise\Method as M;
 /**
  * 2017-01-09
@@ -38,9 +38,7 @@ class Complete extends \Dfe\Omise\Webhook\Charge {
 	 * @used-by \Df\StripeClone\Webhook::_handle()
 	 * @return string
 	 */
-	final protected function strategyC() {return
-		$this->isPending() ? AuthorizedStrategy::class : CapturedStrategy::class
-	;}
+	final protected function strategyC() {return $this->isPending() ? Authorized::class : Captured::class;}
 
 	/**
 	 * 2017-01-15
