@@ -47,7 +47,7 @@ class Method extends \Df\StripeClone\Method {
 	 * @return bool
 	 */
 	final protected function _3dsNeedForCharge($charge) {return
-		$charge['authorize_uri'] && 'pending' === $charge['status']
+		$charge['authorize_uri'] && self::S_PENDING === $charge['status']
 	;}
 
 	/**
@@ -223,4 +223,17 @@ class Method extends \Df\StripeClone\Method {
 	 * @return string
 	 */
 	private function transParentId($childId) {return df_first(explode('-', $childId));}
+
+	/**
+	 * 2017-01-15
+	 * @used-by _3dsNeedForCharge()
+	 * @used-by \Dfe\Omise\Webhook\Charge\Complete::isPending()
+	 */
+	const S_PENDING = 'pending';
+
+	/**
+	 * 2017-01-15
+	 * @used-by \Dfe\Omise\Webhook\Charge\Complete::isPending()
+	 */
+	const S_SUCCESSFUL = 'successful';
 }

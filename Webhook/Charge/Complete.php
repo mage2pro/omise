@@ -1,5 +1,6 @@
 <?php
 namespace Dfe\Omise\Webhook\Charge;
+use Df\StripeClone\Webhook\Charge\AuthorizedStrategy;
 use Df\StripeClone\Webhook\Charge\CapturedStrategy;
 use Dfe\Omise\Method as M;
 /**
@@ -17,7 +18,9 @@ class Complete extends \Dfe\Omise\Webhook\Charge {
 	 * @used-by \Df\StripeClone\Webhook::id()
 	 * @return string
 	 */
-	final protected function currentTransactionType() {return M::T_CAPTURE;}
+	final protected function currentTransactionType() {return
+		$this->isPending() ? M::T_AUTHORIZE : M::T_CAPTURE
+	;}
 
 	/**
 	 * 2017-01-09
@@ -35,5 +38,24 @@ class Complete extends \Dfe\Omise\Webhook\Charge {
 	 * @used-by \Df\StripeClone\Webhook::_handle()
 	 * @return string
 	 */
-	final protected function strategyC() {return CapturedStrategy::class;}
+	final protected function strategyC() {return
+		$this->isPending() ? AuthorizedStrategy::class : CapturedStrategy::class
+	;}
+
+	/**
+	 * 2017-01-15
+	 * Здесь, в оповещении «charge.complete», успешное состояние charge зависит указанного нами ранее
+	 * при создании charge в методе @see \Dfe\Omise\Charge::_request() значения флага «capture»:
+	 * https://code.dmitry-fedyuk.com/m2e/omise/blob/1.1.2/Charge.php#L27
+	 * Если мы этот флаг устанавливали, то здесь успешным состоянием charge будет «successful».
+	 * Если мы этот флаг не устанавливали, то здесь успешным состоянием charge будет «pending».
+	 * https://mage2.pro/tags/omise-charge-status
+	 * https://mage2.pro/t/2460
+	 * @used-by currentTransactionType()
+	 * @used-by strategyC()
+	 * @return bool
+	 */
+	private function isPending() {return dfc($this, function() {return
+		M::S_PENDING === df_assert_in($this->ro('status'), [M::S_PENDING, M::S_SUCCESSFUL])
+	;});}
 }
