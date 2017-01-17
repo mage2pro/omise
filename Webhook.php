@@ -7,9 +7,10 @@ abstract class Webhook extends \Df\StripeClone\Webhook {
 	 * @override
 	 * @see \Df\Payment\Webhook::parentIdRawKey()
 	 * @used-by \Df\Payment\Webhook::parentIdRaw()
+	 * @see \Dfe\Omise\Webhook\Refund\Create::parentIdRawKey()
 	 * @return string
 	 */
-	final protected function parentIdRawKey() {return 'data/id';}
+	protected function parentIdRawKey() {return 'data/id';}
 
 	/**
 	 * 2017-01-12
