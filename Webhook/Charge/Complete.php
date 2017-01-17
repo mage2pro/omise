@@ -10,7 +10,7 @@ use Dfe\Omise\Method as M;
  * и означает успешность завершения проверки 3D Secure:
  * https://www.omise.co/api-webhooks#charge-events
  */
-class Complete extends \Dfe\Omise\Webhook\Charge {
+final class Complete extends \Dfe\Omise\Webhook\Charge {
 	/**
 	 * 2017-01-09
 	 * @override
