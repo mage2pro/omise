@@ -29,7 +29,7 @@ use Dfe\Omise\Method as M;
 		}
 	}
  */
-final class Create extends \Dfe\Omise\Webhook\Charge {
+final class Create extends \Dfe\Omise\Webhook\Charge implements \Df\StripeClone\Webhook\IRefund {
 	/**
 	 * 2017-01-17
 	 * @override
