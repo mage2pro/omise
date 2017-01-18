@@ -32,7 +32,7 @@ use Dfe\Omise\Method as M;
 final class Create extends \Dfe\Omise\Webhook\Charge implements \Df\StripeClone\Webhook\IRefund {
 	/**
 	 * 2017-01-17
-	 * В валюте заказа (платежа).
+	 * В валюте заказа (платежа), в формате платёжной системы (копейках).
 	 * @override
 	 * @see \Df\StripeClone\Webhook\IRefund::amount()
 	 * @used-by \Df\StripeClone\WebhookStrategy\Charge\Refunded::handle()
