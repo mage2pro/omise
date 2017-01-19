@@ -51,6 +51,15 @@ final class Create extends \Dfe\Omise\Webhook\Charge implements \Df\StripeClone\
 	final public function currentTransactionType() {return M::T_REFUND;}
 
 	/**
+	 * 2017-01-19
+	 * @override
+	 * @see \Df\StripeClone\Webhook\IRefund::eTransId()
+	 * @used-by \Df\StripeClone\WebhookStrategy\Charge\Refunded::handle()
+	 * @return string
+	 */
+	final public function eTransId() {return $this->ro('transaction');}
+
+	/**
 	 * 2017-01-17
 	 * @override
 	 * @see \Df\StripeClone\Webhook::idBase()
