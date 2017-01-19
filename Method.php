@@ -68,51 +68,6 @@ class Method extends \Df\StripeClone\Method {
 	;}
 
 	/**
-	 * 2016-11-18
-	 * @override
-	 * @see \Df\Payment\Method::_refund()
-	 * @used-by \Df\Payment\Method::refund()
-	 * @param float|null $amount
-	 * @return void
-	 */
-	final protected function _refund($amount) {
-		/**
-		 * 2016-03-17
-		 * Метод @uses \Magento\Sales\Model\Order\Payment::getAuthorizationTransaction()
-		 * необязательно возвращает транзакцию типа «авторизация»:
-		 * в первую очередь он стремится вернуть родительскую транзакцию:
-		 * https://github.com/magento/magento2/blob/2.1.0/app/code/Magento/Sales/Model/Order/Payment/Transaction/Manager.php#L31-L47
-		 * Это как раз то, что нам нужно, ведь наш модуль может быть настроен сразу на capture,
-		 * без предварительной транзакции типа «авторизация».
-		 */
-		/** @var T|false $tFirst */
-		$tFirst = $this->ii()->getAuthorizationTransaction();
-		if ($tFirst) {
-			/** @var string $chargeId */
-			$chargeId = self::i2e($tFirst->getTxnId());
-			/** @var \OmiseCharge $charge */
-			$charge = \OmiseCharge::retrieve($chargeId);
-			// 2016-03-24
-			// Credit Memo и Invoice отсутствуют в сценарии Authorize / Capture
-			// и присутствуют в сценарии Capture / Refund.
-			/** @var bool $isRefund */
-			$isRefund = !!$this->ii()->getCreditmemo();
-			if ($isRefund) {
-				$this->transInfo($charge->refunds()->create([
-					'amount' => $this->amountFormat($amount)
-				]));
-			}
-			else {
-				// 2016-11-18
-				// Reverse an uncaptured charge: https://www.omise.co/charges-api#charges-reverse
-				$charge->reverse();
-				$this->transInfo($charge);
-			}
-			$this->ii()->setTransactionId(self::e2i($chargeId, $isRefund ?self::T_REFUND : 'void'));
-		}
-	}
-
-	/**
 	 * 2016-11-15
 	 * https://www.omise.co/currency-and-amount
 	 * @override
@@ -192,6 +147,17 @@ class Method extends \Df\StripeClone\Method {
 	final protected function apiChargeId($charge) {return $charge['id'];}
 
 	/**
+	 * 2017-01-19
+	 * Пример результата: «trxn_test_56psvralu7nzx74ytit».
+	 * @override
+	 * @see \Df\StripeClone\Method::apiTransId()
+	 * @used-by \Df\StripeClone\Method::_refund()
+	 * @param object $response
+	 * @return string
+	 */
+	final protected function apiTransId($response) {return $response['transaction'];}
+
+	/**
 	 * 2016-12-27
 	 * @override
 	 * @see \Df\StripeClone\Method::responseToArray()
@@ -200,6 +166,38 @@ class Method extends \Df\StripeClone\Method {
 	 * @return array(string => mixed)
 	 */
 	final protected function responseToArray($response) {return AO::_values($response);}
+
+	/**
+	 * 2017-01-19
+	 * @override
+	 * @see \Df\StripeClone\Method::scRefund()
+	 * @used-by \Df\StripeClone\Method::_refund()
+	 * @param string $chargeId
+	 * @param float $amount
+	 * В формате и валюте платёжной системы.
+	 * Значение готово для применения в запросе API.
+	 * @return \OmiseCharge
+	 */
+	final protected function scRefund($chargeId, $amount) {return
+		\OmiseCharge::retrieve($chargeId)->refunds()->create(['amount' => $amount])
+	;}
+
+	/**
+	 * 2017-01-19
+	 * @override
+	 * @see \Df\StripeClone\Method::scVoid()
+	 * @used-by \Df\StripeClone\Method::_refund()
+	 * @param string $chargeId
+	 * @return \OmiseCharge
+	 */
+	final protected function scVoid($chargeId) {
+		/** @var \OmiseCharge $result */
+		$result = \OmiseCharge::retrieve($chargeId);
+		// 2016-11-18
+		// Reverse an uncaptured charge: https://www.omise.co/charges-api#charges-reverse
+		$result->reverse();
+		return $result;
+	}
 
 	/**
 	 * 2016-12-26
@@ -214,15 +212,6 @@ class Method extends \Df\StripeClone\Method {
 		df_trans_is_test($t, 'test', 'live')
 		,dfa(['refund' => 'refunds'], $t->getTxnType(), 'charges')
 	);}
-
-	/**
-	 * 2016-11-17
-	 * @used-by \Dfe\Omise\Method::_refund()
-	 * @used-by \Dfe\Omise\Method::transUrl()
-	 * @param string $childId
-	 * @return string
-	 */
-	private function transParentId($childId) {return df_first(explode('-', $childId));}
 
 	/**
 	 * 2017-01-15
