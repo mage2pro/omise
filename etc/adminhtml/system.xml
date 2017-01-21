@@ -216,7 +216,7 @@ https://github.com/omise/omise-php/issues/52
 				<field
 					id='currency'
 					translate='label'
-					type='Df\Payment\FormElement\Currency'
+					type='Df\Directory\FormElement\Currency'
 					dfValues='THB,JPY'
 					sortOrder='11'
 					showInDefault='1'
