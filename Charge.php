@@ -1,10 +1,13 @@
 <?php
-// 2016-11-13
+//
 namespace Dfe\Omise;
 use Df\Core\Exception as DFE;
 use Dfe\Omise\Api\Customer as AC;
-use Dfe\Omise\Settings as S;
 use Magento\Sales\Model\Order\Payment as OP;
+/**
+ * 2016-11-13
+ * @method Settings ss()
+ */
 class Charge extends \Df\StripeClone\Charge {
 	/**
 	 * 2016-11-13
@@ -14,7 +17,7 @@ class Charge extends \Df\StripeClone\Charge {
 	 * @used-by \Df\StripeClone\Charge::request()
 	 * @return array(string => mixed)
 	 */
-	final protected function _request() {/** @var Settings $s */ $s = S::s(); return [
+	final protected function _request() {/** @var Settings $s */ $s = $this->ss(); return [
 		'amount' => $this->amountF()
 		// 2016-11-16
 		// «(optional) Whether or not you want the charge to be captured right away,
