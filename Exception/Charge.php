@@ -7,13 +7,13 @@
  */
 namespace Dfe\Omise\Exception;
 use Dfe\Omise\Api\O as AO;
-class Charge extends \Dfe\Omise\Exception {
+final class Charge extends \Dfe\Omise\Exception {
 	/**
 	 * 2017-01-09
 	 * @param \OmiseCharge $c
 	 * @param array(string => mixed) $request
 	 */
-	final public function __construct(\OmiseCharge $c, array $request) {
+	public function __construct(\OmiseCharge $c, array $request) {
 		$this->_c = $c;
 		$this->_request = $request;
 		parent::__construct();
@@ -24,15 +24,15 @@ class Charge extends \Dfe\Omise\Exception {
 	 * @used-by \Df\Qa\Message\Failure\Exception::main()
 	 * @return bool
 	 */
-	final public function isMessageHtml() {return true;}
+	public function isMessageHtml() {return true;}
 
 	/**
 	 * 2017-01-09
 	 * @override
-	 * @see \Df\Payment\Exception::message()
+	 * @see \Df\Core\Exception::message()
 	 * @return string
 	 */
-	final public function message() {return df_cc_n(
+	public function message() {return df_cc_n(
 		'The Omise charge is failed.'
 		,"Response:", df_json_encode_pretty(AO::_values($this->_c))
 		,'Request:', df_json_encode_pretty($this->_request)
@@ -41,10 +41,10 @@ class Charge extends \Dfe\Omise\Exception {
 	/**
 	 * 2017-01-09
 	 * @override
-	 * @see \Df\Payment\Exception::messageC()
+	 * @see \Df\Core\Exception::messageC()
 	 * @return string
 	 */
-	final public function messageC() {return dfp_error_message($this->_c['failure_message']);}
+	public function messageC() {return dfp_error_message($this->_c['failure_message']);}
 
 	/**
 	 * 2017-01-09
@@ -54,7 +54,7 @@ class Charge extends \Dfe\Omise\Exception {
 	 * @used-by \Df\Sentry\Client::captureException()
 	 * @return string
 	 */
-	final public function messageSentry() {return $this->_c['failure_message'];}
+	public function messageSentry() {return $this->_c['failure_message'];}
 
 	/**
 	 * 2017-01-09
@@ -63,7 +63,7 @@ class Charge extends \Dfe\Omise\Exception {
 	 * @used-by df_sentry()
 	 * @return array(string => mixed)
 	 */
-	final public function sentryContext() {return [
+	public function sentryContext() {return [
 		'extra' => ['request' => $this->_request, 'response' => AO::_values($this->_c)]
 		,'tags' => ['Omise' => df_package_version($this)]
 	];}
