@@ -48,7 +48,7 @@ Follow the generic [installation instruction](https://mage2.pro/t/263).
 
 ## See also my other Magento 2 extensions:
 
-- «[**Price Format**](https://mage2.pro/c/extensions/price-format)» (set a custom display format for the prices and other currency values: discounts, taxes, sales amounts, etc.).
+- «[**Price Format**](https://mage2.pro/c/extensions/price-format)» (set a custom display format for the prices and other currency values: discounts, taxes, sales amounts).
 - «[**Sales Documents Numeration**](https://mage2.pro/t/512)» (use a custom numeration for the sales documents: orders, invoices, shipments, and credit memos).
 - «[**Login with Amazon**](https://mage2.pro/c/extensions/amazon-login)» (a single sign-on extension). 
 - «[**Backend Login with Google Account**](https://mage2.pro/t/46)» (a single sign-on extension for the Magento 2 backend). 
