@@ -36,6 +36,9 @@ Follow the generic [installation instruction](https://mage2.pro/t/263).
 - [The extension's **forum** branch](https://mage2.pro/c/extensions/omise).
 - [Where and how to report a Mage2.PRO extension's issue?](https://mage2.pro/t/2034)
 
+## Need a new feature?
+I provide the [**customization service**](https://mage2.pro/t/2020) for my payment extensions.
+
 ## Need another payment extension for Magento 2?
 
 - «[**歐付寶 allPay**](https://mage2.pro/c/extensions/allpay)» payment extension (for Taiwan)
