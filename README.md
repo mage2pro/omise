@@ -38,7 +38,7 @@ Follow the generic [installation instruction](https://mage2.pro/t/263).
 - I also provide a **[generic Magento 2 support](https://mage2.pro/t/topic/755)** and [Magento 2 installation service](https://mage2.pro/t/748).
 
 ## Want to be notified about the extension's updates?
-- [Subscribe](https://mage2.pro/t/topic/2540) to the extension's [forum branch](https://mage2.pro/c/extensions/omise).
+- [Subscribe](https://mage2.pro/t/2540) to the extension's [forum branch](https://mage2.pro/c/extensions/omise).
 - Subscribe to my [Twitter](https://twitter.com/mage2_pro) and [YouTube](https://www.youtube.com/channel/UCvlDAZuj01_b92pzRi69LeQ) channels.
 
 ## Need a new feature?
