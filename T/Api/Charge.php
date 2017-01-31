@@ -7,7 +7,7 @@ use Dfe\Omise\Api\O as AO;
 use OmiseCharge as Ch;
 use OmiseCustomer as C;
 use OmiseToken as T;
-class Charge extends TestCase {
+final class Charge extends TestCase {
 	/**
 	 * @test
 	 * 2016-11-15

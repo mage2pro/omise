@@ -8,7 +8,7 @@ use Magento\Sales\Model\Order\Payment as OP;
  * 2016-11-13
  * @method Settings ss()
  */
-class Charge extends \Df\StripeClone\Charge {
+final class Charge extends \Df\StripeClone\Charge {
 	/**
 	 * 2016-11-13
 	 * https://www.omise.co/charges-api#charges-create
