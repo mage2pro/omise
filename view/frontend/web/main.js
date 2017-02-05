@@ -12,6 +12,8 @@ define([
 	/**
 	 * 2016-11-12
 	 * https://www.omise.co/which-credit-cards-does-omise-accept
+	 * 2017-02-05
+	 * The bank card network codes: https://mage2.pro/t/2647
 	 * @returns {String[]}
 	 */
 	getCardTypes: function() {return ['VI', 'MC', 'JCB'];},
