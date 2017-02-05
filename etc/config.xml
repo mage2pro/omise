@@ -6,7 +6,7 @@
     <default>
 		<df_payment>
 			<omise>
-				<actionForNew>review</actionForNew>
+				<actionForNew>authorize_capture</actionForNew>
 				<actionForReturned>authorize_capture</actionForReturned>
 				<askForBillingAddress>1</askForBillingAddress>
 <!--
@@ -21,7 +21,6 @@
 	https://www.omise.co/charges-api#charges-create
 -->
 				<description>{order.id}</description>
-				<payment_action>authorize_capture</payment_action>
 				<title>Bank Card</title>
 				<title_backend>Omise</title_backend>
 			</omise>
