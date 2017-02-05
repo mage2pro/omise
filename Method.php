@@ -8,7 +8,7 @@ use Magento\Sales\Model\Order as O;
 use Magento\Sales\Model\Order\Payment as OP;
 use Magento\Sales\Model\Order\Payment\Transaction as T;
 /** @method Settings s() */
-class Method extends \Df\StripeClone\Method {
+final class Method extends \Df\StripeClone\Method {
 	/**
 	 * 2016-11-18
 	 * @override
@@ -35,7 +35,7 @@ class Method extends \Df\StripeClone\Method {
 	 * @used-by \Df\Payment\Method::getConfigPaymentAction()
 	 * @return bool
 	 */
-	final protected function _3dsNeed() {return $this->s()->_3DS();}
+	protected function _3dsNeed() {return $this->s()->_3DS();}
 
 	/**
 	 * 2017-01-12
@@ -46,7 +46,7 @@ class Method extends \Df\StripeClone\Method {
 	 * @param object $charge
 	 * @return bool
 	 */
-	final protected function _3dsNeedForCharge($charge) {return
+	protected function _3dsNeedForCharge($charge) {return
 		$charge['authorize_uri'] && self::S_PENDING === $charge['status']
 	;}
 
@@ -60,7 +60,7 @@ class Method extends \Df\StripeClone\Method {
 	 * @return string
 	 * An example of result: http://api.omise.co/payments/paym_test_56fuvl1ih89gj1kjzid/authorize
 	 */
-	final protected function _3dsUrl($amount, $capture) {return
+	protected function _3dsUrl($amount, $capture) {return
 		// 2016-12-24
 		// «Url for charge authorization using 3-D Secure. Only if return_uri was set.»
 		// https://www.omise.co/charges-api
@@ -75,7 +75,7 @@ class Method extends \Df\StripeClone\Method {
 	 * @used-by isAvailable()
 	 * @return array(string => array(int|float))
 	 */
-	final protected function amountLimits() {return ['THB' => [20, 1000000], 'JPY' => [100, 999999]];}
+	protected function amountLimits() {return ['THB' => [20, 1000000], 'JPY' => [100, 999999]];}
 
 	/**
 	 * 2016-12-28
@@ -105,7 +105,7 @@ class Method extends \Df\StripeClone\Method {
 	 * @param \OmiseCharge $charge
 	 * @return array(string => string)
 	 */
-	final protected function apiCardInfo($charge) {
+	protected function apiCardInfo($charge) {
 		/** @var array(string => string) $c */
 		$c = $charge['card'];
 		return [OP::CC_LAST_4 => $c['last_digits'], OP::CC_TYPE => $c['brand']];
@@ -120,7 +120,7 @@ class Method extends \Df\StripeClone\Method {
 	 * @param string $chargeId
 	 * @return \OmiseCharge
 	 */
-	final protected function apiChargeCapturePreauthorized($chargeId) {return
+	protected function apiChargeCapturePreauthorized($chargeId) {return
 		\OmiseCharge::retrieve($chargeId)->capture()
 	;}
 
@@ -132,7 +132,7 @@ class Method extends \Df\StripeClone\Method {
 	 * @param array(string => mixed) $params
 	 * @return \OmiseCharge
 	 */
-	final protected function apiChargeCreate(array $params) {return
+	protected function apiChargeCreate(array $params) {return
 		ECharge::assert(\OmiseCharge::create($params), $params)
 	;}
 
@@ -144,7 +144,7 @@ class Method extends \Df\StripeClone\Method {
 	 * @param \OmiseCharge $charge
 	 * @return string
 	 */
-	final protected function apiChargeId($charge) {return $charge['id'];}
+	protected function apiChargeId($charge) {return $charge['id'];}
 
 	/**
 	 * 2017-01-19
@@ -155,7 +155,7 @@ class Method extends \Df\StripeClone\Method {
 	 * @param object $response
 	 * @return string
 	 */
-	final protected function apiTransId($response) {return $response['transaction'];}
+	protected function apiTransId($response) {return $response['transaction'];}
 
 	/**
 	 * 2016-12-27
@@ -165,7 +165,7 @@ class Method extends \Df\StripeClone\Method {
 	 * @param \OmiseApiResource $response
 	 * @return array(string => mixed)
 	 */
-	final protected function responseToArray($response) {return AO::_values($response);}
+	protected function responseToArray($response) {return AO::_values($response);}
 
 	/**
 	 * 2017-01-19
@@ -178,7 +178,7 @@ class Method extends \Df\StripeClone\Method {
 	 * Значение готово для применения в запросе API.
 	 * @return \OmiseCharge
 	 */
-	final protected function scRefund($chargeId, $amount) {return
+	protected function scRefund($chargeId, $amount) {return
 		\OmiseCharge::retrieve($chargeId)->refunds()->create(['amount' => $amount])
 	;}
 
@@ -190,7 +190,7 @@ class Method extends \Df\StripeClone\Method {
 	 * @param string $chargeId
 	 * @return \OmiseCharge
 	 */
-	final protected function scVoid($chargeId) {
+	protected function scVoid($chargeId) {
 		/** @var \OmiseCharge $result */
 		$result = \OmiseCharge::retrieve($chargeId);
 		// 2016-11-18
@@ -207,7 +207,7 @@ class Method extends \Df\StripeClone\Method {
 	 * @param T $t
 	 * @return string
 	 */
-	final protected function transUrlBase(T $t) {return df_cc_path(
+	protected function transUrlBase(T $t) {return df_cc_path(
 		'https://dashboard.omise.co',
 		df_trans_is_test($t, 'test', 'live')
 		,dfa(['refund' => 'refunds'], $t->getTxnType(), 'charges')
