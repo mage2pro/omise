@@ -16,4 +16,18 @@
 		,"omise/omise-php": "^2.5.0"
 	}
 	,"autoload": {"files": ["registration.php"], "psr-4": {"Dfe\\Omise\\": ""}}
+	,"keywords": [
+		"3d secure"
+		,"api"
+		,"bank card"
+		,"ecommerce"
+		,"japan"
+		,"magento"
+		,"magento 2"
+		,"magento extension"
+		,"omise"
+		,"payment"
+		,"refund"
+		,"thailand"
+	]
 }
