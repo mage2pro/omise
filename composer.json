@@ -14,17 +14,21 @@
 	,"require": {"mage2pro/core": "^1.12.6", "omise/omise-php": "^2.5.0"}
 	,"autoload": {"files": ["registration.php"], "psr-4": {"Dfe\\Omise\\": ""}}
 	,"keywords": [
-		"3d secure"
-		,"api"
-		,"bank card"
-		,"ecommerce"
-		,"japan"
-		,"magento"
-		,"magento 2"
-		,"magento extension"
-		,"omise"
-		,"payment"
-		,"refund"
-		,"thailand"
+		"3D Secure"
+		,"API"
+		,"Bank card"
+		,"Credit card"
+		,"eCommerce"
+		,"Japan"
+		,"Magento"
+		,"Magento 2"
+		,"Magento extension"
+		,"Omise"
+		,"Payment"
+		,"Payment authorization"
+		,"Payment integration"
+		,"Payment gateway"
+		,"Refund"
+		,"Thailand"
 	]
 }
