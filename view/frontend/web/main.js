@@ -2,7 +2,7 @@
 define([
 	'df'
 	,'Df_Checkout/js/data'
-	,'Df_Payment/card'
+	,'Df_Payment/stripeClone'
 	,'https://cdn.omise.co/omise.js'
 ], function(df, dfc, parent) {'use strict'; return parent.extend({
 	// 2016-11-12
@@ -24,7 +24,7 @@ define([
 	*/
 	initialize: function() {
 		this._super();
-		Omise.setPublicKey(this.config('publicKey'));
+		Omise.setPublicKey(this.publicKey());
 		return this;
 	},
 	/**
