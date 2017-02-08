@@ -14,6 +14,13 @@ final class Method extends \Df\StripeClone\Method {
 	 * @override
 	 * A partial capture is not supported by Omise: https://www.omise.co/charges-api#charges-capture
 	 * Interestinly, a partial refund is suported: https://www.omise.co/refunds-api#refunds-create
+	 *
+	 * 2017-02-08
+	 * false и так является значением по умолчанию в родителькском методе:
+	 * https://github.com/mage2pro/core/blob/1.12.13/Payment/Method.php?ts=4#L338
+	 * Однако я явно объявляю здесь свой метод, чтобы явно подчеркнуть,
+	 * что Omise не поддерживает эту функцию.
+	 *
 	 * @see \Df\Payment\Method::canCapturePartial()
 	 * @return bool
 	 */
