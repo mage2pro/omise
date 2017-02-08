@@ -1,6 +1,6 @@
 <?php
 // 2016-11-13
-namespace Dfe\Omise\T\Api;
+namespace Dfe\Omise\T;
 use Dfe\Omise\Settings as S;
 abstract class TestCase extends \Df\Core\TestCase {
 	/**

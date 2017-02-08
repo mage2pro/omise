@@ -1,6 +1,6 @@
 <?php
 // 2016-11-13
-namespace Dfe\Omise\T\Api;
+namespace Dfe\Omise\T;
 use Dfe\Omise\Api\Customer as AC;
 use Dfe\Omise\Api\O as AO;
 use OmiseCustomer as C;

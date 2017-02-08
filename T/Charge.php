@@ -1,7 +1,7 @@
 <?php
 // 2016-11-15
 // https://www.omise.co/tokens-api
-namespace Dfe\Omise\T\Api;
+namespace Dfe\Omise\T;
 use Dfe\Omise\Api\Customer as AC;
 use Dfe\Omise\Api\O as AO;
 use OmiseCharge as Ch;
