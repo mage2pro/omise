@@ -68,6 +68,9 @@ final class Method extends \Df\StripeClone\Method {
 	/**
 	 * 2016-11-15
 	 * https://www.omise.co/currency-and-amount
+	 * 2017-02-08
+	 * [Omise] What are the minimum and maximum amount limitations on a single payment?
+	 * https://mage2.pro/t/2691
 	 * @override
 	 * @see \Df\Payment\Method::amountLimits()
 	 * @used-by isAvailable()
