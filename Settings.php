@@ -22,6 +22,6 @@ final class Settings extends \Df\StripeClone\Settings {
 	public function init() {dfc($this, function() {
 		/** @used-by \OmiseObject::__construct() */
 		define('OMISE_PUBLIC_KEY', $this->publicKey());
-		define('OMISE_SECRET_KEY', $this->testableP('secretKey'));
+		define('OMISE_SECRET_KEY', $this->privateKey());
 	});}
 }

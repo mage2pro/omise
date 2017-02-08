@@ -61,7 +61,6 @@ final class Customer extends TestCase {
 	}
 
 	/**
-	 * @test
 	 * 2016-11-17
 	 * Deletes test customers by email.
 	 * Недостатки:

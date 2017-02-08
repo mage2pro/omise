@@ -72,6 +72,5 @@ final class Charge extends TestCase {
 		// 2016-11-16
 		// «card_test_560jfnmlfev5n2rkl9i»
 		$this->assertStringStartsWith('card_', $card['id']);
-		xdebug_break();
 	}
 }

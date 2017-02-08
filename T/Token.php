@@ -51,7 +51,6 @@ final class Token extends TestCase {
 				,'security_code' => '123'
 			]]);
 			$r = $c->update(['card' => AO::_id($t)]);
-			xdebug_break();
 		}
 		/** @var C $c2 */
 		$c2 = C::retrieve(AO::_id($c));
