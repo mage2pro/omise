@@ -27,15 +27,6 @@ final class Method extends \Df\StripeClone\Method {
 	public function canCapturePartial() {return false;}
 
 	/**
-	 * 2016-11-13
-	 * https://www.omise.co/refunds-api#refunds-create
-	 * @override
-	 * @see \Df\Payment\Method::canRefundPartialPerInvoice()
-	 * @return bool
-	 */
-	public function canRefundPartialPerInvoice() {return true;}
-
-	/**
 	 * 2016-12-24
 	 * @override
 	 * @see \Df\Payment\Method::_3dsNeed()
