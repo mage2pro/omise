@@ -74,7 +74,7 @@ final class Method extends \Df\StripeClone\Method {
 	 * @override
 	 * @see \Df\Payment\Method::amountLimits()
 	 * @used-by isAvailable()
-	 * @return array(string => array(int|float))
+	 * @return array(string => int[])
 	 */
 	protected function amountLimits() {return ['THB' => [20, 1000000], 'JPY' => [100, 999999]];}
 
