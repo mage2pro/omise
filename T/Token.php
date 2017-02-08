@@ -6,7 +6,7 @@ use Dfe\Omise\Api\Customer as AC;
 use Dfe\Omise\Api\O as AO;
 use OmiseCustomer as C;
 use OmiseToken as T;
-class Token extends TestCase {
+final class Token extends TestCase {
 	/**
 	 * @test
 	 * 2016-11-14

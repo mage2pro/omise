@@ -4,7 +4,7 @@ namespace Dfe\Omise\T;
 use Dfe\Omise\Api\Customer as AC;
 use Dfe\Omise\Api\O as AO;
 use OmiseCustomer as C;
-class Customer extends TestCase {
+final class Customer extends TestCase {
 	/**
 	 * @test
 	 * 2016-11-14
