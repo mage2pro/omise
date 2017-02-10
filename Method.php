@@ -123,38 +123,6 @@ final class Method extends \Df\StripeClone\Method {
 	protected function responseToArray($response) {return AO::_values($response);}
 
 	/**
-	 * 2017-01-19
-	 * @override
-	 * @see \Df\StripeClone\Method::scRefund()
-	 * @used-by \Df\StripeClone\Method::_refund()
-	 * @param string $chargeId
-	 * @param float $amount
-	 * В формате и валюте платёжной системы.
-	 * Значение готово для применения в запросе API.
-	 * @return \OmiseRefund
-	 */
-	protected function scRefund($chargeId, $amount) {return
-		\OmiseCharge::retrieve($chargeId)->refunds()->create(['amount' => $amount])
-	;}
-
-	/**
-	 * 2017-01-19
-	 * @override
-	 * @see \Df\StripeClone\Method::scVoid()
-	 * @used-by \Df\StripeClone\Method::_refund()
-	 * @param string $chargeId
-	 * @return \OmiseCharge
-	 */
-	protected function scVoid($chargeId) {
-		/** @var \OmiseCharge $result */
-		$result = \OmiseCharge::retrieve($chargeId);
-		// 2016-11-18
-		// Reverse an uncaptured charge: https://www.omise.co/charges-api#charges-reverse
-		$result->reverse();
-		return $result;
-	}
-
-	/**
 	 * 2016-12-26
 	 * @override
 	 * @see \Df\StripeClone\Method::transUrlBase()
