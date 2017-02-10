@@ -79,40 +79,6 @@ final class Method extends \Df\StripeClone\Method {
 	protected function amountLimits() {return ['THB' => [20, 1000000], 'JPY' => [100, 999999]];}
 
 	/**
-	 * 2016-12-28
-	 * Информация о банковской карте.
-		{
-			"object": "card",
-			"id": "card_test_560jgvu90914d44h1vx",
-			"livemode": false,
-			"location": "/customers/cust_test_560jgw6s43s7i4ydd8r/cards/card_test_560jgvu90914d44h1vx",
-			"country": "us",
-			"city": null,
-			"postal_code": null,
-			"financing": "",
-			"bank": "",
-			"last_digits": "4444",
-			"brand": "MasterCard",
-			"expiration_month": 7,
-			"expiration_year": 2019,
-			"fingerprint": "/uCzRPQQRUDr8JvGUjKf7Xn10VRJeQ7oBZ1Zt7gLvWs=",
-			"name": "DMITRY FEDYUK",
-			"security_code_check": true,
-			"created": "2016-11-15T22:00:49Z"
-		}
-	 * @override
-	 * @see \Df\StripeClone\Method::apiCardInfo()
-	 * @used-by \Df\StripeClone\Method::chargeNew()
-	 * @param \OmiseCharge $charge
-	 * @return array(string => string)
-	 */
-	protected function apiCardInfo($charge) {
-		/** @var array(string => string) $c */
-		$c = $charge['card'];
-		return [OP::CC_LAST_4 => $c['last_digits'], OP::CC_TYPE => $c['brand']];
-	}
-
-	/**
 	 * 2016-12-27
 	 * @override
 	 * @see \Df\StripeClone\Method::responseToArray()
