@@ -1,7 +1,7 @@
 <?php
 // 2017-01-13
 namespace Dfe\Omise;
-class Card extends \Df\StripeClone\Card {
+final class Card extends \Df\StripeClone\Card {
 	/**
 	 * 2017-01-13
 	 * @override
@@ -9,7 +9,7 @@ class Card extends \Df\StripeClone\Card {
 	 * @used-by \Df\StripeClone\Card::__toString()
 	 * @return string
 	 */
-	final protected function keyLast4() {return 'last_digits';}
+	protected function keyLast4() {return 'last_digits';}
 
 	/**
 	 * 2017-01-13
@@ -18,5 +18,5 @@ class Card extends \Df\StripeClone\Card {
 	 * @used-by \Df\StripeClone\Card::expires()
 	 * @return string
 	 */
-	final protected function prefixKeyExpiration() {return 'expiration';}
+	protected function prefixKeyExpiration() {return 'expiration';}
 }

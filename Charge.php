@@ -1,13 +1,7 @@
 <?php
-//
 namespace Dfe\Omise;
-use Df\Core\Exception as DFE;
-use Dfe\Omise\Api\Customer as AC;
-use Magento\Sales\Model\Order\Payment as OP;
-/**
- * 2016-11-13
- * @method Settings ss()
- */
+// 2016-11-13
+/** @method Settings ss() */
 final class Charge extends \Df\StripeClone\Charge {
 	/**
 	 * 2016-11-13
@@ -17,7 +11,7 @@ final class Charge extends \Df\StripeClone\Charge {
 	 * @used-by \Df\StripeClone\Charge::request()
 	 * @return array(string => mixed)
 	 */
-	final protected function _request() {/** @var Settings $s */ $s = $this->ss(); return [
+	protected function _request() {/** @var Settings $s */ $s = $this->ss(); return [
 		'amount' => $this->amountF()
 		// 2016-11-16
 		// «(optional) Whether or not you want the charge to be captured right away,
@@ -64,53 +58,15 @@ final class Charge extends \Df\StripeClone\Charge {
 		 */
 		'return_uri' => $this->customerReturn()
 	]);}
-
+	
 	/**
 	 * 2016-11-15
-	 * Даже если покупатель в момент покупки ещё не имеет учётной записи в магазине,
-	 * то всё равно разумно зарегистрировать его в Omise и сохранить данные его карты,
-	 * потому что Magento уже после оформления заказа предложит такому покупателю зарегистрироваться,
-	 * и покупатель вполне может согласиться: https://mage2.pro/t/1967
-	 *
-	 * Если покупатель согласится создать учётную запись в магазине,
-	 * то мы попадаем в @see \Df\Customer\Observer\CopyFieldset\OrderAddressToCustomer::execute()
-	 * и там из сессии передаём данные в свежесозданную учётную запись.
-	 *
-	 * @return \OmiseCustomer
-	 * @throws DFE
-	 */
-	private function apiCustomer() {return dfc($this, function() {
-		/** @var \OmiseCustomer|null $result */
-		$result = null;
-		if ($this->savedCustomerId()) {
-			$result = \OmiseCustomer::retrieve($this->savedCustomerId());
-			if ($result->isDestroyed()) {
-				ApiCustomerId::save(null);
-				$result = null;
-				$this->rejectPreviousCard();
-			}
-			/**
-			 * 2016-11-15
-			 * Покупатель уже зарегистрирован в Omise, но он в этот раз хочет платить новой картой.
-			 * Сохраняем её.
-			 */
-			if (!$this->usePreviousCard()) {
-				$result->update(['card' => $this->token()]);
-			}
-		}
-		if (!$result) {
-			$this->rejectPreviousCard();
-			$result = \OmiseCustomer::create($this->apiCustomerParams());
-			ApiCustomerId::save($result['id']);
-		}
-		return $result;
-	});}
-
-	/**
-	 * 2016-11-15
+	 * @override
+	 * @see \Df\StripeClone\Charge::customerParams()
+	 * @used-by \Df\StripeClone\Charge::newCard()
 	 * @return array(string => mixed)
 	 */
-	private function apiCustomerParams() {return [
+	protected function customerParams() {return [
 		// 2016-11-15
 		// «(optional) A card token in case you want to add a card to the customer.»
 		// https://www.omise.co/customers-api#customers-create
@@ -118,72 +74,4 @@ final class Charge extends \Df\StripeClone\Charge {
 		,'description' => $this->customerName()
 		,'email' => $this->customerEmail()
 	];}
-
-	/**
-	 * 2016-11-15
-	 * @return string
-	 */
-	private function cardId() {return
-		$this->usePreviousCard() ? $this->token() : AC::_cardIdLast($this->apiCustomer())
-	;}
-
-	/**
-	 * 2016-11-15
-	 * @return string
-	 */
-	private function customerId() {
-		/** @var string $result */
-		$result = $this->savedCustomerId();
-		if (!$result) {
-			df_assert(!$this->usePreviousCard());
-			$result = $this->apiCustomer()['id'];
-		}
-		return $result;
-	}
-
-	/**
-	 * 2016-11-15
-	 * @return string
-	 */
-	private function savedCustomerId() {
-		if (!isset($this->{__METHOD__})) {
-			$this->{__METHOD__} = ApiCustomerId::get($this->c());
-		}
-		return $this->{__METHOD__};
-	}
-
-	/**
-	 * 2016-11-15
-	 * Если покупатель был удалён в Omise,
-	 * то использовать его ранее сохранённую карту мы не можем.
-	 * В принципе, в эту исключительную ситуацию мы практически не должны попадать,
-	 * потому что для отображения покупателю списка его сохранённых карт
-	 * мы запрашиваем этот список у Omise в реальном времени:
-	 * @see \Dfe\Omise\ConfigProvider::savedCards()
-	 * Получается, чтобы сюда попасть, мы должны были удалить покупателя
-	 * уже после отображения страницы оформления заказа покупателю,
-	 * но до завершения оформления заказа покупателем.
-	 * @throws DFE
-	 */
-	private function rejectPreviousCard() {
-		if ($this->usePreviousCard()) {
-			df_error(
-				'Sorry, your previous card data are unavailable. '
-				. 'Please reenter the data again, or use another card.'
-			);
-		}
-	}
-
-	/**
-	 * 2016-11-15
-	 * Отныне параметр «token» может содержать не только токен новой карты
-	 * (например: «tokn_<...>»),
-	 * но и идентификатор ранее использовавшейся карты
-	 * (например: «card_<...>»).
-	 * У Omise префикс токена — «tokn_», а у Stripe — «tkn_».
-	 * @return bool
-	 */
-	private function usePreviousCard() {return dfc($this, function() {return
-		df_starts_with($this->token(), 'card_')
-	;});}
 }

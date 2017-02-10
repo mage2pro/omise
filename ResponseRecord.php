@@ -1,8 +1,7 @@
 <?php
 // 2016-11-16
 namespace Dfe\Omise;
-use Magento\Sales\Model\Order\Payment\Transaction as T;
-class ResponseRecord extends \Df\StripeClone\ResponseRecord {
+final class ResponseRecord extends \Df\StripeClone\ResponseRecord {
 	/**
 	 * 2017-01-13
 	 * @override
@@ -10,5 +9,5 @@ class ResponseRecord extends \Df\StripeClone\ResponseRecord {
 	 * @used-by \Df\StripeClone\ResponseRecord::_card()
 	 * @return string
 	 */
-	final protected function keyCard() {return 'card';}
+	 protected function keyCard() {return 'card';}
 }

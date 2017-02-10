@@ -12,23 +12,6 @@ final class Customer extends TestCase {
 	public function t00() {}
 
 	/**
-	 * 2016-11-13
-	 */
-	public function t01() {
-		/** @var C $c */
-		$c = C::create([
-			'email' => 'admin@mage2.pro',
-			'description' => 'Mage2.PRO Customer'
-		]);
-		$this->assertFalse(AC::_isDestroyed($c));
-		/** @var C $c2 */
-		$c2 = C::retrieve(AO::_id($c));
-		$this->assertFalse(AC::_isDestroyed($c2));
-		$c->destroy();
-		$this->assertTrue(AC::_isDestroyed($c));
-	}
-
-	/**
 	 * 2016-11-14
 	 * Omise допускает создание множества покупателей с одинаковым email.
 	 */
@@ -92,15 +75,5 @@ final class Customer extends TestCase {
 	public function tRetrieveNonExistent() {
 		$this->expectException(\OmiseException::class);
 		C::retrieve(df_uid());
-	}
-
-	/**
-	 * 2016-11-13
-	 */
-	public function tDelete() {
-		/** @var C $customer */
-		$c = C::retrieve('cust_test_55zq4ihfaz2csc4c1s4');
-		$c->destroy();
-		$this->assertTrue($c->isDestroyed());
 	}
 }
