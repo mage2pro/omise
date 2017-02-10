@@ -114,31 +114,6 @@ final class Method extends \Df\StripeClone\Method {
 
 	/**
 	 * 2016-12-28
-	 * https://www.omise.co/charges-api#charges-capture
-	 * @override
-	 * @see \Df\StripeClone\Method::apiChargeCapturePreauthorized()
-	 * @used-by \Df\StripeClone\Method::charge()
-	 * @param string $chargeId
-	 * @return \OmiseCharge
-	 */
-	protected function apiChargeCapturePreauthorized($chargeId) {return
-		\OmiseCharge::retrieve($chargeId)->capture()
-	;}
-
-	/**
-	 * 2016-12-28
-	 * @override
-	 * @see \Df\StripeClone\Method::apiChargeCreate()
-	 * @used-by \Df\StripeClone\Method::chargeNew()
-	 * @param array(string => mixed) $params
-	 * @return \OmiseCharge
-	 */
-	protected function apiChargeCreate(array $params) {return
-		ECharge::assert(\OmiseCharge::create($params), $params)
-	;}
-
-	/**
-	 * 2016-12-28
 	 * @override
 	 * @see \Df\StripeClone\Method::apiChargeId()
 	 * @used-by \Df\StripeClone\Method::chargeNew()
