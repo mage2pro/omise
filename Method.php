@@ -113,22 +113,6 @@ final class Method extends \Df\StripeClone\Method {
 	}
 
 	/**
-	 * 2017-01-19
-	 * Пока этот метод используется только в сценарии возврата.
-	 * Метод должен вернуть идентификатор операции (не платежа!) в платёжной системе.
-	 * Мы записываем его в БД и затем при обработке оповещений от платёжной системы
-	 * смотрим, не было ли это оповещение инициировано нашей же операцией,
-	 * и если было, то не обрабатываем его повторно.
-	 * Пример результата: «trxn_test_56psvralu7nzx74ytit».
-	 * @override
-	 * @see \Df\StripeClone\Method::apiTransId()
-	 * @used-by \Df\StripeClone\Method::_refund()
-	 * @param object $response
-	 * @return string
-	 */
-	protected function apiTransId($response) {return $response['transaction'];}
-
-	/**
 	 * 2016-12-27
 	 * @override
 	 * @see \Df\StripeClone\Method::responseToArray()
@@ -147,7 +131,7 @@ final class Method extends \Df\StripeClone\Method {
 	 * @param float $amount
 	 * В формате и валюте платёжной системы.
 	 * Значение готово для применения в запросе API.
-	 * @return \OmiseCharge
+	 * @return \OmiseRefund
 	 */
 	protected function scRefund($chargeId, $amount) {return
 		\OmiseCharge::retrieve($chargeId)->refunds()->create(['amount' => $amount])
