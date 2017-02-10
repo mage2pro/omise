@@ -2,8 +2,6 @@
 // 2016-11-10
 namespace Dfe\Omise;
 use Df\Core\Exception as DFE;
-use Dfe\Omise\Api\O as AO;
-use Dfe\Omise\Exception\Charge as ECharge;
 use Magento\Sales\Model\Order as O;
 use Magento\Sales\Model\Order\Payment as OP;
 use Magento\Sales\Model\Order\Payment\Transaction as T;
@@ -77,16 +75,6 @@ final class Method extends \Df\StripeClone\Method {
 	 * @return array(string => int[])
 	 */
 	protected function amountLimits() {return ['THB' => [20, 1000000], 'JPY' => [100, 999999]];}
-
-	/**
-	 * 2016-12-27
-	 * @override
-	 * @see \Df\StripeClone\Method::responseToArray()
-	 * @used-by \Df\StripeClone\Method::transInfo()
-	 * @param \OmiseApiResource $response
-	 * @return array(string => mixed)
-	 */
-	protected function responseToArray($response) {return AO::_values($response);}
 
 	/**
 	 * 2016-12-26
