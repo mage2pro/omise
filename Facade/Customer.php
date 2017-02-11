@@ -14,22 +14,8 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 */
 	public function cardAdd($c, $token) {
 		$c->update(['card' => $token]);
-		return df_last($c['cards']['data'])['id'];
+		return df_last($this->cardsData($c))['id'];
 	}
-
-	/**
-	 * 2017-02-10
-	 * Ключ $o['cards']['data'] присутствует в объекте даже при отсутствии карт.
-	 * @override
-	 * @see \Df\StripeClone\Facade\Customer::cards()
-	 * @used-by \Df\StripeClone\ConfigProvider::cards()
-	 * @used-by \Df\StripeClone\Facade\Customer::cardIdForJustCreated()
-	 * @param C $c
-	 * @return Card[]
-	 */
-	public function cards($c) {return array_map(function(array $card) {return
-		new Card($card)
-	;}, $c['cards']['data']);}
 
 	/**
 	 * 2017-02-10
@@ -66,4 +52,17 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @return string
 	 */
 	public function id($c) {return $c['id'];}
+
+	/**
+	 * 2017-02-11
+	 * Ключ $o['cards']['data'] присутствует в объекте даже при отсутствии карт.
+	 * @override
+	 * @see \Df\StripeClone\Facade\Customer::cardsData()
+	 * @used-by cardAdd()
+	 * @used-by \Df\StripeClone\Facade\Customer::cards()
+	 * @param C $c
+	 * @return array(array(string => string))
+	 * @see \Dfe\Omise\Facade\Charge::cardData()
+	 */
+	protected function cardsData($c) {return $c['cards']['data'];}
 }

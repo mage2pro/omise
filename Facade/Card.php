@@ -1,9 +1,11 @@
 <?php
 namespace Dfe\Omise\Facade;
 // 2017-02-11
+// https://www.omise.co/cards-api
 final class Card implements \Df\StripeClone\Facade\ICard {
 	/**
 	 * 2017-02-11
+	 * @used-by \Df\StripeClone\Facade\Card::create()
 	 * @param array(string => string) $p
 	 */
 	public function __construct(array $p) {$this->_p = $p;}
@@ -12,6 +14,7 @@ final class Card implements \Df\StripeClone\Facade\ICard {
 	 * 2017-02-11
 	 * @override
 	 * @see \Df\StripeClone\Facade\ICard::brand()
+	 * @used-by \Df\StripeClone\CardFormatter::ii()
 	 * @used-by \Df\StripeClone\CardFormatter::label()
 	 * @return string
 	 */
@@ -29,6 +32,7 @@ final class Card implements \Df\StripeClone\Facade\ICard {
 	 * 2017-02-11
 	 * @see \Df\StripeClone\Facade\ICard::expMonth()
 	 * @used-by \Df\StripeClone\CardFormatter::exp()
+	 * @used-by \Df\StripeClone\CardFormatter::ii()
 	 * @return string
 	 */
 	public function expMonth() {return $this->_p['expiration_month'];}
@@ -37,6 +41,7 @@ final class Card implements \Df\StripeClone\Facade\ICard {
 	 * 2017-02-11
 	 * @see \Df\StripeClone\Facade\ICard::expYear()
 	 * @used-by \Df\StripeClone\CardFormatter::exp()
+	 * @used-by \Df\StripeClone\CardFormatter::ii()
 	 * @return string
 	 */
 	public function expYear() {return $this->_p['expiration_year'];}
@@ -53,10 +58,20 @@ final class Card implements \Df\StripeClone\Facade\ICard {
 	/**
 	 * 2017-02-11
 	 * @see \Df\StripeClone\Facade\ICard::last4()
+	 * @used-by \Df\StripeClone\CardFormatter::ii()
 	 * @used-by \Df\StripeClone\CardFormatter::label()
 	 * @return string
 	 */
 	public function last4() {return $this->_p['last_digits'];}
+
+	/**
+	 * 2017-02-11
+	 * @override
+	 * @see \Df\StripeClone\Facade\ICard::owner()
+	 * @used-by \Df\StripeClone\CardFormatter::ii()
+	 * @return string
+	 */
+	public function owner() {return 'name';}
 
 	/**
 	 * 2017-02-11

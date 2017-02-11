@@ -18,38 +18,6 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	public function capturePreauthorized($id) {return C::retrieve($id)->capture();}
 
 	/**
-	 * 2017-02-11
-	 * Информация о банковской карте.
-	 *	{
-	 *		"object": "card",
-	 *		"id": "card_test_560jgvu90914d44h1vx",
-	 *		"livemode": false,
-	 *		"location": "/customers/cust_test_560jgw6s43s7i4ydd8r/cards/card_test_560jgvu90914d44h1vx",
-	 *		"country": "us",
-	 *		"city": null,
-	 *		"postal_code": null,
-	 *		"financing": "",
-	 *		"bank": "",
-	 *		"last_digits": "4444",
-	 *		"brand": "MasterCard",
-	 *		"expiration_month": 7,
-	 *		"expiration_year": 2019,
-	 *		"fingerprint": "/uCzRPQQRUDr8JvGUjKf7Xn10VRJeQ7oBZ1Zt7gLvWs=",
-	 *		"name": "DMITRY FEDYUK",
-	 *		"security_code_check": true,
-	 *		"created": "2016-11-15T22:00:49Z"
-	 *	}
-	 * @override
-	 * @see \Df\StripeClone\Facade\Charge::card()
-	 * @used-by \Df\StripeClone\Method::chargeNew()
-	 * @param C $c
-	 * @return array(string => string)
-	 */
-	public function card($c) {/** @var array(string => string) $a */ $a = $c['card']; return [
-		OP::CC_LAST_4 => $a['last_digits'], OP::CC_TYPE => $a['brand']
-	];}
-
-	/**
 	 * 2017-02-10
 	 * @override
 	 * @see \Df\StripeClone\Facade\Charge::create()
@@ -100,4 +68,16 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 		$result->reverse();
 		return $result;
 	}
+
+	/**
+	 * 2017-02-11
+	 * Информация о банковской карте.
+	 * @override
+	 * @see \Df\StripeClone\Facade\Charge::cardData()
+	 * @used-by \Df\StripeClone\Facade\Charge::card()
+	 * @param C $c
+	 * @return array(string => string)
+	 * @see \Dfe\Omise\Facade\Customer::cardsData()
+	 */
+	protected function cardData($c) {return $c['card'];}
 }
