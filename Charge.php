@@ -20,7 +20,7 @@ final class Charge extends \Df\StripeClone\Charge {
 	 * У текущих ПС (Stripe, Omise) название этого параметра для обоих объектов совпадает.
 	 * @override
 	 * @see \Df\StripeClone\Charge::keyCardId()
-	 * @used-by \Df\StripeClone\Charge::_request()
+	 * @used-by \Df\StripeClone\Charge::request()
 	 * @used-by \Df\StripeClone\Charge::newCard()
 	 * @return mixed
 	 */
@@ -31,7 +31,7 @@ final class Charge extends \Df\StripeClone\Charge {
 	 * https://www.omise.co/charges-api#charges-create
 	 * @override
 	 * @see \Df\StripeClone\Charge::scRequest()
-	 * @used-by \Df\StripeClone\Charge::_request()
+	 * @used-by \Df\StripeClone\Charge::request()
 	 * @return array(string => mixed)
 	 */
 	protected function scRequest() {return !$this->ss()->_3DS() ? [] : [
