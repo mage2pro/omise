@@ -1,14 +1,9 @@
 <?php
 // 2016-11-13
 namespace Dfe\Omise\T;
-use Dfe\Omise\Api\Customer as AC;
-use Dfe\Omise\Api\O as AO;
 use OmiseCustomer as C;
 final class Customer extends TestCase {
-	/**
-	 * @test
-	 * 2016-11-14
-	 */
+	/** @test 2016-11-14 */
 	public function t00() {}
 
 	/**
@@ -60,18 +55,14 @@ final class Customer extends TestCase {
 		;}, C::retrieve()['data']);
 	}
 
-	/**
-	 * 2016-11-13
-	 */
+	/** 2016-11-13 */
 	public function tRetrieve() {
 		/** @var C $customer */
 		$c = C::retrieve('cust_test_55zq4ihfaz2csc4c1s4');
 		$this->assertTrue(true);
 	}
 
-	/**
-	 * 2016-11-14
-	 */
+	/** 2016-11-14 */
 	public function tRetrieveNonExistent() {
 		$this->expectException(\OmiseException::class);
 		C::retrieve(df_uid());
