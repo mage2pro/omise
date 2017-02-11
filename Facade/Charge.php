@@ -1,5 +1,5 @@
 <?php
-namespace Dfe\Stripe\Facade;
+namespace Dfe\Omise\Facade;
 use Dfe\Omise\Exception\Charge as E;
 use Magento\Sales\Model\Order\Payment as OP;
 use OmiseCharge as C;
