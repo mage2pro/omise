@@ -1,6 +1,5 @@
 <?php
 namespace Dfe\Omise\Facade;
-use Dfe\Omise\Card;
 use OmiseCustomer as C;
 // 2017-02-10
 final class Customer extends \Df\StripeClone\Facade\Customer {
@@ -24,13 +23,13 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @override
 	 * @see \Df\StripeClone\Facade\Customer::cards()
 	 * @used-by \Df\StripeClone\ConfigProvider::cards()
+	 * @used-by \Df\StripeClone\Facade\Customer::cardIdForJustCreated()
 	 * @param C $c
-	 * @return array(string => string)
-	 * [card ID => card label]
+	 * @return Card[]
 	 */
-	public function cards($c) {return array_map(function(array $card) {return [
-		'id' => $card['id'], 'label' => (string)(new Card($card))
-	];}, $c['cards']['data']);}
+	public function cards($c) {return array_map(function(array $card) {return
+		new Card($card)
+	;}, $c['cards']['data']);}
 
 	/**
 	 * 2017-02-10
