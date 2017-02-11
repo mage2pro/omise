@@ -4,37 +4,14 @@ namespace Dfe\Omise;
 /** @method Settings ss() */
 final class Charge extends \Df\StripeClone\Charge {
 	/**
-	 * 2017-02-11
-	 * @override
-	 * @see \Df\StripeClone\Charge::cardIdPrefix()
-	 * @used-by \Df\StripeClone\Charge::usePreviousCard()
-	 * @return mixed
-	 */
-	protected function cardIdPrefix() {return 'card';}
-
-	/**
-	 * 2017-02-11
-	 * Этот ключ передаётся как параметр при создании 2 разных объектов:
-	 * 1) как источник средств для charge
-	 * 2) как token для customer.
-	 * У текущих ПС (Stripe, Omise) название этого параметра для обоих объектов совпадает.
-	 * @override
-	 * @see \Df\StripeClone\Charge::keyCardId()
-	 * @used-by \Df\StripeClone\Charge::request()
-	 * @used-by \Df\StripeClone\Charge::newCard()
-	 * @return mixed
-	 */
-	protected function keyCardId() {return 'card';}
-
-	/**
 	 * 2016-11-13
 	 * https://www.omise.co/charges-api#charges-create
 	 * @override
-	 * @see \Df\StripeClone\Charge::scRequest()
+	 * @see \Df\StripeClone\Charge::_request()
 	 * @used-by \Df\StripeClone\Charge::request()
 	 * @return array(string => mixed)
 	 */
-	protected function scRequest() {return !$this->ss()->_3DS() ? [] : [
+	protected function _request() {return !$this->ss()->_3DS() ? [] : [
 		/**
 		 * 2016-12-24
 		 * «(optional) The url where we will return the customer
@@ -59,4 +36,27 @@ final class Charge extends \Df\StripeClone\Charge {
 		 */
 		'return_uri' => $this->customerReturn()
 	];}
+
+	/**
+	 * 2017-02-11
+	 * @override
+	 * @see \Df\StripeClone\Charge::cardIdPrefix()
+	 * @used-by \Df\StripeClone\Charge::usePreviousCard()
+	 * @return mixed
+	 */
+	protected function cardIdPrefix() {return 'card';}
+
+	/**
+	 * 2017-02-11
+	 * Этот ключ передаётся как параметр при создании 2 разных объектов:
+	 * 1) как источник средств для charge
+	 * 2) как token для customer.
+	 * У текущих ПС (Stripe, Omise) название этого параметра для обоих объектов совпадает.
+	 * @override
+	 * @see \Df\StripeClone\Charge::keyCardId()
+	 * @used-by \Df\StripeClone\Charge::request()
+	 * @used-by \Df\StripeClone\Charge::newCard()
+	 * @return mixed
+	 */
+	protected function keyCardId() {return 'card';}
 }
