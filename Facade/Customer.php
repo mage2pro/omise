@@ -43,6 +43,7 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 
 	/**
 	 * 2017-02-10
+	 * https://github.com/omise/omise-php/issues/43
 	 * @override
 	 * @see \Df\StripeClone\Facade\Customer::get()
 	 * @used-by \Df\StripeClone\ConfigProvider::cards()
@@ -50,7 +51,11 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @param int $id
 	 * @return C
 	 */
-	public function get($id) {return C::retrieve($id);}
+	public function get($id) {
+		/** @var C $c */
+		$c = C::retrieve($id);
+		return $c->isDestroyed() ? null : $c;
+	}
 
 	/**
 	 * 2017-02-10
@@ -61,16 +66,4 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @return string
 	 */
 	public function id($c) {return $c['id'];}
-
-	/**
-	 * 2017-02-10
-	 * https://github.com/omise/omise-php/issues/43
-	 * @override
-	 * @see \Df\StripeClone\Facade\Customer::isDeleted()
-	 * @used-by \Df\StripeClone\ConfigProvider::cards()
-	 * @used-by \Df\StripeClone\Charge::newCard()
-	 * @param C $c
-	 * @return bool
-	 */
-	public function isDeleted($c) {return !!$c->isDestroyed();}
 }
