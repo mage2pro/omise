@@ -19,7 +19,7 @@ final class Complete extends \Dfe\Omise\Webhook\Charge {
 	 * @used-by \Df\StripeClone\WebhookStrategy::currentTransactionType()
 	 * @return string
 	 */
-	final public function currentTransactionType() {return
+	final function currentTransactionType() {return
 		$this->isPending() ? M::T_AUTHORIZE : M::T_CAPTURE
 	;}
 

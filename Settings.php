@@ -9,7 +9,7 @@ final class Settings extends \Df\StripeClone\Settings {
 	 * @used-by \Dfe\Omise\Charge::_request()
 	 * @return bool
 	 */
-	public function _3DS() {return $this->testableB();}
+	function _3DS() {return $this->testableB();}
 
 	/**
 	 * 2016-11-13
@@ -19,7 +19,7 @@ final class Settings extends \Df\StripeClone\Settings {
 	 * @used-by \Df\Payment\Method::action()
 	 * @return void
 	 */
-	public function init() {dfc($this, function() {
+	function init() {dfc($this, function() {
 		/** @used-by \OmiseObject::__construct() */
 		define('OMISE_PUBLIC_KEY', $this->publicKey());
 		define('OMISE_SECRET_KEY', $this->privateKey());

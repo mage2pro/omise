@@ -15,7 +15,7 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @param string $id
 	 * @return C
 	 */
-	public function capturePreauthorized($id) {return C::retrieve($id)->capture();}
+	function capturePreauthorized($id) {return C::retrieve($id)->capture();}
 
 	/**
 	 * 2017-02-10
@@ -25,7 +25,7 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @param array(string => mixed) $p
 	 * @return C
 	 */
-	public function create(array $p) {return E::assert(C::create($p), $p);}
+	function create(array $p) {return E::assert(C::create($p), $p);}
 
 	/**
 	 * 2017-02-10
@@ -35,7 +35,7 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @param C $c
 	 * @return string
 	 */
-	public function id($c) {return $c['id'];}
+	function id($c) {return $c['id'];}
 
 	/**
 	 * 2017-02-10
@@ -49,7 +49,7 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * Значение готово для применения в запросе API.
 	 * @return R
 	 */
-	public function refund($id, $amount) {return C::retrieve($id)->refunds()->create([
+	function refund($id, $amount) {return C::retrieve($id)->refunds()->create([
 		'amount' => $amount
 	]);}
 
@@ -62,7 +62,7 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @param string $id
 	 * @return C
 	 */
-	public function void($id) {
+	function void($id) {
 		/** @var C $result */
 		$result = C::retrieve($id);
 		$result->reverse();

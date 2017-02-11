@@ -4,13 +4,13 @@ namespace Dfe\Omise\T;
 use OmiseCustomer as C;
 final class Customer extends TestCase {
 	/** @test 2016-11-14 */
-	public function t00() {}
+	function t00() {}
 
 	/**
 	 * 2016-11-14
 	 * Omise допускает создание множества покупателей с одинаковым email.
 	 */
-	public function t02() {
+	function t02() {
 		/** @var array(string => string) $d */
 		$d = ['email' => 'admin@mage2.pro'];
 		/** @var int $i */
@@ -32,7 +32,7 @@ final class Customer extends TestCase {
 	 * 2) для удаления покупателя через этот официальный корявый PHP API
 	 * мы вынуждены заново делать retrieve для конкретного покупателя.
 	 */
-	public function t03() {
+	function t03() {
 		array_map(function($id) {
 			C::retrieve($id)->destroy()
 		;}, array_column(C::retrieve()['data'], 'id'));
@@ -47,7 +47,7 @@ final class Customer extends TestCase {
 	 * 2) для удаления покупателя через этот официальный корявый PHP API
 	 * мы вынуждены заново делать retrieve для конкретного покупателя.
 	 */
-	public function t04() {
+	function t04() {
 		array_map(function(array $c) {
 			if ('admin@mage2.pro' === $c['email']) {
 				C::retrieve($c['id'])->destroy();
@@ -56,14 +56,14 @@ final class Customer extends TestCase {
 	}
 
 	/** 2016-11-13 */
-	public function tRetrieve() {
+	function tRetrieve() {
 		/** @var C $customer */
 		$c = C::retrieve('cust_test_55zq4ihfaz2csc4c1s4');
 		$this->assertTrue(true);
 	}
 
 	/** 2016-11-14 */
-	public function tRetrieveNonExistent() {
+	function tRetrieveNonExistent() {
 		$this->expectException(\OmiseException::class);
 		C::retrieve(df_uid());
 	}

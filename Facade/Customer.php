@@ -12,7 +12,7 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @param string $token
 	 * @return string
 	 */
-	public function cardAdd($c, $token) {
+	function cardAdd($c, $token) {
 		$c->update(['card' => $token]);
 		return df_last($this->cardsData($c))['id'];
 	}
@@ -25,7 +25,7 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @param array(string => mixed) $p
 	 * @return C
 	 */
-	public function create(array $p) {return C::create($p);}
+	function create(array $p) {return C::create($p);}
 
 	/**
 	 * 2017-02-10
@@ -37,7 +37,7 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @param int $id
 	 * @return C
 	 */
-	public function get($id) {
+	function get($id) {
 		/** @var C $c */
 		$c = C::retrieve($id);
 		return $c->isDestroyed() ? null : $c;
@@ -51,7 +51,7 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @param C $c
 	 * @return string
 	 */
-	public function id($c) {return $c['id'];}
+	function id($c) {return $c['id'];}
 
 	/**
 	 * 2017-02-11

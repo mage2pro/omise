@@ -22,7 +22,7 @@ final class Method extends \Df\StripeClone\Method {
 	 * @see \Df\Payment\Method::canCapturePartial()
 	 * @return bool
 	 */
-	public function canCapturePartial() {return false;}
+	function canCapturePartial() {return false;}
 
 	/**
 	 * 2016-12-24

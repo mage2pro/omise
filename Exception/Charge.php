@@ -13,7 +13,7 @@ final class Charge extends \Dfe\Omise\Exception {
 	 * @param \OmiseCharge $c
 	 * @param array(string => mixed) $request
 	 */
-	public function __construct(\OmiseCharge $c, array $request) {
+	function __construct(\OmiseCharge $c, array $request) {
 		$this->_c = $c;
 		$this->_request = $request;
 		parent::__construct();
@@ -24,7 +24,7 @@ final class Charge extends \Dfe\Omise\Exception {
 	 * @used-by \Df\Qa\Message\Failure\Exception::main()
 	 * @return bool
 	 */
-	public function isMessageHtml() {return true;}
+	function isMessageHtml() {return true;}
 
 	/**
 	 * 2017-01-09
@@ -32,7 +32,7 @@ final class Charge extends \Dfe\Omise\Exception {
 	 * @see \Df\Core\Exception::message()
 	 * @return string
 	 */
-	public function message() {return df_cc_n(
+	function message() {return df_cc_n(
 		'The Omise charge is failed.'
 		,'Response:', df_json_encode_pretty(AO::_values($this->_c))
 		,'Request:', df_json_encode_pretty($this->_request)
@@ -44,7 +44,7 @@ final class Charge extends \Dfe\Omise\Exception {
 	 * @see \Df\Core\Exception::messageC()
 	 * @return string
 	 */
-	public function messageC() {return dfp_error_message($this->_c['failure_message']);}
+	function messageC() {return dfp_error_message($this->_c['failure_message']);}
 
 	/**
 	 * 2017-01-09
@@ -54,7 +54,7 @@ final class Charge extends \Dfe\Omise\Exception {
 	 * @used-by \Df\Sentry\Client::captureException()
 	 * @return string
 	 */
-	public function messageSentry() {return $this->_c['failure_message'];}
+	function messageSentry() {return $this->_c['failure_message'];}
 
 	/**
 	 * 2017-01-09
@@ -63,7 +63,7 @@ final class Charge extends \Dfe\Omise\Exception {
 	 * @used-by df_sentry()
 	 * @return array(string => mixed)
 	 */
-	public function sentryContext() {return [
+	function sentryContext() {return [
 		'extra' => ['request' => $this->_request, 'response' => AO::_values($this->_c)]
 		,'tags' => ['Omise' => df_package_version($this)]
 	];}

@@ -38,7 +38,7 @@ final class Create extends \Dfe\Omise\Webhook\Charge implements \Df\StripeClone\
 	 * @used-by \Df\StripeClone\WebhookStrategy\Charge\Refunded::handle()
 	 * @return int
 	 */
-	final public function amount() {return $this->ro('amount');}
+	final function amount() {return $this->ro('amount');}
 
 	/**
 	 * 2017-01-17
@@ -48,7 +48,7 @@ final class Create extends \Dfe\Omise\Webhook\Charge implements \Df\StripeClone\
 	 * @used-by \Df\StripeClone\WebhookStrategy::currentTransactionType()
 	 * @return string
 	 */
-	final public function currentTransactionType() {return M::T_REFUND;}
+	final function currentTransactionType() {return M::T_REFUND;}
 
 	/**
 	 * 2017-01-19
@@ -57,7 +57,7 @@ final class Create extends \Dfe\Omise\Webhook\Charge implements \Df\StripeClone\
 	 * @used-by \Df\StripeClone\WebhookStrategy\Charge\Refunded::handle()
 	 * @return string
 	 */
-	final public function eTransId() {return $this->ro('transaction');}
+	final function eTransId() {return $this->ro('transaction');}
 
 	/**
 	 * 2017-01-17
