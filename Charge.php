@@ -58,6 +58,15 @@ final class Charge extends \Df\StripeClone\Charge {
 		 */
 		'return_uri' => $this->customerReturn()
 	]);}
+
+	/**
+	 * 2017-02-11
+	 * @override
+	 * @see \Df\StripeClone\Charge::cardIdPrefix()
+	 * @used-by \Df\StripeClone\Charge::usePreviousCard()
+	 * @return mixed
+	 */
+	protected function cardIdPrefix() {return 'card';}
 	
 	/**
 	 * 2016-11-15
