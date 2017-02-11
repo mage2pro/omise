@@ -46,7 +46,6 @@ final class Charge extends \Df\StripeClone\Charge {
 	 * @return array(string => mixed)
 	 */
 	protected function scRequest() {/** @var Settings $s */ $s = $this->ss(); return [
-		'amount' => $this->amountF()
 		// 2016-11-16
 		// «(optional) Whether or not you want the charge to be captured right away,
 		// when not specified it is set to true.»
@@ -55,12 +54,7 @@ final class Charge extends \Df\StripeClone\Charge {
 		// you'll have an authorized only charge that you can capture anytime within 7 days.
 		// After that, the charge will expire.»
 		// https://www.omise.co/charges-api#charges-capture
-		,'capture' => $this->needCapture()
-		,'currency' => $this->currencyC()
-		// 2016-11-16
-		// «(optional) A custom description for the charge.
-		// This value can be searched for in your dashboard.»
-		,'description' => $this->text($s->description())
+		'capture' => $this->needCapture()
 	] + (!$s->_3DS() ? [] : [
 		/**
 		 * 2016-12-24
