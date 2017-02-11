@@ -13,26 +13,13 @@ final class Charge extends \Df\StripeClone\Charge {
 	protected function cardIdPrefix() {return 'card';}
 
 	/**
-	 * 2016-11-15
-	 * @override
-	 * @see \Df\StripeClone\Charge::customerParams()
-	 * @used-by \Df\StripeClone\Charge::newCard()
-	 * @return array(string => mixed)
-	 */
-	protected function customerParams() {return [
-		// 2016-11-15
-		// «(optional) A card token in case you want to add a card to the customer.»
-		// https://www.omise.co/customers-api#customers-create
-		'card' => $this->token()
-		,'description' => $this->customerName()
-		,'email' => $this->customerEmail()
-	];}
-
-	/**
 	 * 2017-02-11
+	 * Этот ключ передаётся как параметр при создании 2 разных объектов: charge и customer.
+	 * У текущих ПС (Stripe, Omise) название этого параметра для обоих объектов совпадает.
 	 * @override
 	 * @see \Df\StripeClone\Charge::keyCardId()
 	 * @used-by \Df\StripeClone\Charge::_request()
+	 * @used-by \Df\StripeClone\Charge::newCard()
 	 * @return mixed
 	 */
 	protected function keyCardId() {return 'card';}
