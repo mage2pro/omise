@@ -4,14 +4,57 @@ namespace Dfe\Omise;
 /** @method Settings ss() */
 final class Charge extends \Df\StripeClone\Charge {
 	/**
+	 * 2017-02-11
+	 * @override
+	 * @see \Df\StripeClone\Charge::cardIdPrefix()
+	 * @used-by \Df\StripeClone\Charge::usePreviousCard()
+	 * @return mixed
+	 */
+	protected function cardIdPrefix() {return 'card';}
+
+	/**
+	 * 2016-11-15
+	 * @override
+	 * @see \Df\StripeClone\Charge::customerParams()
+	 * @used-by \Df\StripeClone\Charge::newCard()
+	 * @return array(string => mixed)
+	 */
+	protected function customerParams() {return [
+		// 2016-11-15
+		// «(optional) A card token in case you want to add a card to the customer.»
+		// https://www.omise.co/customers-api#customers-create
+		'card' => $this->token()
+		,'description' => $this->customerName()
+		,'email' => $this->customerEmail()
+	];}
+
+	/**
+	 * 2017-02-11
+	 * @override
+	 * @see \Df\StripeClone\Charge::keyCardId()
+	 * @used-by \Df\StripeClone\Charge::_request()
+	 * @return mixed
+	 */
+	protected function keyCardId() {return 'card';}
+
+	/**
+	 * 2017-02-11
+	 * @override
+	 * @see \Df\StripeClone\Charge::keyCustomerId()
+	 * @used-by \Df\StripeClone\Charge::_request()
+	 * @return mixed
+	 */
+	protected function keyCustomerId() {return 'customer';}
+
+	/**
 	 * 2016-11-13
 	 * https://www.omise.co/charges-api#charges-create
 	 * @override
-	 * @see \Df\StripeClone\Charge::_request()
-	 * @used-by \Df\StripeClone\Charge::request()
+	 * @see \Df\StripeClone\Charge::scRequest()
+	 * @used-by \Df\StripeClone\Charge::_request()
 	 * @return array(string => mixed)
 	 */
-	protected function _request() {/** @var Settings $s */ $s = $this->ss(); return [
+	protected function scRequest() {/** @var Settings $s */ $s = $this->ss(); return [
 		'amount' => $this->amountF()
 		// 2016-11-16
 		// «(optional) Whether or not you want the charge to be captured right away,
@@ -22,12 +65,6 @@ final class Charge extends \Df\StripeClone\Charge {
 		// After that, the charge will expire.»
 		// https://www.omise.co/charges-api#charges-capture
 		,'capture' => $this->needCapture()
-		// 2016-03-07
-		// «(required or optional) A valid unused TOKEN_ID or CARD_ID
-		// In the case of the CARD_ID the customer parameter must be present and be the owner of the card.
-		// For the TOKEN_ID, the customer must not be passed.»
-		,'card' => $this->cardId()
-		,'customer' => $this->customerId()
 		,'currency' => $this->currencyC()
 		// 2016-11-16
 		// «(optional) A custom description for the charge.
@@ -58,29 +95,4 @@ final class Charge extends \Df\StripeClone\Charge {
 		 */
 		'return_uri' => $this->customerReturn()
 	]);}
-
-	/**
-	 * 2017-02-11
-	 * @override
-	 * @see \Df\StripeClone\Charge::cardIdPrefix()
-	 * @used-by \Df\StripeClone\Charge::usePreviousCard()
-	 * @return mixed
-	 */
-	protected function cardIdPrefix() {return 'card';}
-	
-	/**
-	 * 2016-11-15
-	 * @override
-	 * @see \Df\StripeClone\Charge::customerParams()
-	 * @used-by \Df\StripeClone\Charge::newCard()
-	 * @return array(string => mixed)
-	 */
-	protected function customerParams() {return [
-		// 2016-11-15
-		// «(optional) A card token in case you want to add a card to the customer.»
-		// https://www.omise.co/customers-api#customers-create
-		'card' => $this->token()
-		,'description' => $this->customerName()
-		,'email' => $this->customerEmail()
-	];}
 }
