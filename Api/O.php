@@ -13,5 +13,5 @@ final class O extends Sb {
 	 * @param Sb $o
 	 * @return array(string => string|bool|int|null)
 	 */
-	public static function _values(Sb $o) {return $o->_values;}
+	static function _values(Sb $o) {return $o->_values;}
 }

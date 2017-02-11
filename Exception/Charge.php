@@ -91,7 +91,7 @@ final class Charge extends \Dfe\Omise\Exception {
 	 * @return \OmiseCharge
 	 * @throws self
 	 */
-	public static function assert(\OmiseCharge $c, array $request) {
+	static function assert(\OmiseCharge $c, array $request) {
 		/** @var string $status */
 		$status = $c['status'];
 		/**
