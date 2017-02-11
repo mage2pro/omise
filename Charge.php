@@ -14,7 +14,9 @@ final class Charge extends \Df\StripeClone\Charge {
 
 	/**
 	 * 2017-02-11
-	 * Этот ключ передаётся как параметр при создании 2 разных объектов: charge и customer.
+	 * Этот ключ передаётся как параметр при создании 2 разных объектов:
+	 * 1) как источник средств для charge
+	 * 2) как token для customer.
 	 * У текущих ПС (Stripe, Omise) название этого параметра для обоих объектов совпадает.
 	 * @override
 	 * @see \Df\StripeClone\Charge::keyCardId()
@@ -32,17 +34,7 @@ final class Charge extends \Df\StripeClone\Charge {
 	 * @used-by \Df\StripeClone\Charge::_request()
 	 * @return array(string => mixed)
 	 */
-	protected function scRequest() {/** @var Settings $s */ $s = $this->ss(); return [
-		// 2016-11-16
-		// «(optional) Whether or not you want the charge to be captured right away,
-		// when not specified it is set to true.»
-		// 2016-11-17
-		// «If you have created a charge and passed capture=false,
-		// you'll have an authorized only charge that you can capture anytime within 7 days.
-		// After that, the charge will expire.»
-		// https://www.omise.co/charges-api#charges-capture
-		'capture' => $this->needCapture()
-	] + (!$s->_3DS() ? [] : [
+	protected function scRequest() {return !$this->ss()->_3DS() ? [] : [
 		/**
 		 * 2016-12-24
 		 * «(optional) The url where we will return the customer
@@ -66,5 +58,5 @@ final class Charge extends \Df\StripeClone\Charge {
 		 * @see \Dfe\Omise\Controller\CustomerReturn\Index
 		 */
 		'return_uri' => $this->customerReturn()
-	]);}
+	];}
 }
