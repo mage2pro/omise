@@ -38,6 +38,17 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	function id($c) {return $c['id'];}
 
 	/**
+	 * 2017-02-12
+	 * Returns the path to the bank card information
+	 * in a charge converted to an array by @see \Dfe\Omise\Facade\O::toArray()
+	 * @override
+	 * @see \Df\StripeClone\Facade\Charge::pathToCard()
+	 * @used-by \Df\StripeClone\Block\Info::prepare()
+	 * @return string
+	 */
+	function pathToCard() {return 'card';}
+
+	/**
 	 * 2017-02-10
 	 * @override
 	 * @see \Df\StripeClone\Facade\Charge::refund()
@@ -49,9 +60,7 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * Значение готово для применения в запросе API.
 	 * @return R
 	 */
-	function refund($id, $amount) {return C::retrieve($id)->refunds()->create([
-		'amount' => $amount
-	]);}
+	function refund($id, $amount) {return C::retrieve($id)->refunds()->create(['amount' => $amount]);}
 
 	/**
 	 * 2017-02-10
