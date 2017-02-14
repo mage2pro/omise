@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\Omise\Webhook\Refund;
-use Df\StripeClone\WebhookStrategy\Charge\Refunded;
+use Df\StripeClone\WebhookStrategy\Charge\Refunded as Strategy;
 use Dfe\Omise\Method as M;
 // 2017-01-17
 // Оповещение «refund.create» приходит
@@ -72,5 +72,5 @@ final class Create extends \Dfe\Omise\Webhook implements \Df\StripeClone\Webhook
 	 * @used-by \Df\StripeClone\Webhook::_handle()
 	 * @return string
 	 */
-	protected function strategyC() {return Refunded::class;}
+	protected function strategyC() {return Strategy::class;}
 }
