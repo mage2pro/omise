@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\Omise\Webhook\Charge;
-use Df\StripeClone\WebhookStrategy\Charge\Captured;
+use Df\StripeClone\WebhookStrategy\Charge\Captured as Strategy;
 use Dfe\Omise\Method as M;
 // 2017-01-17
 // Оповещение «charge.capture» приходит
@@ -35,5 +35,5 @@ final class Capture extends \Dfe\Omise\Webhook {
 	 * @used-by \Df\StripeClone\Webhook::_handle()
 	 * @return string
 	 */
-	protected function strategyC() {return Captured::class;}
+	protected function strategyC() {return Strategy::class;}
 }
