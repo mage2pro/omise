@@ -29,7 +29,7 @@ use Dfe\Omise\Method as M;
 		}
 	}
  */
-final class Create extends \Dfe\Omise\Webhook\Charge implements \Df\StripeClone\Webhook\IRefund {
+final class Create extends \Dfe\Omise\Webhook implements \Df\StripeClone\Webhook\IRefund {
 	/**
 	 * 2017-01-17
 	 * В валюте заказа (платежа), в формате платёжной системы (копейках).

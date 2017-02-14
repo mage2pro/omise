@@ -1,7 +1,11 @@
 <?php
 namespace Dfe\Omise;
-// 2017-01-09
-/** @see \Dfe\Omise\Webhook\Charge */
+/**
+ * 2017-01-09
+ * @see \Dfe\Omise\Webhook\Charge\Capture
+ * @see \Dfe\Omise\Webhook\Charge\Complete
+ * @see \Dfe\Omise\Webhook\Refund\Create
+ */
 abstract class Webhook extends \Df\StripeClone\Webhook {
 	/**
 	 * 2017-01-12

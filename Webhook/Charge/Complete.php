@@ -10,7 +10,7 @@ use Dfe\Omise\Method as M;
  * и означает успешность завершения проверки 3D Secure:
  * https://www.omise.co/api-webhooks#charge-events
  */
-final class Complete extends \Dfe\Omise\Webhook\Charge {
+final class Complete extends \Dfe\Omise\Webhook {
 	/**
 	 * 2017-01-09
 	 * @override
@@ -19,9 +19,7 @@ final class Complete extends \Dfe\Omise\Webhook\Charge {
 	 * @used-by \Df\StripeClone\WebhookStrategy::currentTransactionType()
 	 * @return string
 	 */
-	final function currentTransactionType() {return
-		$this->isPending() ? M::T_AUTHORIZE : M::T_CAPTURE
-	;}
+	final function currentTransactionType() {return $this->isPending() ? M::T_AUTHORIZE : M::T_CAPTURE;}
 
 	/**
 	 * 2017-01-09

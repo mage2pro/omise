@@ -8,7 +8,7 @@ use Dfe\Omise\Method as M;
  * при выполнении операции «capture» из административного интерфейса Omise.
  * https://www.omise.co/api-webhooks#charge-events
  */
-final class Capture extends \Dfe\Omise\Webhook\Charge {
+final class Capture extends \Dfe\Omise\Webhook {
 	/**
 	 * 2017-01-17
 	 * @override
