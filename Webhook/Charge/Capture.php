@@ -17,7 +17,7 @@ final class Capture extends \Dfe\Omise\Webhook {
 	 * @used-by \Df\StripeClone\WebhookStrategy::currentTransactionType()
 	 * @return string
 	 */
-	final function currentTransactionType() {return M::T_CAPTURE;}
+	function currentTransactionType() {return M::T_CAPTURE;}
 
 	/**
 	 * 2017-01-17
@@ -26,7 +26,7 @@ final class Capture extends \Dfe\Omise\Webhook {
 	 * @used-by \Df\StripeClone\Webhook::adaptParentId()
 	 * @return string
 	 */
-	final protected function parentTransactionType() {return M::T_AUTHORIZE;}
+	protected function parentTransactionType() {return M::T_AUTHORIZE;}
 
 	/**
 	 * 2017-01-17
@@ -35,5 +35,5 @@ final class Capture extends \Dfe\Omise\Webhook {
 	 * @used-by \Df\StripeClone\Webhook::_handle()
 	 * @return string
 	 */
-	final protected function strategyC() {return Captured::class;}
+	protected function strategyC() {return Captured::class;}
 }

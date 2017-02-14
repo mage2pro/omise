@@ -16,7 +16,7 @@ final class Complete extends \Dfe\Omise\Webhook {
 	 * @used-by \Df\StripeClone\WebhookStrategy::currentTransactionType()
 	 * @return string
 	 */
-	final function currentTransactionType() {return $this->isPending() ? M::T_AUTHORIZE : M::T_CAPTURE;}
+	function currentTransactionType() {return $this->isPending() ? M::T_AUTHORIZE : M::T_CAPTURE;}
 
 	/**
 	 * 2017-01-09
@@ -25,7 +25,7 @@ final class Complete extends \Dfe\Omise\Webhook {
 	 * @used-by \Df\StripeClone\Webhook::adaptParentId()
 	 * @return string
 	 */
-	final protected function parentTransactionType() {return M::T_3DS;}
+	protected function parentTransactionType() {return M::T_3DS;}
 
 	/**
 	 * 2017-01-12
@@ -34,7 +34,7 @@ final class Complete extends \Dfe\Omise\Webhook {
 	 * @used-by \Df\StripeClone\Webhook::_handle()
 	 * @return string
 	 */
-	final protected function strategyC() {return $this->isPending() ? Authorized::class : Captured::class;}
+	protected function strategyC() {return $this->isPending() ? Authorized::class : Captured::class;}
 
 	/**
 	 * 2017-01-15

@@ -17,7 +17,7 @@ final class Create extends \Dfe\Omise\Webhook implements \Df\StripeClone\Webhook
 	 * @used-by \Df\StripeClone\WebhookStrategy\Charge\Refunded::handle()
 	 * @return int
 	 */
-	final function amount() {return $this->ro('amount');}
+	function amount() {return $this->ro('amount');}
 
 	/**
 	 * 2017-01-17
@@ -27,7 +27,7 @@ final class Create extends \Dfe\Omise\Webhook implements \Df\StripeClone\Webhook
 	 * @used-by \Df\StripeClone\WebhookStrategy::currentTransactionType()
 	 * @return string
 	 */
-	final function currentTransactionType() {return M::T_REFUND;}
+	function currentTransactionType() {return M::T_REFUND;}
 
 	/**
 	 * 2017-01-19
@@ -36,7 +36,7 @@ final class Create extends \Dfe\Omise\Webhook implements \Df\StripeClone\Webhook
 	 * @used-by \Df\StripeClone\WebhookStrategy\Charge\Refunded::handle()
 	 * @return string
 	 */
-	final function eTransId() {return $this->ro('transaction');}
+	function eTransId() {return $this->ro('transaction');}
 
 	/**
 	 * 2017-01-17
@@ -45,7 +45,7 @@ final class Create extends \Dfe\Omise\Webhook implements \Df\StripeClone\Webhook
 	 * @used-by \Df\StripeClone\Webhook::id()
 	 * @return string
 	 */
-	final protected function idBase() {return $this->ro('id');}
+	protected function idBase() {return $this->ro('id');}
 
 	/**
 	 * 2017-01-17
@@ -54,7 +54,7 @@ final class Create extends \Dfe\Omise\Webhook implements \Df\StripeClone\Webhook
 	 * @used-by \Df\Payment\Webhook::parentIdRaw()
 	 * @return string
 	 */
-	final protected function parentIdRawKey() {return 'data/charge';}
+	protected function parentIdRawKey() {return 'data/charge';}
 
 	/**
 	 * 2017-01-17
@@ -63,7 +63,7 @@ final class Create extends \Dfe\Omise\Webhook implements \Df\StripeClone\Webhook
 	 * @used-by \Df\StripeClone\Webhook::adaptParentId()
 	 * @return string
 	 */
-	final protected function parentTransactionType() {return M::T_CAPTURE;}
+	protected function parentTransactionType() {return M::T_CAPTURE;}
 
 	/**
 	 * 2017-01-17
@@ -72,5 +72,5 @@ final class Create extends \Dfe\Omise\Webhook implements \Df\StripeClone\Webhook
 	 * @used-by \Df\StripeClone\Webhook::_handle()
 	 * @return string
 	 */
-	final protected function strategyC() {return Refunded::class;}
+	protected function strategyC() {return Refunded::class;}
 }
