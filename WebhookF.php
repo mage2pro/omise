@@ -1,7 +1,7 @@
 <?php
 // 2017-01-11
 namespace Dfe\Omise;
-class WebhookF extends \Df\StripeClone\WebhookF {
+final class WebhookF extends \Df\StripeClone\WebhookF {
 	/**             
 	 * 2017-01-11
 	 * Как и у Stripe, это ключ  отсутствует в логе события на странице события в интерфейсе Omise.
@@ -12,7 +12,7 @@ class WebhookF extends \Df\StripeClone\WebhookF {
 	 * @used-by \Df\StripeClone\WebhookF::_class()
 	 * @return string
 	 */
-	final protected function typeKey() {return 'key';}
+	protected function typeKey() {return 'key';}
 }
 
 
