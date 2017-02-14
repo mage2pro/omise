@@ -3,13 +3,10 @@ namespace Dfe\Omise\Webhook\Charge;
 use Df\StripeClone\WebhookStrategy\Charge\Authorized;
 use Df\StripeClone\WebhookStrategy\Charge\Captured;
 use Dfe\Omise\Method as M;
-/**
- * 2017-01-09
- * 2017-01-12
- * Это событие используется только в сценарии 3D Secure
- * и означает успешность завершения проверки 3D Secure:
- * https://www.omise.co/api-webhooks#charge-events
- */
+// 2017-01-12
+// Это событие используется только в сценарии 3D Secure
+// и означает успешность завершения проверки 3D Secure:
+// https://www.omise.co/api-webhooks#charge-events
 final class Complete extends \Dfe\Omise\Webhook {
 	/**
 	 * 2017-01-09
