@@ -48,13 +48,13 @@ final class Create extends \Dfe\Omise\Webhook implements \Df\StripeClone\Webhook
 	protected function idBase() {return $this->ro('id');}
 
 	/**
-	 * 2017-01-17
+	 * 2017-02-14
 	 * @override
-	 * @see \Dfe\Omise\Webhook::parentIdRawKey()
-	 * @used-by \Df\Payment\Webhook::parentIdRaw()
+	 * @see \Df\StripeClone\Webhook::parentIdRawKeySuffix()
+	 * @used-by \Df\StripeClone\Webhook::parentIdRawKey()
 	 * @return string
 	 */
-	protected function parentIdRawKey() {return 'data/charge';}
+	protected function parentIdRawKeySuffix() {return 'charge';}
 
 	/**
 	 * 2017-01-17
