@@ -5,6 +5,9 @@ namespace Dfe\Omise;
 abstract class Webhook extends \Df\StripeClone\Webhook {
 	/**
 	 * 2017-01-12
+	 * 2017-02-14
+	 * [Omise] An example of the «charge.capture» event (being sent to a webhook)
+	 * https://mage2.pro/t/2746
 	 * @override
 	 * @see \Df\Payment\Webhook::parentIdRawKey()
 	 * @used-by \Df\Payment\Webhook::parentIdRaw()
@@ -15,6 +18,9 @@ abstract class Webhook extends \Df\StripeClone\Webhook {
 
 	/**
 	 * 2017-01-12
+	 * 2017-02-14
+	 * [Omise] An example of the «charge.capture» event (being sent to a webhook)
+	 * https://mage2.pro/t/2746
 	 * @override
 	 * @see \Df\StripeClone\Webhook::roPath()
 	 * @used-by \Df\StripeClone\Webhook::ro()
