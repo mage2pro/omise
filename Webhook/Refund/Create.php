@@ -31,6 +31,12 @@ final class Create extends \Dfe\Omise\Webhook implements \Df\StripeClone\Webhook
 
 	/**
 	 * 2017-01-19
+	 * 2017-02-14
+	 * Метод должен вернуть идентификатор операции (не платежа!) в платёжной системе.
+	 * Он нужен нам для избежания обработки оповещений о возвратах, инициированных нами же
+	 * из административной части Magento: @see \Df\StripeClone\Method::_refund()
+	 * Это должен быть тот же самый идентификатор,
+	 * который возвращает @see \Dfe\Omise\Facade\Refund::transId()
 	 * @override
 	 * @see \Df\StripeClone\Webhook\IRefund::eTransId()
 	 * @used-by \Df\StripeClone\WebhookStrategy\Charge\Refunded::handle()
