@@ -8,7 +8,7 @@
 			<omise>
 				<actionForNew>authorize_capture</actionForNew>
 				<actionForReturned>authorize_capture</actionForReturned>
-				<askForBillingAddress>1</askForBillingAddress>
+				<requireBillingAddress>1</requireBillingAddress>
 <!--
 	2016-11-12
     https://www.omise.co/which-currency-does-omise-support
