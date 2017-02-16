@@ -2,7 +2,7 @@
 define([
 	'df'
 	,'Df_Checkout/js/data'
-	,'Df_Payment/stripeClone'
+	,'Df_StripeClone/main'
 	,'https://cdn.omise.co/omise.js'
 ], function(df, dfc, parent) {'use strict'; return parent.extend({
 	// 2016-11-12
