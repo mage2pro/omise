@@ -55,20 +55,20 @@ final class Charge extends \Df\StripeClone\Charge {
 	 * 2) в запросе на сохранение банковской карты для будущего повторного использования
 	 * У Omise название этого параметра для обоих запросов совпадает.
 	 * @override
-	 * @see \Df\StripeClone\Charge::keyCardId()
+	 * @see \Df\StripeClone\Charge::k_CardId()
 	 * @used-by \Df\StripeClone\Charge::request()
 	 * @used-by \Df\StripeClone\Charge::newCard()
 	 * @return string
 	 */
-	protected function keyCardId() {return 'card';}
+	protected function k_CardId() {return 'card';}
 
 	/**
 	 * 2017-02-18
 	 * Does Omise support dynamic statement descriptors? https://mage2.pro/t/2822
 	 * @override
-	 * @see \Df\StripeClone\Charge::keyDSD()
+	 * @see \Df\StripeClone\Charge::k_DSD()
 	 * @used-by \Df\StripeClone\Charge::request()
 	 * @return string
 	 */
-	protected function keyDSD() {return null;}
+	protected function k_DSD() {return null;}
 }
