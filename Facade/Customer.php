@@ -37,11 +37,7 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @param int $id
 	 * @return C
 	 */
-	function get($id) {
-		/** @var C $c */
-		$c = C::retrieve($id);
-		return $c->isDestroyed() ? null : $c;
-	}
+	function get($id) {/** @var C $c */return ($c = C::retrieve($id))->isDestroyed() ? null : $c;}
 
 	/**
 	 * 2017-02-10
