@@ -5,6 +5,25 @@ use OmiseCustomer as C;
 final class Customer extends \Df\StripeClone\Facade\Customer {
 	/**
 	 * 2017-02-10
+	 * https://github.com/omise/omise-php/issues/43
+	 * @override
+	 * @see \Df\StripeClone\Facade\Customer::_get()
+	 * @used-by \Df\StripeClone\Facade\Customer::get()
+	 * @param int $id
+	 * @return C
+	 */
+	function _get($id) {
+		// 2017-02-18
+		// К сожалению, нельз просто написать:
+		// return ($c = C::retrieve($id))->isDestroyed() ? null : $c;}
+		// На PHP 5.6 будет сбой: [E_PARSE] syntax error, unexpected '->' (T_OBJECT_OPERATOR)
+		/** @var C $c */
+		$c = C::retrieve($id);
+		return $c->isDestroyed() ? null : $c;
+	}
+
+	/**
+	 * 2017-02-10
 	 * @override
 	 * @see \Df\StripeClone\Facade\Customer::cardAdd()
 	 * @used-by \Df\StripeClone\Charge::newCard()
@@ -26,26 +45,6 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @return C
 	 */
 	function create(array $p) {return C::create($p);}
-
-	/**
-	 * 2017-02-10
-	 * https://github.com/omise/omise-php/issues/43
-	 * @override
-	 * @see \Df\StripeClone\Facade\Customer::get()
-	 * @used-by \Df\StripeClone\ConfigProvider::cards()
-	 * @used-by \Df\StripeClone\Charge::newCard()
-	 * @param int $id
-	 * @return C
-	 */
-	function get($id) {
-		// 2017-02-18
-		// К сожалению, нельз просто написать:
-		// return ($c = C::retrieve($id))->isDestroyed() ? null : $c;}
-		// На PHP 5.6 будет сбой: [E_PARSE] syntax error, unexpected '->' (T_OBJECT_OPERATOR)
-		/** @var C $c */
-		$c = C::retrieve($id);
-		return $c->isDestroyed() ? null : $c;
-	}
 
 	/**
 	 * 2017-02-10
