@@ -1,7 +1,7 @@
 <?php
-// 2016-11-13
 namespace Dfe\Omise\T;
-use Dfe\Omise\Settings as S;
+// 2016-11-13
+/** @method \Dfe\Omise\Settings s() */
 abstract class TestCase extends \Df\Core\TestCase {
 	/**
 	 * 2016-11-13
@@ -11,7 +11,7 @@ abstract class TestCase extends \Df\Core\TestCase {
 	 */
 	protected function setUp() {
 		parent::setUp();
-		S::s()->init();
+		$this->s()->init();
 		/**
 		 * 2016-11-13
 		 * Метод @see \OmiseApiResource::execute() норовит по $_SERVER['SCRIPT_NAME'] решить,
