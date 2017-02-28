@@ -1,8 +1,11 @@
 <?php
 namespace Dfe\Omise\T;
-// 2016-11-13
-/** @method \Dfe\Omise\Settings s() */
-abstract class TestCase extends \Df\Core\TestCase {
+/**
+ * 2016-11-13
+ * @see \Dfe\Omise\T\Customer
+ * @method \Dfe\Omise\Settings s()
+ */
+abstract class TestCase extends \Df\Payment\TestCase {
 	/**
 	 * 2016-11-13
 	 * @override
