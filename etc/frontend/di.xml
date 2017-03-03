@@ -17,4 +17,7 @@
 			</argument>
 		</arguments>
 	</type>
+	<virtualType name='Dfe\Omise\ConfigProvider' type='Df\StripeClone\ConfigProvider'>
+		<arguments><argument name='module' xsi:type='string'>Dfe_Omise</argument></arguments>
+	</virtualType>
 </config>
