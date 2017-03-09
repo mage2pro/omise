@@ -1,7 +1,7 @@
 <?php
 // 2017-01-11
 namespace Dfe\Omise;
-final class WebhookF extends \Df\StripeClone\WebhookF {
+final class WebhookF extends \Df\Payment\WebhookF\Json {
 	/**             
 	 * 2017-01-11
 	 * Как и у Stripe, это ключ  отсутствует в логе события на странице события в интерфейсе Omise.
