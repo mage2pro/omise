@@ -1,6 +1,6 @@
 <?php
-namespace Dfe\Omise\Webhook\Charge;
-use Df\StripeClone\WebhookStrategy\Charge\Captured as Strategy;
+namespace Dfe\Omise\W\Handler\Charge;
+use Df\StripeClone\W\Strategy\Charge\Captured as Strategy;
 use Dfe\Omise\Method as M;
 // 2017-01-17
 // Оповещение «charge.capture» приходит
@@ -8,13 +8,13 @@ use Dfe\Omise\Method as M;
 // https://www.omise.co/api-webhooks#charge-events
 // 2017-02-14
 // An example of this event: https://mage2.pro/t/2746
-final class Capture extends \Dfe\Omise\Webhook {
+final class Capture extends \Dfe\Omise\W\Handler {
 	/**
 	 * 2017-01-17
 	 * @override
-	 * @see \Df\StripeClone\Webhook::currentTransactionType()
-	 * @used-by \Df\StripeClone\Webhook::id()
-	 * @used-by \Df\StripeClone\WebhookStrategy::currentTransactionType()
+	 * @see \Df\StripeClone\W\Handler::currentTransactionType()
+	 * @used-by \Df\StripeClone\W\Handler::id()
+	 * @used-by \Df\StripeClone\W\Strategy::currentTransactionType()
 	 * @return string
 	 */
 	function currentTransactionType() {return M::T_CAPTURE;}
@@ -22,8 +22,8 @@ final class Capture extends \Dfe\Omise\Webhook {
 	/**
 	 * 2017-01-17
 	 * @override
-	 * @see \Df\StripeClone\Webhook::parentTransactionType()
-	 * @used-by \Df\StripeClone\Webhook::adaptParentId()
+	 * @see \Df\StripeClone\W\Handler::parentTransactionType()
+	 * @used-by \Df\StripeClone\W\Handler::adaptParentId()
 	 * @return string
 	 */
 	protected function parentTransactionType() {return M::T_AUTHORIZE;}
@@ -31,8 +31,8 @@ final class Capture extends \Dfe\Omise\Webhook {
 	/**
 	 * 2017-01-17
 	 * @override
-	 * @see \Df\StripeClone\Webhook::strategyC()
-	 * @used-by \Df\StripeClone\Webhook::_handle()
+	 * @see \Df\StripeClone\W\Handler::strategyC()
+	 * @used-by \Df\StripeClone\W\Handler::_handle()
 	 * @return string
 	 */
 	protected function strategyC() {return Strategy::class;}

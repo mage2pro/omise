@@ -1,7 +1,7 @@
 <?php
-// 2017-01-11
-namespace Dfe\Omise;
-final class WebhookF extends \Df\Payment\WebhookF\Json {
+namespace Dfe\Omise\W;
+// 2017-03-10
+final class Reader extends \Df\Payment\W\Reader\Json {
 	/**             
 	 * 2017-01-11
 	 * Как и у Stripe, это ключ  отсутствует в логе события на странице события в интерфейсе Omise.
@@ -11,11 +11,9 @@ final class WebhookF extends \Df\Payment\WebhookF\Json {
 	 * [Omise] An example of the «charge.capture» event (being sent to a webhook)
 	 * https://mage2.pro/t/2746
 	 * @override
-	 * @see \Df\Payment\WebhookF\Json::typeKey()
-	 * @used-by \Df\Payment\WebhookF\Json::type()
+	 * @see \Df\Payment\W\Reader::kt()
+	 * @used-by \Df\Payment\W\Reader::t()
 	 * @return string
 	 */
-	protected function typeKey() {return 'key';}
+	protected function kt() {return 'key';}
 }
-
-

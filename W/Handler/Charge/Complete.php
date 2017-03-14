@@ -1,19 +1,19 @@
 <?php
-namespace Dfe\Omise\Webhook\Charge;
-use Df\StripeClone\WebhookStrategy\Charge\Authorized;
-use Df\StripeClone\WebhookStrategy\Charge\Captured;
+namespace Dfe\Omise\W\Handler\Charge;
+use Df\StripeClone\W\Strategy\Charge\Authorized;
+use Df\StripeClone\W\Strategy\Charge\Captured;
 use Dfe\Omise\Method as M;
 // 2017-01-12
 // Это событие используется только в сценарии 3D Secure
 // и означает успешность завершения проверки 3D Secure:
 // https://www.omise.co/api-webhooks#charge-events
-final class Complete extends \Dfe\Omise\Webhook {
+final class Complete extends \Dfe\Omise\W\Handler {
 	/**
 	 * 2017-01-09
 	 * @override
-	 * @see \Df\StripeClone\Webhook::currentTransactionType()
-	 * @used-by \Df\StripeClone\Webhook::id()
-	 * @used-by \Df\StripeClone\WebhookStrategy::currentTransactionType()
+	 * @see \Df\StripeClone\W\Handler::currentTransactionType()
+	 * @used-by \Df\StripeClone\W\Handler::id()
+	 * @used-by \Df\StripeClone\W\Strategy::currentTransactionType()
 	 * @return string
 	 */
 	function currentTransactionType() {return $this->isPending() ? M::T_AUTHORIZE : M::T_CAPTURE;}
@@ -21,8 +21,8 @@ final class Complete extends \Dfe\Omise\Webhook {
 	/**
 	 * 2017-01-09
 	 * @override
-	 * @see \Df\StripeClone\Webhook::parentTransactionType()
-	 * @used-by \Df\StripeClone\Webhook::adaptParentId()
+	 * @see \Df\StripeClone\W\Handler::parentTransactionType()
+	 * @used-by \Df\StripeClone\W\Handler::adaptParentId()
 	 * @return string
 	 */
 	protected function parentTransactionType() {return M::T_3DS;}
@@ -30,8 +30,8 @@ final class Complete extends \Dfe\Omise\Webhook {
 	/**
 	 * 2017-01-12
 	 * @override
-	 * @see \Df\StripeClone\Webhook::strategyC()
-	 * @used-by \Df\StripeClone\Webhook::_handle()
+	 * @see \Df\StripeClone\W\Handler::strategyC()
+	 * @used-by \Df\StripeClone\W\Handler::_handle()
 	 * @return string
 	 */
 	protected function strategyC() {return $this->isPending() ? Authorized::class : Captured::class;}

@@ -11,7 +11,7 @@ final class Refund extends \Df\StripeClone\Facade\Refund {
 	 * смотрим, не было ли это оповещение инициировано нашей же операцией,
 	 * и если было, то не обрабатываем его повторно.
 	 * 2017-02-14
-	 * Этот же идентификатор должен возвращать @see \Dfe\Omise\Webhook\Refund\Create::eTransId()
+	 * Этот же идентификатор должен возвращать @see \Dfe\Omise\W\Handler\Refund\Create::eTransId()
 	 * @override
 	 * @see \Df\StripeClone\Facade\Refund::transId()
 	 * @used-by \Df\StripeClone\Method::_refund()

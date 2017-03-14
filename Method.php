@@ -93,13 +93,13 @@ final class Method extends \Df\StripeClone\Method {
 	/**
 	 * 2017-01-15
 	 * @used-by _3dsNeedForCharge()
-	 * @used-by \Dfe\Omise\Webhook\Charge\Complete::isPending()
+	 * @used-by \Dfe\Omise\W\Handler\Charge\Complete::isPending()
 	 */
 	const S_PENDING = 'pending';
 
 	/**
 	 * 2017-01-15
-	 * @used-by \Dfe\Omise\Webhook\Charge\Complete::isPending()
+	 * @used-by \Dfe\Omise\W\Handler\Charge\Complete::isPending()
 	 */
 	const S_SUCCESSFUL = 'successful';
 }
