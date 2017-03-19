@@ -39,12 +39,10 @@ final class Method extends \Df\StripeClone\Method {
 	 * https://mage2.pro/t/2460
 	 * @see \Df\StripeClone\Method::_3dsNeedForCharge()
 	 * @used-by \Df\StripeClone\Method::chargeNew()
-	 * @param object $charge
+	 * @param object $c
 	 * @return bool
 	 */
-	protected function _3dsNeedForCharge($charge) {return
-		$charge['authorize_uri'] && self::S_PENDING === $charge['status']
-	;}
+	protected function _3dsNeedForCharge($c) {return $c['authorize_uri'] && self::S_PENDING === $c['status'];}
 
 	/**
 	 * 2016-12-24
