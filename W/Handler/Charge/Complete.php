@@ -7,7 +7,7 @@ use Df\StripeClone\W\Strategy\Charge\Captured as C;
 // и означает успешность завершения проверки 3D Secure:
 // https://www.omise.co/api-webhooks#charge-events
 /** @method \Dfe\Omise\W\Event\Charge\Complete e() */
-final class Complete extends \Dfe\Omise\W\Handler {
+final class Complete extends \Df\StripeClone\W\Handler {
 	/**
 	 * 2017-01-12
 	 * @override

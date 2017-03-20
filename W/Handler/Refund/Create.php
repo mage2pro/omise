@@ -7,7 +7,7 @@ use Df\StripeClone\W\Strategy\Charge\Refunded as Strategy;
 // https://www.omise.co/api-webhooks#refund-events
 // 2017-02-14
 // An example of this event: https://mage2.pro/t/2748
-final class Create extends \Dfe\Omise\W\Handler implements \Df\StripeClone\W\IRefund {
+final class Create extends \Df\StripeClone\W\Handler implements \Df\StripeClone\W\IRefund {
 	/**
 	 * 2017-01-17
 	 * В валюте заказа (платежа), в формате платёжной системы (копейках).
