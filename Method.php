@@ -27,26 +27,6 @@ final class Method extends \Df\StripeClone\Method {
 	/**
 	 * 2016-12-24
 	 * @override
-	 * @see \Df\Payment\Method::_3dsNeed()
-	 * @used-by \Df\Payment\Method::getConfigPaymentAction()
-	 * @return bool
-	 */
-	protected function _3dsNeed() {return $this->s()->_3DS();}
-
-	/**
-	 * 2017-01-12
-	 * @override
-	 * https://mage2.pro/t/2460
-	 * @see \Df\StripeClone\Method::_3dsNeedForCharge()
-	 * @used-by \Df\StripeClone\Method::chargeNew()
-	 * @param object $c
-	 * @return bool
-	 */
-	protected function _3dsNeedForCharge($c) {return $c['authorize_uri'] && self::S_PENDING === $c['status'];}
-
-	/**
-	 * 2016-12-24
-	 * @override
 	 * @see \Df\Payment\Method::_3dsUrl()
 	 * @used-by \Df\Payment\Method::getConfigPaymentAction()
 	 * @param float $amount
@@ -75,6 +55,26 @@ final class Method extends \Df\StripeClone\Method {
 	protected function amountLimits() {return ['THB' => [20, 1000000], 'JPY' => [100, 999999]];}
 
 	/**
+	 * 2016-12-24
+	 * @override
+	 * @see \Df\Payment\Method::redirectNeeded()
+	 * @used-by \Df\Payment\Method::getConfigPaymentAction()
+	 * @return bool
+	 */
+	protected function redirectNeeded() {return $this->s()->_3DS();}
+
+	/**
+	 * 2017-01-12
+	 * @override
+	 * https://mage2.pro/t/2460
+	 * @see \Df\StripeClone\Method::redirectNeededForCharge()
+	 * @used-by \Df\StripeClone\Method::chargeNew()
+	 * @param object $c
+	 * @return bool
+	 */
+	protected function redirectNeededForCharge($c) {return $c['authorize_uri'] && self::S_PENDING === $c['status'];}
+
+	/**
 	 * 2016-12-26
 	 * @override
 	 * @see \Df\StripeClone\Method::transUrlBase()
@@ -90,7 +90,7 @@ final class Method extends \Df\StripeClone\Method {
 
 	/**
 	 * 2017-01-15
-	 * @used-by _3dsNeedForCharge()
+	 * @used-by redirectNeededForCharge()
 	 * @used-by \Dfe\Omise\W\Handler\Charge\Complete::isPending()
 	 */
 	const S_PENDING = 'pending';
