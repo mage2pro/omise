@@ -9,7 +9,6 @@ define([
 	// Omise requires the cardholder name:
 	// https://www.omise.co/omise-js-api#createtoken(type,-object,-callback)
 	defaults: {df: {card: {requireCardholder: true}}},
-
 	/**
 	 * 2016-11-12
 	 * https://www.omise.co/which-credit-cards-does-omise-accept
@@ -18,7 +17,6 @@ define([
 	 * @returns {String[]}
 	 */
 	getCardTypes: function() {return ['VI', 'MC', 'JCB'];},
-
 	/**
 	 * 2016-11-10
 	 * @override
@@ -29,21 +27,6 @@ define([
 		Omise.setPublicKey(this.publicKey());
 		return this;
 	},
-
-	/**
-	 * 2016-12-24
-	 * 3D Secure redirection.
-	 * @override
-	 * @see mage2pro/core/Payment/view/frontend/web/mixin.js
-	 * @used-by placeOrderInternal()
-	 */
-	onSuccess: function(redirectUrl) {
-		redirectUrl && redirectUrl.length
-			? window.location.replace(redirectUrl)
-			: this._super()
-		;
-	},
-
     /**
 	 * 2017-02-16
 	 * @override
@@ -53,7 +36,6 @@ define([
 	 * @returns {Boolean}
 	 */
 	tokenCheckStatus: function(status) {return 200 === status;},
-
     /**
 	 * 2017-02-16
 	 * @override
@@ -64,7 +46,6 @@ define([
 	 * @returns {Function}
 	 */
 	tokenCreate: function(params, callback) {return Omise.createToken('card', params, callback);},
-
     /**
 	 * 2017-02-16
 	 * https://www.omise.co/omise-js-api#createtoken(type,-object,-callback)
@@ -76,7 +57,6 @@ define([
 	 * @returns {String}
 	 */
 	tokenErrorMessage: function(status, resp) {return resp.message;},
-
     /**
 	 * 2017-02-16
 	 * @override
@@ -86,7 +66,6 @@ define([
 	 * @returns {String}
 	 */
 	tokenFromResponse: function(resp) {return resp.id;},
-
     /**
 	 * 2017-02-16
 	 * @override
