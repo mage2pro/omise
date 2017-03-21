@@ -25,23 +25,6 @@ final class Method extends \Df\StripeClone\Method {
 	function canCapturePartial() {return false;}
 
 	/**
-	 * 2016-12-24
-	 * @override
-	 * @see \Df\Payment\Method::_3dsUrl()
-	 * @used-by \Df\Payment\Method::getConfigPaymentAction()
-	 * @param float $amount
-	 * @param bool $capture
-	 * @return string
-	 * An example of result: http://api.omise.co/payments/paym_test_56fuvl1ih89gj1kjzid/authorize
-	 */
-	protected function _3dsUrl($amount, $capture) {return
-		// 2016-12-24
-		// «Url for charge authorization using 3-D Secure. Only if return_uri was set.»
-		// https://www.omise.co/charges-api
-		$this->chargeNew($amount, $capture)['authorize_uri']
-	;}
-
-	/**
 	 * 2016-11-15
 	 * https://www.omise.co/currency-and-amount
 	 * 2017-02-08
@@ -73,6 +56,23 @@ final class Method extends \Df\StripeClone\Method {
 	 * @return bool
 	 */
 	protected function redirectNeededForCharge($c) {return $c['authorize_uri'] && self::S_PENDING === $c['status'];}
+
+	/**
+	 * 2016-12-24
+	 * @override
+	 * @see \Df\Payment\Method::redirectUrl()
+	 * @used-by \Df\Payment\Method::getConfigPaymentAction()
+	 * @param float $amount
+	 * @param bool $capture
+	 * @return string
+	 * An example of result: http://api.omise.co/payments/paym_test_56fuvl1ih89gj1kjzid/authorize
+	 */
+	protected function redirectUrl($amount, $capture) {return
+		// 2016-12-24
+		// «Url for charge authorization using 3-D Secure. Only if return_uri was set.»
+		// https://www.omise.co/charges-api
+		$this->chargeNew($amount, $capture)['authorize_uri']
+	;}
 
 	/**
 	 * 2016-12-26
