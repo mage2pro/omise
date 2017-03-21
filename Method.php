@@ -38,15 +38,6 @@ final class Method extends \Df\StripeClone\Method {
 	protected function amountLimits() {return ['THB' => [20, 1000000], 'JPY' => [100, 999999]];}
 
 	/**
-	 * 2016-12-24
-	 * @override
-	 * @see \Df\Payment\Method::redirectNeeded()
-	 * @used-by \Df\Payment\Method::getConfigPaymentAction()
-	 * @return bool
-	 */
-	protected function redirectNeeded() {return $this->s()->_3DS();}
-
-	/**
 	 * 2017-01-12
 	 * @override
 	 * https://mage2.pro/t/2460
@@ -56,23 +47,6 @@ final class Method extends \Df\StripeClone\Method {
 	 * @return bool
 	 */
 	protected function redirectNeededForCharge($c) {return $c['authorize_uri'] && self::S_PENDING === $c['status'];}
-
-	/**
-	 * 2016-12-24
-	 * @override
-	 * @see \Df\Payment\Method::redirectUrl()
-	 * @used-by \Df\Payment\Method::getConfigPaymentAction()
-	 * @param float $amount
-	 * @param bool $capture
-	 * @return string
-	 * An example of result: http://api.omise.co/payments/paym_test_56fuvl1ih89gj1kjzid/authorize
-	 */
-	protected function redirectUrl($amount, $capture) {return
-		// 2016-12-24
-		// «Url for charge authorization using 3-D Secure. Only if return_uri was set.»
-		// https://www.omise.co/charges-api
-		$this->chargeNew($amount, $capture)['authorize_uri']
-	;}
 
 	/**
 	 * 2016-12-26
