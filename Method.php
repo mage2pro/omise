@@ -41,12 +41,12 @@ final class Method extends \Df\StripeClone\Method {
 	 * 2017-01-12
 	 * @override
 	 * https://mage2.pro/t/2460
-	 * @see \Df\StripeClone\Method::redirectNeededForCharge()
+	 * @see \Df\StripeClone\Method::redirectNeeded()
 	 * @used-by \Df\StripeClone\Method::chargeNew()
 	 * @param object $c
 	 * @return bool
 	 */
-	protected function redirectNeededForCharge($c) {return $c['authorize_uri'] && self::S_PENDING === $c['status'];}
+	protected function redirectNeeded($c) {return $c['authorize_uri'] && self::S_PENDING === $c['status'];}
 
 	/**
 	 * 2016-12-26
@@ -64,7 +64,7 @@ final class Method extends \Df\StripeClone\Method {
 
 	/**
 	 * 2017-01-15
-	 * @used-by redirectNeededForCharge()
+	 * @used-by redirectNeeded()
 	 * @used-by \Dfe\Omise\W\Handler\Charge\Complete::isPending()
 	 */
 	const S_PENDING = 'pending';
