@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\Omise\W\Handler\Charge;
-use Df\StripeClone\W\Strategy\Charge\Authorized as A;
-use Df\StripeClone\W\Strategy\Charge\Captured as C;
+use \Df\StripeClone\W\Strategy\Authorized as A;
+use \Df\StripeClone\W\Strategy\Captured as C;
 // 2017-01-12
 // Это событие используется только в сценарии 3D Secure
 // и означает успешность завершения проверки 3D Secure:
