@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\Omise\W\Handler\Refund;
-use \Df\StripeClone\W\Strategy\Refunded as Strategy;
+use \Df\StripeClone\W\Strategy\Refund as Strategy;
 // 2017-01-17
 // Оповещение «refund.create» приходит
 // при выполнении операции «refund» из административного интерфейса Omise.
@@ -13,7 +13,7 @@ final class Create extends \Df\StripeClone\W\Handler implements \Df\StripeClone\
 	 * В валюте заказа (платежа), в формате платёжной системы (копейках).
 	 * @override
 	 * @see \Df\StripeClone\W\IRefund::amount()
-	 * @used-by \Df\StripeClone\W\Strategy\Refunded::_handle()
+	 * @used-by \Df\StripeClone\W\Strategy\Refund::_handle()
 	 * @return int
 	 */
 	function amount() {return $this->e()->ro('amount');}
@@ -28,7 +28,7 @@ final class Create extends \Df\StripeClone\W\Handler implements \Df\StripeClone\
 	 * который возвращает @see \Dfe\Omise\Facade\Refund::transId()
 	 * @override
 	 * @see \Df\StripeClone\W\IRefund::eTransId()
-	 * @used-by \Df\StripeClone\W\Strategy\Refunded::_handle()
+	 * @used-by \Df\StripeClone\W\Strategy\Refund::_handle()
 	 * @return string
 	 */
 	function eTransId() {return $this->e()->ro('transaction');}

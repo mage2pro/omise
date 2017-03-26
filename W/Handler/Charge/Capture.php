@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\Omise\W\Handler\Charge;
-use \Df\StripeClone\W\Strategy\Captured as Strategy;
+use \Df\StripeClone\W\Strategy\CapturePreauthorized as Strategy;
 // 2017-01-17
 // Оповещение «charge.capture» приходит
 // при выполнении операции «capture» из административного интерфейса Omise.
