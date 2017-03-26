@@ -1,6 +1,5 @@
 <?php
 namespace Dfe\Omise\W\Event;
-use Dfe\Omise\Method as M;
 // 2017-03-15
 final class Refund extends \Dfe\Omise\W\Event {
 	/**
@@ -20,7 +19,7 @@ final class Refund extends \Dfe\Omise\W\Event {
 	 * @used-by \Df\StripeClone\W\Strategy\Charge::action()
 	 * @return string
 	 */
-	function ttCurrent() {return M::T_REFUND;}
+	function ttCurrent() {return self::T_REFUND;}
 
 	/**
 	 * 2017-01-17
@@ -29,7 +28,7 @@ final class Refund extends \Dfe\Omise\W\Event {
 	 * @used-by \Df\StripeClone\W\Nav::pidAdapt()
 	 * @return string
 	 */
-	function ttParent() {return M::T_CAPTURE;}
+	function ttParent() {return self::T_CAPTURE;}
 	
 	/**
 	 * 2017-02-14

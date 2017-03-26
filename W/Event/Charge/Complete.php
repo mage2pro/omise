@@ -28,7 +28,7 @@ final class Complete extends \Dfe\Omise\W\Event {
 	 * @used-by \Df\StripeClone\W\Strategy\Charge::action()
 	 * @return string
 	 */
-	function ttCurrent() {return $this->isPending() ? M::T_AUTHORIZE : M::T_CAPTURE;}
+	function ttCurrent() {return $this->isPending() ? self::T_AUTHORIZE : self::T_CAPTURE;}
 	
 	/**
 	 * 2017-01-09
@@ -37,5 +37,5 @@ final class Complete extends \Dfe\Omise\W\Event {
 	 * @used-by \Df\StripeClone\W\Nav::pidAdapt()
 	 * @return string
 	 */
-	function ttParent() {return M::T_3DS;}
+	function ttParent() {return self::T_3DS;}
 }
