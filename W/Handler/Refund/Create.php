@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\Omise\W\Handler\Refund;
-use \Df\StripeClone\W\Strategy\Refund as Strategy;
+use Df\StripeClone\W\Strategy\Refund as Strategy;
 // 2017-01-17
 // Оповещение «refund.create» приходит
 // при выполнении операции «refund» из административного интерфейса Omise.

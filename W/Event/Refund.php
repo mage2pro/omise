@@ -16,7 +16,7 @@ final class Refund extends \Dfe\Omise\W\Event {
 	 * @override
 	 * @see \Df\StripeClone\W\Event::ttCurrent()
 	 * @used-by \Df\StripeClone\W\Event::id()
-	 * @used-by \Df\StripeClone\W\Strategy\Authorize::action()
+	 * @used-by \Df\StripeClone\W\Strategy\ConfirmPending::action()
 	 * @return string
 	 */
 	function ttCurrent() {return self::T_REFUND;}
