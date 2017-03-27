@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\Omise;
 // 2016-11-13
-/** @method Settings ss() */
+/** @method Settings s() */
 final class Charge extends \Df\StripeClone\Charge {
 	/**
 	 * 2017-02-11
@@ -20,7 +20,7 @@ final class Charge extends \Df\StripeClone\Charge {
 	 * @used-by \Df\StripeClone\Charge::request()
 	 * @return array(string => mixed)
 	 */
-	protected function pCharge() {return !$this->ss()->_3DS() ? [] : [
+	protected function pCharge() {return !$this->s()->_3DS() ? [] : [
 		/**
 		 * 2016-12-24
 		 * «(optional) The url where we will return the customer
