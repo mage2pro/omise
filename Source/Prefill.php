@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\Omise\Source;
 // 2016-11-10
-final class Prefill extends \Df\Config\SourceT {
+final class Prefill extends \Df\Config\Source {
 	/**
 	 * 2016-11-10
 	 * https://www.omise.co/api-testing#test-cards
