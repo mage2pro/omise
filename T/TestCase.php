@@ -10,7 +10,6 @@ abstract class TestCase extends \Df\Payment\TestCase {
 	 * 2016-11-13
 	 * @override
 	 * @see \Df\Core\TestCase::setUp()
-	 * @return void
 	 */
 	protected function setUp() {
 		parent::setUp();

@@ -18,7 +18,6 @@ final class Settings extends \Df\StripeClone\Settings {
 	 * @override
 	 * @see \Df\Payment\Settings::init()
 	 * @used-by \Df\Payment\Method::action()
-	 * @return void
 	 */
 	function init() {dfc($this, function() {
 		/** @used-by \OmiseObject::__construct() */
