@@ -1,9 +1,6 @@
 // 2016-11-10
 define([
-	'df'
-	,'Df_Checkout/js/data'
-	,'Df_StripeClone/main'
-	,'https://cdn.omise.co/omise.js'
+	'df', 'Df_Checkout/js/data', 'Df_StripeClone/main', 'https://cdn.omise.co/omise.js'
 ], function(df, dfc, parent) {'use strict'; return parent.extend({
 	// 2016-11-12
 	// Omise requires the cardholder name:
@@ -20,6 +17,8 @@ define([
 	/**
 	 * 2016-11-10
 	 * @override
+	 * @see Df_Payment/card::initialize()
+	 * https://github.com/mage2pro/core/blob/2.4.21/Payment/view/frontend/web/card.js#L77-L110
 	 * @returns {Object}
 	*/
 	initialize: function() {
