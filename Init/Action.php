@@ -18,6 +18,6 @@ final class Action extends \Df\Payment\Init\Action {
 		// 2016-12-24
 		// «Url for charge authorization using 3-D Secure. Only if return_uri was set.»
 		// https://www.omise.co/charges-api
-		$this->m()->chargeNew($this->amount(), $this->preconfiguredToCapture())['authorize_uri']
+		$this->m()->chargeNew($this->preconfiguredToCapture())['authorize_uri']
 	;}	
 }
