@@ -13,10 +13,10 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @see \Df\StripeClone\Facade\Charge::capturePreauthorized()
 	 * @used-by \Df\StripeClone\Method::charge()
 	 * @param string $id
-	 * @param int|float $amount В формате и валюте ПС. Значение готово для применения в запросе API.
+	 * @param int|float $a В формате и валюте ПС. Значение готово для применения в запросе API.
 	 * @return C
 	 */
-	function capturePreauthorized($id, $amount) {return C::retrieve($id)->capture();}
+	function capturePreauthorized($id, $a) {return C::retrieve($id)->capture();}
 
 	/**
 	 * 2017-02-10
@@ -56,12 +56,12 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @used-by void
 	 * @used-by \Df\StripeClone\Method::_refund()
 	 * @param string $id
-	 * @param float $amount
+	 * @param float $a
 	 * В формате и валюте платёжной системы.
 	 * Значение готово для применения в запросе API.
 	 * @return R
 	 */
-	function refund($id, $amount) {return C::retrieve($id)->refunds()->create(['amount' => $amount]);}
+	function refund($id, $a) {return C::retrieve($id)->refunds()->create(['amount' => $a]);}
 
 	/**
 	 * 2017-02-10
