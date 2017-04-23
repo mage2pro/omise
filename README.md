@@ -3,14 +3,14 @@ Omise works with Thailand or Japan based stores.
 
 ## Demo videos
 
-1. [**Capture** a card payment](https://mage2.pro/t/topic/2483).
-2. [**Capture** a card payment with the **3D Secure** verification](https://mage2.pro/t/topic/2482).
-3. [**Authorize** a card payment, and **capture** it from the **Magento** side](https://mage2.pro/t/topic/2481).
-4. [**Authorize** a card payment, and **capture** it from the **Omise** side](https://mage2.pro/t/topic/2485).
-5. [**Authorize** a card payment, and **reverse** (**void**) it from the **Magento** side](https://mage2.pro/t/topic/2486).
-6. [**Capture** a card payment, and **refund** it from the **Magento** side](https://mage2.pro/t/topic/2489).
-7. [**Capture** a card payment, and **refund** it from the **Omise** side](https://mage2.pro/t/topic/2491).
-8. [**Partial** and **multiple refunds** from the **Magento** side](https://mage2.pro/t/topic/2503).
+1. [**Capture** a card payment](https://mage2.pro/t/2483).
+2. [**Capture** a card payment with the **3D Secure** verification](https://mage2.pro/t/2482).
+3. [**Authorize** a card payment, and **capture** it from the **Magento** side](https://mage2.pro/t/2481).
+4. [**Authorize** a card payment, and **capture** it from the **Omise** side](https://mage2.pro/t/2485).
+5. [**Authorize** a card payment, and **reverse** (**void**) it from the **Magento** side](https://mage2.pro/t/2486).
+6. [**Capture** a card payment, and **refund** it from the **Magento** side](https://mage2.pro/t/2489).
+7. [**Capture** a card payment, and **refund** it from the **Omise** side](https://mage2.pro/t/2491).
+8. [**Partial** and **multiple refunds** from the **Magento** side](https://mage2.pro/t/2503).
 
 ## How to buy
 You can buy it with PayPal [here](https://mage2.pro/t/2129).  
@@ -36,7 +36,7 @@ Please read the [testing policy](https://mage2.pro/t/2590) before installation.
 ## Support
 - [The extension's **forum** branch](https://mage2.pro/c/extensions/omise).
 - [Where and how to report a Mage2.PRO extension's issue?](https://mage2.pro/t/2034)
-- I also provide a **[generic Magento 2 support](https://mage2.pro/t/topic/755)** and [Magento 2 installation service](https://mage2.pro/t/748).
+- I also provide a **[generic Magento 2 support](https://mage2.pro/t/755)** and [Magento 2 installation service](https://mage2.pro/t/748).
 
 ## Want to be notified about the extension's updates?
 - [Subscribe](https://mage2.pro/t/2540) to the extension's [forum branch](https://mage2.pro/c/extensions/omise).
