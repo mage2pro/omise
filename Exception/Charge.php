@@ -6,7 +6,7 @@
  * и диагностическую информацию при сбое.
  */
 namespace Dfe\Omise\Exception;
-use Dfe\Omise\Api\O as AO;
+use Dfe\Omise\SDK\O as AO;
 final class Charge extends \Dfe\Omise\Exception {
 	/**
 	 * 2017-01-09
