@@ -1,13 +1,13 @@
 <?php
-namespace Dfe\Omise;
+namespace Dfe\Omise\P;
 // 2016-11-13
-/** @method Settings s() */
-final class Charge extends \Df\StripeClone\Charge {
+/** @method \Dfe\Omise\Settings s() */
+final class Charge extends \Df\StripeClone\P\Charge {
 	/**
 	 * 2017-02-11
 	 * @override
-	 * @see \Df\StripeClone\Charge::cardIdPrefix()
-	 * @used-by \Df\StripeClone\Charge::usePreviousCard()
+	 * @see \Df\StripeClone\P\Charge::cardIdPrefix()
+	 * @used-by \Df\StripeClone\P\Charge::usePreviousCard()
 	 * @return string
 	 */
 	protected function cardIdPrefix() {return 'card';}
@@ -16,11 +16,11 @@ final class Charge extends \Df\StripeClone\Charge {
 	 * 2016-11-13
 	 * https://www.omise.co/charges-api#charges-create
 	 * @override
-	 * @see \Df\StripeClone\Charge::pCharge()
-	 * @used-by \Df\StripeClone\Charge::request()
+	 * @see \Df\StripeClone\P\Charge::p()
+	 * @used-by \Df\StripeClone\P\Charge::request()
 	 * @return array(string => mixed)
 	 */
-	protected function pCharge() {return !$this->s()->_3DS() ? [] : [
+	protected function p() {return !$this->s()->_3DS() ? [] : [
 		/**
 		 * 2016-12-24
 		 * «(optional) The url where we will return the customer
@@ -41,7 +41,6 @@ final class Charge extends \Df\StripeClone\Charge {
 		 *
 		 * In the Omise case we set the URL for 3D Secure return dynamically (here),
 		 * so we prefer to use separate URLs for the Webhooks and 3D Secure return.
-		 * @see \Dfe\Omise\Controller\CustomerReturn\Index
 		 */
 		'return_uri' => $this->customerReturn()
 	];}
@@ -55,9 +54,9 @@ final class Charge extends \Df\StripeClone\Charge {
 	 * 2) в запросе на сохранение банковской карты для будущего повторного использования
 	 * У Omise название этого параметра для обоих запросов совпадает.
 	 * @override
-	 * @see \Df\StripeClone\Charge::k_CardId()
-	 * @used-by \Df\StripeClone\Charge::newCard()
-	 * @used-by \Df\StripeClone\Charge::request()
+	 * @see \Df\StripeClone\P\Charge::k_CardId()
+	 * @used-by \Df\StripeClone\P\Charge::newCard()
+	 * @used-by \Df\StripeClone\P\Charge::request()
 	 * @return string
 	 */
 	protected function k_CardId() {return 'card';}
@@ -66,8 +65,8 @@ final class Charge extends \Df\StripeClone\Charge {
 	 * 2017-02-18
 	 * Does Omise support dynamic statement descriptors? https://mage2.pro/t/2822
 	 * @override
-	 * @see \Df\StripeClone\Charge::k_DSD()
-	 * @used-by \Df\StripeClone\Charge::request()
+	 * @see \Df\StripeClone\P\Charge::k_DSD()
+	 * @used-by \Df\StripeClone\P\Charge::request()
 	 * @return string
 	 */
 	protected function k_DSD() {return null;}

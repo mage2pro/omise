@@ -6,7 +6,7 @@ final class Complete extends \Dfe\Omise\W\Event {
 	/**
 	 * 2017-01-15
 	 * Здесь, в оповещении «charge.complete», успешное состояние charge зависит указанного нами ранее
-	 * при создании charge в методе @see \Dfe\Omise\Charge::pCharge() значения флага «capture»:
+	 * при создании charge в методе @see \Dfe\Omise\P\Charge::p() значения флага «capture»:
 	 * https://github.com/mage2pro/omise/tree/1.1.2/Charge.php#L27
 	 * Если мы этот флаг устанавливали, то здесь успешным состоянием charge будет «successful».
 	 * Если мы этот флаг не устанавливали, то здесь успешным состоянием charge будет «pending».
