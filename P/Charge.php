@@ -14,15 +14,6 @@ final class Charge extends \Df\StripeClone\P\Charge {
 	function k_CardId() {return 'card';}
 
 	/**
-	 * 2017-02-11
-	 * @override
-	 * @see \Df\StripeClone\P\Charge::cardIdPrefix()
-	 * @used-by \Df\StripeClone\P\Charge::usePreviousCard()
-	 * @return string
-	 */
-	protected function cardIdPrefix() {return 'card';}
-
-	/**
 	 * 2016-11-13
 	 * https://www.omise.co/charges-api#charges-create
 	 * @override
