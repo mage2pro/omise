@@ -15,7 +15,6 @@
 			<group
 				id='omise'
 				translate='label'
-				type='text'
 				sortOrder='1513'
 				showInDefault='1'
 				showInWebsite='1'
