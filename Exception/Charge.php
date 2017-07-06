@@ -34,8 +34,8 @@ final class Charge extends \Dfe\Omise\Exception {
 	 */
 	function message() {return df_cc_n(
 		'The Omise charge is failed.'
-		,'Response:', df_json_encode_pretty(AO::_values($this->_c))
-		,'Request:', df_json_encode_pretty($this->_request)
+		,'Response:', df_json_encode(AO::_values($this->_c))
+		,'Request:', df_json_encode($this->_request)
 	);}
 
 	/**
