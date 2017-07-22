@@ -246,9 +246,22 @@ https://github.com/omise/omise-php/issues/52
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
-					id='min_order_total'
+					id='prefillCardholder'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='17'
+					translate='label'
+					type='Df\Framework\Form\Element\Checkbox'
+				>
+					<label>Prefill the cardholder's name from the billing address?</label>
+					<backend_model>Df\Config\Backend\Checkbox</backend_model>
+					<depends>
+						<field id='enable'>1</field>
+					</depends>
+				</field>
+				<field
+					id='min_order_total'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='18'
 					translate='label'
 					type='text'
 				>
@@ -260,7 +273,7 @@ https://github.com/omise/omise-php/issues/52
 				<field
 					id='max_order_total'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='18'
+					sortOrder='19'
 					translate='label'
 					type='text'
 				>
@@ -272,7 +285,7 @@ https://github.com/omise/omise-php/issues/52
 				<field
 					id='country_restriction'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='19'
+					sortOrder='20'
 					translate='label'
 					type='select'
 				>
@@ -283,7 +296,7 @@ https://github.com/omise/omise-php/issues/52
 				<field
 					id='countries'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='20'
+					sortOrder='21'
 					translate='label'
 					type='Df\Framework\Form\Element\Multiselect'
 				>
