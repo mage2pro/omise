@@ -1,19 +1,19 @@
 <?php
 namespace Dfe\Omise\W\Handler\Refund;
-use Df\StripeClone\W\Strategy\Refund as Strategy;
+use Df\Payment\W\Strategy\Refund as Strategy;
 // 2017-01-17
 // Оповещение «refund.create» приходит
 // при выполнении операции «refund» из административного интерфейса Omise.
 // https://www.omise.co/api-webhooks#refund-events
 // 2017-02-14
 // An example of this event: https://mage2.pro/t/2748
-final class Create extends \Df\StripeClone\W\Handler implements \Df\StripeClone\W\IRefund {
+final class Create extends \Df\StripeClone\W\Handler implements \Df\Payment\W\IRefund {
 	/**
 	 * 2017-01-17
 	 * В валюте заказа (платежа), в формате платёжной системы (копейках).
 	 * @override
-	 * @see \Df\StripeClone\W\IRefund::amount()
-	 * @used-by \Df\StripeClone\W\Strategy\Refund::_handle()
+	 * @see \Df\Payment\W\IRefund::amount()
+	 * @used-by \Df\Payment\W\Strategy\Refund::_handle()
 	 * @return int
 	 */
 	function amount() {return $this->e()->ro('amount');}
@@ -27,8 +27,8 @@ final class Create extends \Df\StripeClone\W\Handler implements \Df\StripeClone\
 	 * Это должен быть тот же самый идентификатор,
 	 * который возвращает @see \Dfe\Omise\Facade\Refund::transId()
 	 * @override
-	 * @see \Df\StripeClone\W\IRefund::eTransId()
-	 * @used-by \Df\StripeClone\W\Strategy\Refund::_handle()
+	 * @see \Df\Payment\W\IRefund::eTransId()
+	 * @used-by \Df\Payment\W\Strategy\Refund::_handle()
 	 * @return string
 	 */
 	function eTransId() {return $this->e()->ro('transaction');}

@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\Omise\W\Handler\Charge;
-use Df\StripeClone\W\Strategy\ConfirmPending as A;
-use Df\StripeClone\W\Strategy\CapturePreauthorized as C;
+use Df\Payment\W\Strategy\ConfirmPending as A;
+use Df\Payment\W\Strategy\CapturePreauthorized as C;
 // 2017-01-12
 // Это событие используется только в сценарии 3D Secure
 // и означает успешность завершения проверки 3D Secure:
