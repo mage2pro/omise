@@ -1,6 +1,5 @@
 <?php
 namespace Dfe\Omise\W\Handler\Refund;
-use Df\Payment\W\Strategy\Refund as Strategy;
 /**
  * 2017-01-17
  * 2017-02-14 An example of this event: https://mage2.pro/t/2748
@@ -42,5 +41,5 @@ final class Create extends \Df\Payment\W\Handler implements \Df\Payment\W\IRefun
 	 * @used-by \Df\Payment\W\Handler::handle()
 	 * @return string
 	 */
-	protected function strategyC() {return Strategy::class;}
+	protected function strategyC() {return \Df\Payment\W\Strategy\Refund::class;}
 }

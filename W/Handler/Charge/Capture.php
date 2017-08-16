@@ -1,6 +1,5 @@
 <?php
 namespace Dfe\Omise\W\Handler\Charge;
-use Df\Payment\W\Strategy\CapturePreauthorized as Strategy;
 // 2017-01-17
 // 2017-08-16 We get the `charge.capture` event when the merchant has just captured a preauthorized payment
 // from his Omise dashboard: https://www.omise.co/api-webhooks#charge-events
@@ -13,5 +12,5 @@ final class Capture extends \Df\Payment\W\Handler {
 	 * @used-by \Df\Payment\W\Handler::handle()
 	 * @return string
 	 */
-	protected function strategyC() {return Strategy::class;}
+	protected function strategyC() {return \Df\Payment\W\Strategy\CapturePreauthorized::class;}
 }
