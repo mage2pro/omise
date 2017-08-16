@@ -1,13 +1,15 @@
 <?php
 namespace Dfe\Omise\W\Handler\Refund;
 use Df\Payment\W\Strategy\Refund as Strategy;
-// 2017-01-17
-// Оповещение «refund.create» приходит
-// при выполнении операции «refund» из административного интерфейса Omise.
-// https://www.omise.co/api-webhooks#refund-events
-// 2017-02-14
-// An example of this event: https://mage2.pro/t/2748
-final class Create extends \Df\StripeClone\W\Handler implements \Df\Payment\W\IRefund {
+/**
+ * 2017-01-17
+ * 2017-02-14 An example of this event: https://mage2.pro/t/2748
+ * 2017-08-16
+ * We get this event when the merchant has just refunded a payment from his Omise dashboard.
+ * https://www.omise.co/api-webhooks#refund-events
+ * @method \Dfe\Omise\W\Event\Refund e()
+ */
+final class Create extends \Df\Payment\W\Handler implements \Df\Payment\W\IRefund {
 	/**
 	 * 2017-01-17
 	 * В валюте заказа (платежа), в формате платёжной системы (копейках).
