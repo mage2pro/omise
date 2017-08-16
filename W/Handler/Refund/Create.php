@@ -36,8 +36,8 @@ final class Create extends \Df\StripeClone\W\Handler implements \Df\Payment\W\IR
 	/**
 	 * 2017-01-17
 	 * @override
-	 * @see \Df\StripeClone\W\Handler::strategyC()
-	 * @used-by \Df\StripeClone\W\Handler::_handle()
+	 * @see \Df\Payment\W\Handler::strategyC()
+	 * @used-by \Df\Payment\W\Handler::handle()
 	 * @return string
 	 */
 	protected function strategyC() {return Strategy::class;}
