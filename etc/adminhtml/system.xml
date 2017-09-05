@@ -188,7 +188,7 @@ https://github.com/omise/omise-php/issues/52
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
-					dfValues='THB,JPY'
+					dfValues='THB,USD,EUR,GBP,JPY,SGD'
 					id='currency'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='12'
@@ -229,10 +229,7 @@ https://github.com/omise/omise-php/issues/52
 					type='textarea'
 				>
 					<label>Description</label>
-					<comment><![CDATA[<p class='df-note'>It will be displayed to you in the Omise merchant interface alongside the payment.</p>
-<p class='df-note'>You can use <a href='https://mage2.pro/t/1834' target='_blank'>some variables</a> in the description.</p>
-<p class='df-note'>The length <a href='https://www.omise.co/charges-api#charges-create' target='_blank' title='The Omise documentation: «Charge API» → «Create a charge» → «Request Parameter». See the «description» parameter.'>is not limited</a>.</p>
-]]></comment>
+					<comment model='Df\Payment\Comment\Description'/>
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
