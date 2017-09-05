@@ -1,7 +1,9 @@
 // 2016-11-10
 define([
 	'df', 'Df_Checkout/data', 'Df_StripeClone/main', 'https://cdn.omise.co/omise.js'
-], function(df, dfc, parent) {'use strict'; return parent.extend({
+], function(df, dfc, parent) {'use strict';
+/** 2017-09-06 @uses Class::extend() https://github.com/magento/magento2/blob/2.2.0-rc2.3/app/code/Magento/Ui/view/base/web/js/lib/core/class.js#L106-L140 */	
+return parent.extend({
 	// 2016-11-12
 	// Omise requires the cardholder name:
 	// https://www.omise.co/omise-js-api#createtoken(type,-object,-callback)
