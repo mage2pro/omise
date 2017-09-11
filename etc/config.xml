@@ -17,6 +17,11 @@
 -->
 				<description>{order.id}</description>
 				<description_rules>
+					<locations>
+						<merchant>
+							<shown>1</shown>
+						</merchant>
+					</locations>
 					<maxLength>
 						<title>The Omise documentation: «Charge API» → «Create a charge» → «Request Parameter». See the «description» parameter.</title>
 						<url>https://www.omise.co/charges-api#charges-create</url>
