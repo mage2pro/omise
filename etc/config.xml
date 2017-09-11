@@ -16,10 +16,12 @@
 	https://www.omise.co/charges-api#charges-create
 -->
 				<description>{order.id}</description>
-				<descriptionMaxLength>
-					<title>The Omise documentation: «Charge API» → «Create a charge» → «Request Parameter». See the «description» parameter.</title>
-					<url>https://www.omise.co/charges-api#charges-create</url>
-				</descriptionMaxLength>
+				<description_rules>
+					<maxLength>
+						<title>The Omise documentation: «Charge API» → «Create a charge» → «Request Parameter». See the «description» parameter.</title>
+						<url>https://www.omise.co/charges-api#charges-create</url>
+					</maxLength>
+				</description_rules>
 				<requireBillingAddress>1</requireBillingAddress>
 				<title>Bank Card</title>
 				<title_backend>Omise</title_backend>
