@@ -22,6 +22,7 @@ final class Card implements \Df\StripeClone\Facade\ICard {
 
 	/**
 	 * 2017-02-11
+	 * 2017-10-07 An ISO-2 code.
 	 * @see \Df\StripeClone\Facade\ICard::country()
 	 * @used-by \Df\StripeClone\CardFormatter::country()
 	 * @return string
