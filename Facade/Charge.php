@@ -90,8 +90,7 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	}
 
 	/**
-	 * 2017-02-11
-	 * Информация о банковской карте.
+	 * 2017-02-11 The bank card data.
 	 * @override
 	 * @see \Df\StripeClone\Facade\Charge::cardData()
 	 * @used-by \Df\StripeClone\Facade\Charge::card()
