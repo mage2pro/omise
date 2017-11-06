@@ -1,7 +1,7 @@
 {
 	"name": "mage2pro/omise"
 	,"version": "1.11.1"
-	,"description": "The «Omise» payment extension for Magento 2."
+	,"description": "Omise integration with Magento 2"
 	,"type": "magento2-module"
 	,"homepage": "https://mage2.pro/c/extensions/omise"
 	,"license": "proprietary"
