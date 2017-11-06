@@ -36,9 +36,8 @@ final class Method extends \Df\StripeClone\Method {
 	protected function amountLimits() {return ['THB' => [20, 1000000], 'JPY' => [100, 999999]];}
 
 	/**
-	 * 2017-01-12
+	 * 2017-01-12 https://mage2.pro/t/2460
 	 * @override
-	 * https://mage2.pro/t/2460
 	 * @see \Df\StripeClone\Method::redirectNeeded()
 	 * @used-by \Df\StripeClone\Method::chargeNew()
 	 * @param object $c
