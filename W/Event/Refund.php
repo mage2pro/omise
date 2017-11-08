@@ -15,7 +15,7 @@ final class Refund extends \Dfe\Omise\W\Event {
 	 * 2017-01-17
 	 * @override
 	 * @see \Df\StripeClone\W\Event::ttCurrent()
-	 * @used-by \Df\StripeClone\W\Event::id()
+	 * @used-by \Df\StripeClone\W\Nav::id()
 	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
 	 * @return string
 	 */
