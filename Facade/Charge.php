@@ -80,7 +80,7 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * 2017-02-11
 	 * @override
 	 * @see \Df\StripeClone\Facade\Charge::cardIdPrefix()
-	 * @used-by \Df\StripeClone\Payer::usePreviousCard()
+	 * @used-by \Df\StripeClone\Payer::tokenIsNew()
 	 * @return string
 	 */
 	protected function cardIdPrefix() {return 'card_';}
