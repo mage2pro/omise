@@ -20,4 +20,6 @@
 	<virtualType name='Dfe\Omise\ConfigProvider' type='Df\StripeClone\ConfigProvider'>
 		<arguments><argument name='module' xsi:type='string'>Dfe_Omise</argument></arguments>
 	</virtualType>
+	<virtualType name='Dfe\Omise\Controller\CustomerReturn\Index' type='Df\Payment\CustomerReturn'/>
+	<virtualType name='Dfe\Omise\Controller\Index\Index' type='Df\Payment\W\Action'/>
 </config>
