@@ -1,4 +1,4 @@
-The extension provides a 2-way integration between Magento 2 and the **[Omise](https://www.omise.co/)** payment service.
+The extension provides a 2-way integration between Magento 2 and the **[Omise](https://www.omise.co/)** payment service.  
 Omise works with Thailand, Japan, Indonesia, and Singapore based stores.
 
 ## Demo videos
