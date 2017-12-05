@@ -33,7 +33,12 @@ https://www.omise.co/charges-api#charges-create
 		</df_payment>
         <payment>
             <dfe_omise>
-
+<!-- 2017-12-05
+"The module is not shown in the «Mageplaza Extensions» → «One Step Checkout» →
+«General Configuration» → «Default Payment Method» Magento 2 backend dropdown":
+https://github.com/mage2pro/omise/issues/3
+https://github.com/mage2pro/stripe/blob/2.5.2/etc/config.xml#L52-L120
+-->
 <!-- 2017-07-24
 @used-by \Magento\Payment\Helper\Data::getMethodModelConfigName():
 	protected function getMethodModelConfigName($code) {
