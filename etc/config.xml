@@ -39,6 +39,7 @@ https://www.omise.co/charges-api#charges-create
 https://github.com/mage2pro/omise/issues/3
 https://github.com/mage2pro/stripe/blob/2.5.2/etc/config.xml#L52-L120
 -->
+				<active>1</active>
 <!-- 2017-07-24
 @used-by \Magento\Payment\Helper\Data::getMethodModelConfigName():
 	protected function getMethodModelConfigName($code) {
