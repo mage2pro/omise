@@ -1,8 +1,8 @@
 <?php
-namespace Dfe\Omise\T;
+namespace Dfe\Omise\Test;
 /**
  * 2016-11-13
- * @see \Dfe\Omise\T\Customer
+ * @see \Dfe\Omise\Test\Customer
  * @method \Dfe\Omise\Settings s()
  */
 abstract class TestCase extends \Df\Payment\TestCase {
