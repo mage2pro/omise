@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\Omise\Facade;
 use OmiseCustomer as C;
-// 2017-02-10
+# 2017-02-10
 final class Customer extends \Df\StripeClone\Facade\Customer {
 	/**
 	 * 2017-02-10
@@ -46,10 +46,10 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @return C
 	 */
 	protected function _get($id) {
-		// 2017-02-18
-		// К сожалению, нельз просто написать:
-		// return ($c = C::retrieve($id))->isDestroyed() ? null : $c;}
-		// На PHP 5.6 будет сбой: [E_PARSE] syntax error, unexpected '->' (T_OBJECT_OPERATOR)
+		# 2017-02-18
+		# К сожалению, нельз просто написать:
+		# return ($c = C::retrieve($id))->isDestroyed() ? null : $c;}
+		# На PHP 5.6 будет сбой: [E_PARSE] syntax error, unexpected '->' (T_OBJECT_OPERATOR)
 		$c = C::retrieve($id); /** @var C $c */
 		return $c->isDestroyed() ? null : $c;
 	}

@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\Omise\Facade;
-// 2017-02-11 https://www.omise.co/cards-api
+# 2017-02-11 https://www.omise.co/cards-api
 final class Card extends \Df\StripeClone\Facade\Card {
 	/**
 	 * 2017-02-11

@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\Omise\W;
-// 2017-03-10
+# 2017-03-10
 final class Reader extends \Df\Payment\W\Reader\Json {
 	/**             
 	 * 2017-01-11

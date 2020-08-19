@@ -2,10 +2,10 @@
 namespace Dfe\Omise\W\Handler\Charge;
 use Df\Payment\W\Strategy\ConfirmPending as A;
 use Df\Payment\W\Strategy\CapturePreauthorized as C;
-// 2017-01-12
-// 2017-08-16
-// We get this event when a payment has just been successfully verified by 3D-Secure.
-// https://www.omise.co/api-webhooks#charge-events
+# 2017-01-12
+# 2017-08-16
+# We get this event when a payment has just been successfully verified by 3D-Secure.
+# https://www.omise.co/api-webhooks#charge-events
 /** @method \Dfe\Omise\W\Event\Charge\Complete e() */
 final class Complete extends \Df\Payment\W\Handler {
 	/**

@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\Omise\W\Event;
-// 2017-03-15
+# 2017-03-15
 final class Refund extends \Dfe\Omise\W\Event {
 	/**
 	 * 2017-01-17

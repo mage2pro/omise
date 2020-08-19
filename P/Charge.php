@@ -1,6 +1,6 @@
 <?php
 namespace Dfe\Omise\P;
-// 2016-11-13
+# 2016-11-13
 /** @method \Dfe\Omise\Settings s() */
 final class Charge extends \Df\StripeClone\P\Charge {
 	/**

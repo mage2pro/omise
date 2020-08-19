@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\Omise\W\Event\Charge;
 use Dfe\Omise\Method as M;
-// 2017-03-15
+# 2017-03-15
 final class Complete extends \Dfe\Omise\W\Event {
 	/**
 	 * 2017-01-15

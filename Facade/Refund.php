@@ -2,7 +2,7 @@
 namespace Dfe\Omise\Facade;
 use OmiseCharge as C;
 use OmiseRefund as R;
-// 2017-02-10
+# 2017-02-10
 final class Refund extends \Df\StripeClone\Facade\Refund {
 	/**
 	 * 2017-02-10

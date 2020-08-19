@@ -1,5 +1,5 @@
 <?php
-// 2016-11-14
+# 2016-11-14
 namespace Dfe\Omise\SDK;
 use OmiseApiResource as Sb;
 final class O extends Sb {

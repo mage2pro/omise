@@ -4,7 +4,7 @@ use Dfe\Omise\Exception\Charge as E;
 use Magento\Sales\Model\Order\Payment as OP;
 use OmiseCharge as C;
 use OmiseRefund as R;
-// 2017-02-10
+# 2017-02-10
 final class Charge extends \Df\StripeClone\Facade\Charge {
 	/**
 	 * 2017-02-10
