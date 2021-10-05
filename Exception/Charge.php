@@ -21,7 +21,7 @@ final class Charge extends \Dfe\Omise\Exception {
 
 	/**
 	 * 2016-07-31
-	 * @used-by \Df\Qa\Message\Failure\Exception::main()
+	 * @used-by \Df\Qa\Failure\Exception::main()
 	 * @return bool
 	 */
 	function isMessageHtml() {return true;}
