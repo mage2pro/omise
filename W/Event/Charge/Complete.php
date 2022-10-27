@@ -12,7 +12,7 @@ final class Complete extends \Dfe\Omise\W\Event {
 	 * Если мы этот флаг не устанавливали, то здесь успешным состоянием charge будет «pending».
 	 * https://mage2.pro/tags/omise-charge-status
 	 * https://mage2.pro/t/2460
-	 * @used-by ttCurrent()
+	 * @used-by self::ttCurrent()
 	 * @used-by \Dfe\Omise\W\Handler\Charge\Complete::strategyC()
 	 * @return bool
 	 */

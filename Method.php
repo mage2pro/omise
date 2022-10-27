@@ -30,7 +30,7 @@ final class Method extends \Df\StripeClone\Method {
 	 * «What are the minimum and maximum amount limitations on a single payment?» https://mage2.pro/t/2691
 	 * @override
 	 * @see \Df\Payment\Method::amountLimits()
-	 * @used-by isAvailable()
+	 * @used-by self::isAvailable()
 	 * @return array(string => int[])
 	 */
 	protected function amountLimits() {return ['THB' => [20, 1000000], 'JPY' => [100, 999999]];}
@@ -61,7 +61,7 @@ final class Method extends \Df\StripeClone\Method {
 
 	/**
 	 * 2017-01-15
-	 * @used-by redirectNeeded()
+	 * @used-by self::redirectNeeded()
 	 * @used-by \Dfe\Omise\W\Handler\Charge\Complete::isPending()
 	 */
 	const S_PENDING = 'pending';

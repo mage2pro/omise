@@ -55,11 +55,10 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	}
 
 	/**
-	 * 2017-02-11
-	 * Ключ $o['cards']['data'] присутствует в объекте даже при отсутствии карт.
+	 * 2017-02-11 Ключ $o['cards']['data'] присутствует в объекте даже при отсутствии карт.
 	 * @override
 	 * @see \Df\StripeClone\Facade\Customer::cardsData()
-	 * @used-by cardAdd()
+	 * @used-by self::cardAdd()
 	 * @used-by \Df\StripeClone\Facade\Customer::cards()
 	 * @param C $c
 	 * @return array(array(string => string))
