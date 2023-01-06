@@ -7,7 +7,7 @@ final class Customer extends TestCase {
 	function t00():void {}
 
 	/** 2016-11-14 Omise допускает создание множества покупателей с одинаковым email. */
-	function t02() {
+	function t02():void {
 		/** @var array(string => string) $d */
 		$d = ['email' => 'admin@mage2.pro'];
 		/** @var int $i */
