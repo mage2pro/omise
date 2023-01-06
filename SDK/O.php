@@ -10,7 +10,6 @@ final class O extends Sb {
 	 * @used-by \Dfe\Omise\Exception\Charge::message()
 	 * @used-by \Dfe\Omise\Exception\Charge::sentryContext()
 	 * @used-by \Dfe\Omise\Facade\O::toArray()
-	 * @param Sb $o
 	 * @return array(string => string|bool|int|null)
 	 */
 	static function _values(Sb $o) {return $o->_values;}
