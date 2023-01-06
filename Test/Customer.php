@@ -41,13 +41,11 @@ final class Customer extends TestCase {
 	 * 2) для удаления покупателя через этот официальный корявый PHP API
 	 * мы вынуждены заново делать retrieve для конкретного покупателя.
 	 */
-	function t04():void {
-		array_map(function(array $c):void {
-			if ('admin@mage2.pro' === $c['email']) {
-				C::retrieve($c['id'])->destroy();
-			}
-		;}, C::retrieve()['data']);
-	}
+	function t04():void {array_map(function(array $c):void {
+		if ('admin@mage2.pro' === $c['email']) {
+			C::retrieve($c['id'])->destroy();
+		}
+	;}, C::retrieve()['data']);}
 
 	/** 2016-11-13 */
 	function tRetrieve() {
