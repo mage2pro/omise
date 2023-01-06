@@ -48,14 +48,14 @@ final class Customer extends TestCase {
 	;}, C::retrieve()['data']);}
 
 	/** 2016-11-13 */
-	function tRetrieve() {
+	function tRetrieve():void {
 		/** @var C $customer */
 		$c = C::retrieve('cust_test_55zq4ihfaz2csc4c1s4');
 		$this->assertTrue(true);
 	}
 
 	/** 2016-11-14 */
-	function tRetrieveNonExistent() {
+	function tRetrieveNonExistent():void {
 		$this->expectException(\OmiseException::class);
 		C::retrieve(df_uid());
 	}
