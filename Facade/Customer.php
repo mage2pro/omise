@@ -64,5 +64,5 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @return array(array(string => string))
 	 * @see \Dfe\Omise\Facade\Charge::cardData()
 	 */
-	protected function cardsData($c) {return $c['cards']['data'];}
+	protected function cardsData($c):array {return $c['cards']['data'];}
 }
