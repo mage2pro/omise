@@ -7,7 +7,6 @@ use Dfe\Omise\SDK\O as AO;
 final class Charge extends \Dfe\Omise\Exception {
 	/**
 	 * 2017-01-09
-	 * @param \OmiseCharge $c
 	 * @param array(string => mixed) $request
 	 */
 	function __construct(\OmiseCharge $c, array $request) {
