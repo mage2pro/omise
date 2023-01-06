@@ -82,10 +82,9 @@ final class Charge extends \Dfe\Omise\Exception {
 	 * 2017-01-09
 	 * @param \OmiseCharge $c
 	 * @param array(string => mixed) $request
-	 * @return \OmiseCharge
 	 * @throws self
 	 */
-	static function assert(\OmiseCharge $c, array $request) {
+	static function assert(\OmiseCharge $c, array $request):\OmiseCharge {
 		/** @var string $status */
 		$status = $c['status'];
 		/**
