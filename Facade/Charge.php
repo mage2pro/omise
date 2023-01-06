@@ -27,6 +27,7 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 
 	/**
 	 * 2017-02-10
+	 * 2023-01-06 We can not declare the argument's type because it is undeclared in the overriden method.
 	 * @override
 	 * @see \Df\StripeClone\Facade\Charge::id()
 	 * @used-by \Df\StripeClone\Method::chargeNew()
