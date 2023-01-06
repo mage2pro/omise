@@ -15,7 +15,7 @@ final class Complete extends \Dfe\Omise\W\Event {
 	 * @used-by self::ttCurrent()
 	 * @used-by \Dfe\Omise\W\Handler\Charge\Complete::strategyC()
 	 */
-	function isPending():bool {return dfc($this, function() {return
+	function isPending():bool {return dfc($this, function():bool {return
 		M::S_PENDING === df_assert_in($this->ro('status'), [M::S_PENDING, M::S_SUCCESSFUL])
 	;});}
 
