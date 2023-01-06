@@ -12,17 +12,14 @@ final class Method extends \Df\StripeClone\Method {
 	 * @override
 	 * A partial capture is not supported by Omise: https://www.omise.co/charges-api#charges-capture
 	 * Interestinly, a partial refund is suported: https://www.omise.co/refunds-api#refunds-create
-	 *
 	 * 2017-02-08
 	 * false и так является значением по умолчанию в родителькском методе:
 	 * https://github.com/mage2pro/core/blob/1.12.13/Payment/Method.php?ts=4#L338
 	 * Однако я явно объявляю здесь свой метод, чтобы явно подчеркнуть,
 	 * что Omise не поддерживает эту функцию.
-	 *
 	 * @see \Df\Payment\Method::canCapturePartial()
-	 * @return bool
 	 */
-	function canCapturePartial() {return false;}
+	function canCapturePartial():bool {return false;}
 
 	/**
 	 * 2016-11-15 https://www.omise.co/currency-and-amount
@@ -37,13 +34,15 @@ final class Method extends \Df\StripeClone\Method {
 
 	/**
 	 * 2017-01-12 https://mage2.pro/t/2460
+	 * 2022-11-17
+	 * `object` as an argument type is not supported by PHP < 7.2:
+	 * https://github.com/mage2pro/core/issues/174#user-content-object
 	 * @override
 	 * @see \Df\StripeClone\Method::redirectNeeded()
 	 * @used-by \Df\StripeClone\Method::chargeNew()
 	 * @param object $c
-	 * @return bool
 	 */
-	protected function redirectNeeded($c) {return $c['authorize_uri'] && self::S_PENDING === $c['status'];}
+	protected function redirectNeeded($c):bool {return $c['authorize_uri'] && self::S_PENDING === $c['status'];}
 
 	/**
 	 * 2016-12-26
@@ -51,9 +50,8 @@ final class Method extends \Df\StripeClone\Method {
 	 * @see \Df\StripeClone\Method::transUrlBase()
 	 * @used-by \Df\StripeClone\Method::transUrl()
 	 * @param T $t
-	 * @return string
 	 */
-	protected function transUrlBase(T $t) {return df_cc_path(
+	protected function transUrlBase(T $t):string {return df_cc_path(
 		'https://dashboard.omise.co',
 		df_trans_is_test($t, 'test', 'live')
 		,dfa(['refund' => 'refunds'], $t->getTxnType(), 'charges')

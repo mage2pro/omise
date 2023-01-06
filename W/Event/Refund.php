@@ -9,33 +9,30 @@ final class Refund extends \Dfe\Omise\W\Event {
 	 * @used-by \Df\StripeClone\W\Nav::id()
 	 * @return string
 	 */
-	function idBase() {return $this->ro('id');}
+	function idBase():string {return $this->ro('id');}
 
 	/**
 	 * 2017-01-17
 	 * @override
-	 * @see \Df\StripeClone\W\Event::ttCurrent()
+	 * @see \Df\Payment\W\Event::ttCurrent()
 	 * @used-by \Df\StripeClone\W\Nav::id()
 	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
-	 * @return string
 	 */
-	function ttCurrent() {return self::T_REFUND;}
+	function ttCurrent():string {return self::T_REFUND;}
 
 	/**
 	 * 2017-01-17
 	 * @override
 	 * @see \Df\StripeClone\W\Event::ttParent()
 	 * @used-by \Df\StripeClone\W\Nav::pidAdapt()
-	 * @return string
 	 */
-	function ttParent() {return self::T_CAPTURE;}
+	function ttParent():string {return self::T_CAPTURE;}
 	
 	/**
 	 * 2017-02-14
 	 * @override
 	 * @see \Df\StripeClone\W\Event::k_pidSuffix()
 	 * @used-by \Df\StripeClone\W\Event::k_pid()
-	 * @return string
 	 */
-	protected function k_pidSuffix() {return 'charge';}
+	protected function k_pidSuffix():string {return 'charge';}
 }

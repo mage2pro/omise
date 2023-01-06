@@ -11,7 +11,7 @@ abstract class TestCase extends \Df\Payment\TestCase {
 	 * @override
 	 * @see \Df\Core\TestCase::setUp()
 	 */
-	protected function setUp() {
+	protected function setUp():void {
 		parent::setUp();
 		$this->s()->init();
 		/**

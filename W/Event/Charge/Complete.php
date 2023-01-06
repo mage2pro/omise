@@ -23,19 +23,17 @@ final class Complete extends \Dfe\Omise\W\Event {
 	/**
 	 * 2017-01-09
 	 * @override
-	 * @see \Df\StripeClone\W\Event::ttCurrent()
+	 * @see \Df\Payment\W\Event::ttCurrent()
 	 * @used-by \Df\StripeClone\W\Nav::id()
 	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
-	 * @return string
 	 */
-	function ttCurrent() {return $this->isPending() ? self::T_AUTHORIZE : self::T_CAPTURE;}
+	function ttCurrent():string {return $this->isPending() ? self::T_AUTHORIZE : self::T_CAPTURE;}
 	
 	/**
 	 * 2017-01-09
 	 * @override
 	 * @see \Df\StripeClone\W\Event::ttParent()
 	 * @used-by \Df\StripeClone\W\Nav::pidAdapt()
-	 * @return string
 	 */
-	function ttParent() {return self::T_3DS;}
+	function ttParent():string {return self::T_3DS;}
 }

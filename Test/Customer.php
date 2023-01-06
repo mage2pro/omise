@@ -3,13 +3,10 @@
 namespace Dfe\Omise\Test;
 use OmiseCustomer as C;
 final class Customer extends TestCase {
-	/** @test 2016-11-14 */
+	/** 2016-11-14 @test */
 	function t00() {}
 
-	/**
-	 * 2016-11-14
-	 * Omise допускает создание множества покупателей с одинаковым email.
-	 */
+	/** 2016-11-14 Omise допускает создание множества покупателей с одинаковым email. */
 	function t02() {
 		/** @var array(string => string) $d */
 		$d = ['email' => 'admin@mage2.pro'];

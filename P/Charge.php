@@ -9,9 +9,9 @@ final class Charge extends \Df\StripeClone\P\Charge {
 	 * @override
 	 * @see \Df\StripeClone\P\Charge::k_CardId()
 	 * @used-by \Df\StripeClone\P\Charge::request()
-	 * @return string
+	 * @used-by \Df\StripeClone\P\Reg::k_CardId()
 	 */
-	function k_CardId() {return 'card';}
+	function k_CardId():string {return 'card';}
 
 	/**
 	 * 2016-11-13 https://www.omise.co/charges-api#charges-create
@@ -20,7 +20,7 @@ final class Charge extends \Df\StripeClone\P\Charge {
 	 * @used-by \Df\StripeClone\P\Charge::request()
 	 * @return array(string => mixed)
 	 */
-	protected function p() {return !$this->s()->_3DS() ? [] : [
+	protected function p():array {return !$this->s()->_3DS() ? [] : [
 		/**
 		 * 2016-12-24
 		 * «(optional) The url where we will return the customer
@@ -46,12 +46,10 @@ final class Charge extends \Df\StripeClone\P\Charge {
 	];}
 
 	/**
-	 * 2017-02-18
-	 * Does Omise support dynamic statement descriptors? https://mage2.pro/t/2822
+	 * 2017-02-18 Does Omise support dynamic statement descriptors? https://mage2.pro/t/2822
 	 * @override
 	 * @see \Df\StripeClone\P\Charge::k_DSD()
 	 * @used-by \Df\StripeClone\P\Charge::request()
-	 * @return string
 	 */
-	protected function k_DSD() {return null;}
+	protected function k_DSD():string {return '';}
 }

@@ -7,14 +7,12 @@ namespace Dfe\Omise\Init;
  */
 final class Action extends \Df\Payment\Init\Action {
 	/**
-	 * 2016-12-24
+	 * 2016-12-24 A result looks like «http://api.omise.co/payments/paym_test_56fuvl1ih89gj1kjzid/authorize».
 	 * @override
 	 * @see \Df\Payment\Init\Action::redirectUrl()
 	 * @used-by \Df\Payment\Init\Action::action()
-	 * @return string|null
-	 * An example of result: http://api.omise.co/payments/paym_test_56fuvl1ih89gj1kjzid/authorize
 	 */
-	protected function redirectUrl() {return !$this->s()->_3DS() ? null :
+	protected function redirectUrl():string {return !$this->s()->_3DS() ? '' :
 		/**
 		 * 2016-12-24
 		 * «Url for charge authorization using 3-D Secure. Only if return_uri was set.»

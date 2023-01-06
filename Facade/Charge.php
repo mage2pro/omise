@@ -15,9 +15,8 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @param string $id
 	 * @param int|float $a
 	 * The $a value is already converted to the PSP currency and formatted according to the PSP requirements.
-	 * @return C
 	 */
-	function capturePreauthorized($id, $a) {return C::retrieve($id)->capture();}
+	function capturePreauthorized($id, $a):C {return C::retrieve($id)->capture();}
 
 	/**
 	 * 2017-02-10
@@ -25,9 +24,8 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @see \Df\StripeClone\Facade\Charge::create()
 	 * @used-by \Df\StripeClone\Method::chargeNew()
 	 * @param array(string => mixed) $p
-	 * @return C
 	 */
-	function create(array $p) {return E::assert(C::create($p), $p);}
+	function create(array $p):C {return E::assert(C::create($p), $p);}
 
 	/**
 	 * 2017-02-10
@@ -35,9 +33,8 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @see \Df\StripeClone\Facade\Charge::id()
 	 * @used-by \Df\StripeClone\Method::chargeNew()
 	 * @param C $c
-	 * @return string
 	 */
-	function id($c) {return $c['id'];}
+	function id($c):string {return $c['id'];}
 
 	/**
 	 * 2017-02-12
@@ -47,21 +44,17 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @see \Df\StripeClone\Facade\Charge::pathToCard()
 	 * @used-by \Df\StripeClone\Block\Info::cardDataFromChargeResponse()
 	 * @used-by \Df\StripeClone\Facade\Charge::cardData()
-	 * @return string
 	 */
-	function pathToCard() {return 'card';}
+	function pathToCard():string {return 'card';}
 
 	/**
 	 * 2017-02-10
+	 * 2022-12-19 The $a value is already converted to the PSP currency and formatted according to the PSP requirements.
 	 * @override
 	 * @see \Df\StripeClone\Facade\Charge::refund()
-	 * @used-by self::void()
 	 * @used-by \Df\StripeClone\Method::_refund()
-	 * @param string $id
-	 * @param float $a В формате и валюте платёжной системы. Значение готово для применения в запросе API.
-	 * @return R
 	 */
-	function refund($id, $a) {return C::retrieve($id)->refunds()->create(['amount' => $a]);}
+	function refund(string $id, int $a):R {return C::retrieve($id)->refunds()->create(['amount' => $a]);}
 
 	/**
 	 * 2017-02-10
@@ -69,17 +62,14 @@ final class Charge extends \Df\StripeClone\Facade\Charge {
 	 * @override
 	 * @see \Df\StripeClone\Facade\Charge::void()
 	 * @used-by \Df\StripeClone\Method::_refund()
-	 * @param string $id
-	 * @return C
 	 */
-	function void($id) {/** @var C $r */ $r = C::retrieve($id); $r->reverse(); return $r;}
+	function void(string $id):C {/** @var C $r */ $r = C::retrieve($id); $r->reverse(); return $r;}
 
 	/**
 	 * 2017-02-11
 	 * @override
 	 * @see \Df\StripeClone\Facade\Charge::cardIdPrefix()
 	 * @used-by \Df\StripeClone\Payer::tokenIsNew()
-	 * @return string
 	 */
-	protected function cardIdPrefix() {return 'card_';}
+	protected function cardIdPrefix():string {return 'card_';}
 }

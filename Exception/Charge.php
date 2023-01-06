@@ -22,35 +22,38 @@ final class Charge extends \Dfe\Omise\Exception {
 	/**
 	 * 2016-07-31
 	 * @used-by \Df\Qa\Failure\Exception::main()
-	 * @return bool
 	 */
-	function isMessageHtml() {return true;}
+	function isMessageHtml():bool {return true;}
 
 	/**
 	 * 2017-01-09
 	 * @override
 	 * @see \Df\Core\Exception::message()
-	 * @return string
+	 * @used-by df_xts()
 	 */
-	function message() {return df_api_rr_failed($this, AO::_values($this->_c), $this->_request);}
+	function message():string {return df_api_rr_failed($this, AO::_values($this->_c), $this->_request);}
 
 	/**
 	 * 2017-01-09
 	 * @override
 	 * @see \Df\Core\Exception::messageC()
-	 * @return string
+	 * @used-by \Df\Payment\PlaceOrderInternal::message()
 	 */
-	function messageC() {return dfp_error_message($this->_c['failure_message']);}
+	function messageC():string {return dfp_error_message($this->_c['failure_message']);}
 
 	/**
 	 * 2017-01-09
-	 * Сообщение для Sentry.
 	 * @override
-	 * @see \Df\Core\Exception::messageSentry()
+	 * @see \Df\Core\Exception::messageD()
+	 * @used-by df_xtsd()
+	 * @used-by \Df\Core\Exception::messageL()
+	 * @used-by \Df\Core\Exception::messageSentry()
+	 * @used-by \Df\Payment\PlaceOrderInternal::message()
+	 * @used-by \Df\Qa\Failure\Exception::main()
 	 * @used-by \Df\Sentry\Client::captureException()
 	 * @return string
 	 */
-	function messageSentry() {return $this->_c['failure_message'];}
+	function messageD():string {return $this->_c['failure_message'];}
 
 	/**
 	 * 2017-01-09
@@ -59,7 +62,7 @@ final class Charge extends \Dfe\Omise\Exception {
 	 * @used-by df_sentry()
 	 * @return array(string => mixed)
 	 */
-	function sentryContext() {return [
+	function sentryContext():array {return [
 		'extra' => ['request' => $this->_request, 'response' => AO::_values($this->_c)]
 		,'tags' => ['Omise' => df_package_version($this)]
 	];}

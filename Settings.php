@@ -4,8 +4,7 @@ namespace Dfe\Omise;
 /** @method static Settings s() */
 final class Settings extends \Df\StripeClone\Settings {
 	/**
-	 * 2016-12-24
-	 * «Whether the 3D Secure Validation is enabled for your Omise account»
+	 * 2016-12-24 «Whether the 3D Secure Validation is enabled for your Omise account»
 	 * @used-by \Dfe\Omise\P\Charge::p()
 	 * @used-by \Dfe\Omise\Init\Action::redirectUrl()
 	 * @return bool
@@ -19,7 +18,7 @@ final class Settings extends \Df\StripeClone\Settings {
 	 * @see \Df\Payment\Settings::init()
 	 * @used-by \Df\Payment\Method::action()
 	 */
-	function init() {dfc($this, function() {
+	function init():void {dfc($this, function() {
 		/** @used-by \OmiseObject::__construct() */
 		define('OMISE_PUBLIC_KEY', $this->publicKey());
 		define('OMISE_SECRET_KEY', $this->privateKey());

@@ -17,9 +17,8 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * @see \Df\StripeClone\Facade\Card::brand()
 	 * @used-by \Df\StripeClone\CardFormatter::ii()
 	 * @used-by \Df\StripeClone\CardFormatter::label()
-	 * @return string
 	 */
-	function brand() {return $this->_p['brand'];}
+	function brand():string {return $this->_p['brand'];}
 
 	/**
 	 * 2017-02-11
@@ -31,9 +30,8 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
 	 * @see \Df\StripeClone\Facade\Card::country()
 	 * @used-by \Df\StripeClone\CardFormatter::country()
-	 * @return string
 	 */
-	function country() {return $this->_p['country'];}
+	function country():string {return $this->_p['country'];}
 
 	/**
 	 * 2017-02-11
@@ -43,9 +41,8 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * @used-by \Df\StripeClone\CardFormatter::exp()
 	 * @used-by \Df\StripeClone\CardFormatter::ii()
 	 * @used-by \Df\StripeClone\Facade\Card::isActive()
-	 * @return int
 	 */
-	function expMonth() {return intval($this->_p['expiration_month']);}
+	function expMonth():int {return intval($this->_p['expiration_month']);}
 
 	/**
 	 * 2017-02-11
@@ -55,9 +52,8 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * @used-by \Df\StripeClone\CardFormatter::exp()
 	 * @used-by \Df\StripeClone\CardFormatter::ii()
 	 * @used-by \Df\StripeClone\Facade\Card::isActive()
-	 * @return int
 	 */
-	function expYear() {return intval($this->_p['expiration_year']);}
+	function expYear():int {return intval($this->_p['expiration_year']);}
 
 	/**
 	 * 2017-02-11
@@ -66,9 +62,8 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * @see \Df\StripeClone\Facade\Card::id()
 	 * @used-by \Df\StripeClone\ConfigProvider::cards()
 	 * @used-by \Df\StripeClone\Facade\Customer::cardIdForJustCreated()
-	 * @return string
 	 */
-	function id() {return $this->_p['id'];}
+	function id():string {return $this->_p['id'];}
 
 	/**
 	 * 2017-02-11
@@ -77,9 +72,8 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * @see \Df\StripeClone\Facade\Card::last4()
 	 * @used-by \Df\StripeClone\CardFormatter::ii()
 	 * @used-by \Df\StripeClone\CardFormatter::label()
-	 * @return string
 	 */
-	function last4() {return $this->_p['last_digits'];}
+	function last4():string {return $this->_p['last_digits'];}
 
 	/**
 	 * 2017-02-11
@@ -88,9 +82,8 @@ final class Card extends \Df\StripeClone\Facade\Card {
 	 * @override
 	 * @see \Df\StripeClone\Facade\Card::owner()
 	 * @used-by \Df\StripeClone\CardFormatter::ii()
-	 * @return string
 	 */
-	function owner() {return 'name';}
+	function owner():string {return 'name';}
 
 	/**
 	 * 2017-02-11

@@ -17,8 +17,7 @@ final class Refund extends \Df\StripeClone\Facade\Refund {
 	 * @used-by \Df\StripeClone\Method::_refund()
 	 * @param C|R $r
 	 * $r имеет класс R в операции refund и класс C в операции void.
-	 * @return string
 	 * Пример результата: «trxn_test_56psvralu7nzx74ytit».
 	 */
-	function transId($r) {return $r['transaction'];}
+	function transId($r):string {return $r['transaction'];}
 }

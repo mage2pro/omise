@@ -13,7 +13,6 @@ final class Complete extends \Df\Payment\W\Handler {
 	 * @override
 	 * @see \Df\Payment\W\Handler::strategyC()
 	 * @used-by \Df\Payment\W\Handler::handle()
-	 * @return string
 	 */
-	protected function strategyC() {return $this->e()->isPending() ? A::class : C::class;}
+	protected function strategyC():string {return $this->e()->isPending() ? A::class : C::class;}
 }

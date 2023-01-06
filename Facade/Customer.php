@@ -5,14 +5,13 @@ use OmiseCustomer as C;
 final class Customer extends \Df\StripeClone\Facade\Customer {
 	/**
 	 * 2017-02-10
+	 * 2022-12-19 We can not declare the $c argument type because it is undeclared in the overriden method.
 	 * @override
 	 * @see \Df\StripeClone\Facade\Customer::cardAdd()
 	 * @used-by \Df\StripeClone\Payer::newCard()
 	 * @param C $c
-	 * @param string $token
-	 * @return string
 	 */
-	function cardAdd($c, $token) {
+	function cardAdd($c, string $token):string {
 		$c->update(['card' => $token]);
 		return df_last($this->cardsData($c))['id'];
 	}
@@ -33,9 +32,8 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @see \Df\StripeClone\Facade\Customer::id()
 	 * @used-by \Df\StripeClone\Payer::newCard()
 	 * @param C $c
-	 * @return string
 	 */
-	function id($c) {return $c['id'];}
+	function id($c):string {return $c['id'];}
 
 	/**
 	 * 2017-02-10 https://github.com/omise/omise-php/issues/43
