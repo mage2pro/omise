@@ -49,8 +49,7 @@ final class Customer extends TestCase {
 
 	/** 2016-11-13 */
 	function tRetrieve():void {
-		/** @var C $customer */
-		$c = C::retrieve('cust_test_55zq4ihfaz2csc4c1s4');
+		$c = C::retrieve('cust_test_55zq4ihfaz2csc4c1s4'); /** @var C $customer */
 		$this->assertTrue(true);
 	}
 
