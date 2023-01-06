@@ -47,7 +47,6 @@ final class Charge extends \Dfe\Omise\Exception {
 	 * @used-by \Df\Payment\PlaceOrderInternal::message()
 	 * @used-by \Df\Qa\Failure\Exception::main()
 	 * @used-by \Df\Sentry\Client::captureException()
-	 * @return string
 	 */
 	function messageD():string {return $this->_c['failure_message'];}
 
