@@ -12,5 +12,5 @@ final class O extends Sb {
 	 * @used-by \Dfe\Omise\Facade\O::toArray()
 	 * @return array(string => string|bool|int|null)
 	 */
-	static function _values(Sb $o) {return $o->_values;}
+	static function _values(Sb $o):array {return $o->_values;}
 }
