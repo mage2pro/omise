@@ -42,7 +42,7 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @see \Df\StripeClone\Facade\Customer::_get()
 	 * @used-by \Df\StripeClone\Facade\Customer::get()
 	 * @param string $id
-	 * @return C
+	 * @return C|null
 	 */
 	protected function _get($id) {
 		# 2017-02-18
