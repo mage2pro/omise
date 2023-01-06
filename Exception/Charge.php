@@ -84,8 +84,7 @@ final class Charge extends \Dfe\Omise\Exception {
 	 * @throws self
 	 */
 	static function assert(\OmiseCharge $c, array $request):\OmiseCharge {
-		/** @var string $status */
-		$status = $c['status'];
+		$status = $c['status']; /** @var string $status */
 		/**
 		 * 2017-01-09
 		 * «Value can one be one of failed, pending, reversed or successful.»
