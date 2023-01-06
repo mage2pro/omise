@@ -55,6 +55,7 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 
 	/**
 	 * 2017-02-11 Ключ $o['cards']['data'] присутствует в объекте даже при отсутствии карт.
+	 * 2023-01-06 We can not declare the argument's type because it is undeclared in the overriden method.
 	 * @override
 	 * @see \Df\StripeClone\Facade\Customer::cardsData()
 	 * @used-by self::cardAdd()
