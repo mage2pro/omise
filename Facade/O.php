@@ -6,6 +6,7 @@ use OmiseApiResource as _O;
 final class O extends \Df\StripeClone\Facade\O {
 	/**
 	 * 2017-02-11
+	 * 2023-01-06 We can not declare the argument's type because it is undeclared in the overriden method.
 	 * @override
 	 * @see \Df\StripeClone\Facade\O::toArray()
 	 * @used-by \Df\StripeClone\Method::transInfo()
