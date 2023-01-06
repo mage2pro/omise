@@ -4,7 +4,7 @@ namespace Dfe\Omise\Test;
 use OmiseCustomer as C;
 final class Customer extends TestCase {
 	/** 2016-11-14 @test */
-	function t00() {}
+	function t00():void {}
 
 	/** 2016-11-14 Omise допускает создание множества покупателей с одинаковым email. */
 	function t02() {
