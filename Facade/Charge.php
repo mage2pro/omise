@@ -7,8 +7,7 @@ use OmiseRefund as R;
 # 2017-02-10
 final class Charge extends \Df\StripeClone\Facade\Charge {
 	/**
-	 * 2017-02-10
-	 * https://www.omise.co/charges-api#charges-capture
+	 * 2017-02-10 https://www.omise.co/charges-api#charges-capture
 	 * @override
 	 * @see \Df\StripeClone\Facade\Charge::capturePreauthorized()
 	 * @used-by \Df\StripeClone\Method::charge()
