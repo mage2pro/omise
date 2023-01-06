@@ -7,9 +7,8 @@ final class Settings extends \Df\StripeClone\Settings {
 	 * 2016-12-24 «Whether the 3D Secure Validation is enabled for your Omise account»
 	 * @used-by \Dfe\Omise\P\Charge::p()
 	 * @used-by \Dfe\Omise\Init\Action::redirectUrl()
-	 * @return bool
 	 */
-	function _3DS() {return $this->testableB();}
+	function _3DS():bool {return $this->testableB();}
 
 	/**
 	 * 2016-11-13
