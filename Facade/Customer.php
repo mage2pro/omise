@@ -43,7 +43,7 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 	 * @param string $id
 	 * @return C
 	 */
-	protected function _get($id) {
+	protected function _get(string $id) {
 		# 2017-02-18
 		# К сожалению, нельз просто написать:
 		# return ($c = C::retrieve($id))->isDestroyed() ? null : $c;}
