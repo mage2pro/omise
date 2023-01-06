@@ -37,13 +37,14 @@ final class Customer extends \Df\StripeClone\Facade\Customer {
 
 	/**
 	 * 2017-02-10 https://github.com/omise/omise-php/issues/43
+	 * 2023-01-06 We can not declare the argument's type because it is undeclared in the overriden method.
 	 * @override
 	 * @see \Df\StripeClone\Facade\Customer::_get()
 	 * @used-by \Df\StripeClone\Facade\Customer::get()
 	 * @param string $id
 	 * @return C
 	 */
-	protected function _get(string $id) {
+	protected function _get($id) {
 		# 2017-02-18
 		# К сожалению, нельз просто написать:
 		# return ($c = C::retrieve($id))->isDestroyed() ? null : $c;}
