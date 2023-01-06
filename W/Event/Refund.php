@@ -7,7 +7,6 @@ final class Refund extends \Dfe\Omise\W\Event {
 	 * @override
 	 * @see \Df\StripeClone\W\Event::idBase()
 	 * @used-by \Df\StripeClone\W\Nav::id()
-	 * @return string
 	 */
 	function idBase():string {return $this->ro('id');}
 
