@@ -87,6 +87,13 @@ final class Card extends \Df\StripeClone\Facade\Card {
 
 	/**
 	 * 2017-02-11
+	 * @used-by self::__construct()
+	 * @used-by self::brand()
+	 * @used-by self::country()
+	 * @used-by self::expMonth()
+	 * @used-by self::expYear()
+	 * @used-by self::id()
+	 * @used-by self::last4()
 	 * @var array(string => string)
 	 */
 	private $_p;
