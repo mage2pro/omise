@@ -26,7 +26,7 @@ final class Customer extends TestCase {
 	 * 2) для удаления покупателя через этот официальный корявый PHP API
 	 * мы вынуждены заново делать retrieve для конкретного покупателя.
 	 */
-	function t03() {
+	function t03():void {
 		array_map(function($id) {
 			C::retrieve($id)->destroy()
 		;}, array_column(C::retrieve()['data'], 'id'));
