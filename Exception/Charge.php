@@ -54,14 +54,19 @@ final class Charge extends \Dfe\Omise\Exception {
 	/**
 	 * 2017-01-09
 	 * @override
-	 * @see \Df\Core\Exception::sentryContext()
+	 * @return self|array(string => mixed)
+	 * @see \Df\Core\Exception::context()
+	 * @used-by df_error_create()
 	 * @used-by df_sentry()
-	 * @return array(string => mixed)
+	 * @used-by \Df\Core\Exception::__construct()
+	 * @used-by \Df\API\Response\Validator::__construct()
+	 * @used-by \Df\Core\Exception::wrap()
+	 * @used-by \Df\Qa\Failure\Exception::postface()
 	 */
-	function sentryContext():array {return [
-		'extra' => ['request' => $this->_request, 'response' => AO::_values($this->_c)]
-		,'tags' => ['Omise' => df_package_version($this)]
-	];}
+	function context($v = DF_N) {
+		$r = parent::context($v); /** @var mixed $r */
+		return DF_N !== $v ? $r : $r + ['request' => $this->_request, 'response' => AO::_values($this->_c)];
+	}
 
 	/**
 	 * 2017-01-09
