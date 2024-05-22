@@ -26,6 +26,7 @@ final class Charge extends \Dfe\Omise\Exception {
 	 * @override
 	 * @see \Df\Core\Exception::message()
 	 * @used-by df_xts()
+	 * @used-by \Df\Core\Exception::throw_()
 	 */
 	function message():string {return df_api_rr_failed($this, AO::_values($this->_c), $this->_request);}
 
